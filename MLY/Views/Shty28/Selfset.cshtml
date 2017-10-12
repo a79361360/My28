@@ -1,0 +1,122 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <link rel="Shortcut Icon" href="http://play28.mly.com/game/luck28/logo.ico">
+    <link rel="Bookmark" href="http://play28.mly.com/game/luck28/logo.ico">
+    <link href="/Content/css.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/js/jquery-1.js"></script>
+    <script type="text/javascript" src="/js/PostSaveTem.js"></script>
+    <title>玩游戏赚金币，做任务换奖品，就在乐游网-企鹅28</title>
+
+    <meta name="Keywords" content="游戏体验 免费 网赚 幸运28">
+    <meta name="description" content="玩游戏赚金币，做任务换奖品，就在乐游网">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+</head>
+<body>
+
+    <div class="likebody mainbody">
+        <div class="likebody">
+            @Html.Action("RankRightList", "Shared", new { id = 1 })
+
+
+            <link href="/Content/zd.css" rel="stylesheet">
+            <div class="gamemain zd">
+
+                <input value="50000000" id="maxzhi" type="hidden">
+                @Html.Action("top", "Shared", null)
+
+                    <div>
+                        <input name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTUxMTg1MTIwNGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgIFJmN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkSW1hZ2VCdXR0b24yBSZjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJEltYWdlQnV0dG9uMbDW8FySVvJWgS1NhxFYbfmUWTagqH3KbZTPrZR0s66U" type="hidden">
+                    </div>
+
+                    <div>
+
+                        <input name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="63FAB0B6" type="hidden">
+                        <input name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAALOKPA3i2Q9cDirE9qsHL5JrEsH7SSIGFusZWHjjWGBpLEFdLHUlZPBoONgYWcDB9oOcEI6IPHdXzcLEAj+OtXP" type="hidden">
+                    </div>
+                    <div class="tzset">
+
+                        <div class="tzsetcent" style="border: none; padding: 0px">
+
+                            @Html.Raw(ViewBag.start)
+
+                            <h2>设置自动投注期数并开始投注</h2>
+                            <table class="zddzm" cellspacing="1">
+                                <tbody>
+                                    <tr>
+                                        <th rowspan="2">开始投注设置</th>
+                                        <td>
+                                            开始模式：@Html.Raw(ViewBag.Open)
+                                            选择自动投注的开始模式，自动投注将从这个模式开始
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            开始期号：<input id="start" name="start" value="@Html.Raw(ViewBag.Top)" type="text">
+                                            结束期数：<input id="end" name="end" value="@Html.Raw(ViewBag.Top10000)" type="text">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th rowspan="2">停止投注设置</th>
+                                        <td>
+                                            金币小于：<input id="MinJb" name="MinJb" value="@Html.Raw(ViewBag.MinJb)" type="text">
+                                            <em>或</em>
+                                            金币大于：<input id="MaxJb" name="MaxJb" value="@Html.Raw(ViewBag.MaxJb)" type="text">
+                                            <em>或</em>金币不够投注
+                                            <p>* 以上几项达到任意一项即马上停止自动投注</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="ms-box">
+                                <table class="ms" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <td>投注模式</td>
+                                            <td>投注金币数量</td>
+                                            <td><em>赢后</em>使用的投注模式</td>
+                                            <td><em>输后</em>使用的投注模式</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @Html.Raw(ViewBag.Temp)
+
+
+                                    </tbody>
+                                </table>
+
+                                <div class="kstz">
+                                    @Html.Raw(ViewBag.Html)
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                            <p class="bz">
+                                备注：自动投注将在上期开奖后2分钟进行投注。您关闭游戏或关机也不影响。<br><br>
+                                投注方法：<br>
+                                1、在"起始投注"中选取您要开始投注的模式。<br>
+                                2、您可以自定义投注模式输赢后的投注模式。<br>
+                                3、自动投注按照输赢进行切换，假设投注中奖，但中奖金币少于投注金币，则按照"输"后模式进行切换。<br>
+                                4、点击"开始自动投注"，程序将立即按照"起始投注"设置的模式进行投注，并开启自动投注。
+                            </p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

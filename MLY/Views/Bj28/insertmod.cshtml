@@ -1,0 +1,947 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <link rel="Shortcut Icon" href="http://play28.mly.com/game/luck28/logo.ico">
+    <link rel="Bookmark" href="http://play28.mly.com/game/luck28/logo.ico">
+    <link href="/Content/css.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/js/jquery-1.js"></script>
+    <script type="text/javascript" src="/js/PostSaveTem.js"></script>
+    <title>玩游戏赚金币，做任务换奖品，就在乐游网-北京28</title>
+
+    <meta name="Keywords" content="游戏体验 免费 网赚 幸运28">
+    <meta name="description" content="玩游戏赚金币，做任务换奖品，就在乐游网">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+</head>
+<body onload="takechanges(@ViewData["gzIss"])">
+    <div class="likebody mainbody">
+        <div class="likebody">
+            @Html.Action("RankRightList", "Shared", new { id = 2 })
+            <div class="gamemain">
+
+                <input value="50000000" id="maxzhi" type="hidden">
+                <input type="hidden" id="model_id" value="" />
+                @Html.Action("Top", "Bj28", null)
+
+                <script type="text/javascript" src="/js/gamejs_002.js"></script>
+                <script type="text/javascript" src="/js/gamejs.js"></script>
+                <script type="text/javascript">
+                    var xyqbbl = [1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 63, 69, 73, 75, 75, 73, 69, 63, 55, 45, 36, 28, 21, 15, 10, 6, 3, 1];
+                </script>
+
+
+                <script type="text/javascript">
+
+                    $("#gamethismenuu a").eq(0).addClass("hovver");
+                    $("#zimenuu a").eq(3).addClass("hovv");
+                    $(function () {
+                        jz();
+                        $("#mymsselect").change(function () {
+                            jz();
+                        });
+                        //绑定关闭事件
+                        $('.gbys1').on('click', function () {
+                            $('.base_box_03').css('display', "none");
+                            $(".pop").css("display","none");
+                        });
+                        //弹出Msg窗口
+                        $('.btn_qd').click(function () {
+                            var ztz = 0;
+                            var dstr = "";
+                            $(".srinput").each(function (i, e) {
+                                var tempe = $(e);
+                                var tempcount = parseInt(tempe.val());
+                                if (!isNaN(tempcount) && tempcount > 0) {
+                                    ztz += tempcount;
+                                }
+                            })
+
+                            $("#ztzspan").html(ztz);
+
+                            allxx(1)
+                            if (ztz >50000000) {
+                                $('.pop').css('display', "none");
+                            }else{
+                                $('.base_box_03').css('display', "block");
+                                $('#msg').parents('.pop').css('display', "block");
+                            }
+                        });
+                        ////绑定关闭事件
+                        $('.a2').click(function () {
+                            $('.base_box_03').css('display', "none");
+                            $("#msg").parents('.pop').css('display', "none");
+                        });
+                        load_bzpl();
+                        //将当前赔率为0的修改成标准
+                        var dqpl = $('.pltddff em'); var gdpl = $('.pltddff span');
+                        $.each(dqpl, function (key, val) {
+                            var dq = $(val).html();
+                            if (dq == 0) {
+                                var ll = gdpl.eq(key).html();
+                                if (ll == 1000) {
+                                    ll = parseInt(ll);
+                                }
+                                $(val).html(ll);
+                            }
+                        });
+                    })
+                    function jz() {
+                        var selectz = $("#mymsselect").find("option:selected");
+                        $("#chosezindex").val(selectz.attr("z"));
+                        $("#TemName").val(selectz.text());
+                        $(".current-mode em").html(selectz.text());
+                        if (selectz.hasClass("hasval")) {
+                            var jsstr = selectz.attr("js");
+                            var tzs = null;
+                            eval("tzs=" + jsstr);
+                            tz2(tzs);
+                        } else {
+                            qk();
+                        }
+
+                    }
+
+                    $('body').on('click', '.modlist span', function () {
+                        window.setTimeout(function () {
+                            $(".items").find(".xzinputt").trigger('change');
+                        }, 50)
+                        if (!$(this).hasClass('addmode')) {
+                            $(this).addClass('current').siblings().removeClass('current');
+                        }
+                    })
+                    //点击自定义模式,改变select的值
+
+                    //添加新模式
+                    newmothed = function () {
+                        var name = $('#mymsselect option:not(.hasval)').first().html();
+                        $("#mymsselect").val(name);
+                        $("#model_id").val("");
+                        document.getElementById("ms").innerHTML="<a class=\"current-mode\">当前正在编辑 | <em>新模板</em></a><a class=\"\" href=\"javascript:fx(xyqbbl)\">反选</a>";
+                        jz();
+
+                    }
+                    //            //提交前判断,不允许提交已存在的模式名称
+                    //            verifyrepeat = function(){
+                    //                var text = $('.base_box_sh_txt').val();
+                    //                var result = true;
+                    //                var options = $('#mymsselect .hasval');
+                    //                $.each(options,function (key, val) {
+                    //                    if(result){
+                    //                        if(text==$(val).val()){
+                    //                            result = false;
+                    //                        }
+                    //                    }
+                    //                })
+                    //                return result;
+                    //            }
+                </script>
+
+
+
+                <div>
+                    @Html.Raw(ViewBag.hidd)
+                </div>
+
+
+                <div class="tzset">
+                    <div class="bj-row clearfix">
+                        <div class="tabwidgit clearfix">
+                            <div class="menu clearfix">
+                                <span class="current">简易模式</span>
+                                <span>标准模式</span>
+                            </div>
+                            <div class="panel current clearfix">
+                                <span class="ydx" onclick="tz_da(xyqbbl)">压大 <em>(14到27)</em></span>
+                                <span class="ydx" onclick="tz_xiao(xyqbbl)">压小 <em>(0到13)</em></span>
+                                <span class="b-i" onclick="tz_dan(xyqbbl)">单 <em>奇数1.3.5...27</em></span>
+                                <span class="b-i" onclick="tz_shuang(xyqbbl)">双 <em>偶数2.4.6...26</em></span>
+                                <span class="b-i" onclick="tz_zhong(xyqbbl)">中 <em>10到17</em></span>
+                                <span class="b-i" onclick="tz_bian(xyqbbl)">边 <em>0-9到18-27</em></span>
+                            </div>
+                            <div class="panel jyms clearfix">
+                                <a href="javascript:qb(xyqbbl)">全包</a>
+                                <a href="javascript:tz_dan(xyqbbl)">单</a>
+                                <a href="javascript:tz_da_dan(xyqbbl)">大单</a>
+                                <a href="javascript:tz_xiao_dan(xyqbbl)">小单</a>
+                                <a href="javascript:tz_dan_bian(xyqbbl)">单边</a>
+                                <a href="javascript:tz_shuang(xyqbbl)">双</a>
+                                <a href="javascript:tz_da_shuang(xyqbbl)">大双</a>
+                                <a href="javascript:tz_xiao_shuang(xyqbbl)">小双</a>
+                                <a href="javascript:tz_shuang_bian(xyqbbl)">双边</a>
+                                <a href="javascript:tz_da(xyqbbl)">大</a>
+                                <a href="javascript:tz_xiao(xyqbbl)">小</a>
+                                <a href="javascript:tz_zhong(xyqbbl)">中</a>
+                                <a href="javascript:tz_bian(xyqbbl)">边</a>
+                                <a href="javascript:tz_da_bian(xyqbbl)">大边</a>
+                                <a href="javascript:tz_xiao_bian(xyqbbl)">小边</a>
+                                <a href="javascript:tz_wei(xyqbbl,10,0)">0尾</a>
+                                <a href="javascript:tz_wei(xyqbbl,10,1)">1尾</a>
+                                <a href="javascript:tz_wei(xyqbbl,10,2)">2尾</a>
+                                <a href="javascript:tz_wei(xyqbbl,10,3)">3尾</a>
+                                <a href="javascript:tz_wei(xyqbbl,10,4)">4尾</a>
+                                <a href="javascript:tz_wei(xyqbbl,10,5)">5尾</a>
+                                <a href="javascript:tz_wei(xyqbbl,10,6)">6尾</a>
+                                <a href="javascript:tz_wei(xyqbbl,10,7)">7尾</a>
+                                <a href="javascript:tz_wei(xyqbbl,10,8)">8尾</a>
+                                <a href="javascript:tz_wei(xyqbbl,10,9)">9尾</a>
+                                <a href="javascript:tz_xiaowei(xyqbbl)">小尾</a>
+                                <a href="javascript:tz_dawei(xyqbbl)">大尾</a>
+                                <a href="javascript:tz_wei(xyqbbl,3,0)">3余0</a>
+                                <a href="javascript:tz_wei(xyqbbl,3,1)">3余1</a>
+                                <a href="javascript:tz_wei(xyqbbl,3,2)">3余2</a>
+                                <a href="javascript:tz_wei(xyqbbl,4,0)">4余0</a>
+                                <a href="javascript:tz_wei(xyqbbl,4,1)">4余1</a>
+                                <a href="javascript:tz_wei(xyqbbl,4,2)">4余2</a>
+                                <a href="javascript:tz_wei(xyqbbl,4,3)">4余3</a>
+                                <a href="javascript:tz_wei(xyqbbl,5,0)">5余0</a>
+                                <a href="javascript:tz_wei(xyqbbl,5,1)">5余1</a>
+                                <a href="javascript:tz_wei(xyqbbl,5,2)">5余2</a>
+                                <a href="javascript:tz_wei(xyqbbl,5,3)">5余3</a>
+                                <a href="javascript:tz_wei(xyqbbl,5,4)">5余4</a>
+                                <a href="javascript:qk()">清除</a>
+                            </div>
+                        </div>
+                        <div class="selfmode">
+                            <h2>
+                                自定义模式
+                                <div class="frr"><input name="ctl00$ContentPlaceHolder1$Button1" value="删除" onclick="DeteTem()" id="ctl00_ContentPlaceHolder1_Button1" class="del" type="submit"></div>
+                            </h2>
+                            <div class="modlist">
+                                <span class="addmode" onclick="newmothed()">+添加投注模式</span>
+                                @Html.Raw(ViewBag.Option)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bj-row add-tz">
+                        <em>加注</em>
+                        <a href="javascript:allxx(0.5)">0.5倍</a>
+                        <a href="javascript:allxx(0.8)">0.8倍</a>
+                        <a href="javascript:allxx(1.2)">1.2倍</a>
+                        <a href="javascript:allxx(1.5)">1.5倍</a>
+                        <a href="javascript:allxx(2)">2倍</a>
+                        <a href="javascript:allxx(5)">5倍</a>
+                        <a href="javascript:allxx(10)">10倍</a>
+                        <a href="javascript:allxx(100)">100倍</a>
+                        <div class="i-fr" id="ms">
+                            <a class="current-mode">当前正在编辑 | <em>新模板</em></a>
+                            <a class="" href="javascript:fx(xyqbbl)">反选</a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gamecontent">
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table class="gamecontable" align="center" cellpadding="0" cellspacing="1">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+
+
+
+                                                    <div class="items" id="s0">
+                                                        <span class="hama">
+                                                            0
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')" class="srinput" id="n0" type="text">
+                                                        <p class="pltddff">当前赔率:<em>1000</em>标准赔率:<span class="pl_bzpltd">1000.00</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="items" id="s1">
+                                                        <span class="hama">
+                                                            1
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n1" type="text">
+                                                        <p class="pltddff">当前赔率:<em>333.33</em>标准赔率:<span class="pl_bzpltd">333.33</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="items" id="s2">
+                                                        <span class="hama">
+                                                            2
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n2" type="text">
+                                                        <p class="pltddff">当前赔率:<em>166.67</em>标准赔率:<span class="pl_bzpltd">166.67</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="items" id="s3">
+                                                        <span class="hama">
+                                                            3
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n3" type="text">
+                                                        <p class="pltddff">当前赔率:<em>100.00</em>标准赔率:<span class="pl_bzpltd">100.00</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="items" id="s4">
+                                                        <span class="hama">
+                                                            4
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n4" type="text">
+                                                        <p class="pltddff">当前赔率:<em>66.67</em>标准赔率:<span class="pl_bzpltd">66.67</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="items" id="s5">
+                                                        <span class="hama">
+                                                            5
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n5" type="text">
+                                                        <p class="pltddff">当前赔率:<em>47.62</em>标准赔率:<span class="pl_bzpltd">47.62</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="items" id="s6">
+                                                        <span class="hama">
+                                                            6
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n6" type="text">
+                                                        <p class="pltddff">当前赔率:<em>35.71</em>标准赔率:<span class="pl_bzpltd">35.71</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="items" id="s7">
+                                                        <span class="hama">
+                                                            7
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n7" type="text">
+                                                        <p class="pltddff">当前赔率:<em>27.78</em>标准赔率:<span class="pl_bzpltd">27.78</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="items" id="s8">
+                                                        <span class="hama">
+                                                            8
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n8" type="text">
+                                                        <p class="pltddff">当前赔率:<em>22.22</em>标准赔率:<span class="pl_bzpltd">22.22</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="items" id="s9">
+                                                        <span class="hama">
+                                                            9
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n9" type="text">
+                                                        <p class="pltddff">当前赔率:<em>18.18</em>标准赔率:<span class="pl_bzpltd">18.18</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                                <td>
+
+
+
+                                                    <div class="items" id="s10">
+                                                        <span class="hama">
+                                                            10
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n10" type="text">
+                                                        <p class="pltddff">当前赔率:<em>15.87</em>标准赔率:<span class="pl_bzpltd">15.87</span></p>
+
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s11">
+                                                        <span class="hama">
+                                                            11
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n11" type="text">
+                                                        <p class="pltddff">当前赔率:<em>14.49</em>标准赔率:<span class="pl_bzpltd">14.49</span></p>
+
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s12">
+                                                        <span class="hama">
+                                                            12
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n12" type="text">
+                                                        <p class="pltddff">当前赔率:<em>13.70</em>标准赔率:<span class="pl_bzpltd">13.70</span></p>
+
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s13">
+                                                        <span class="hama">
+                                                            13
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n13" type="text">
+                                                        <p class="pltddff">当前赔率:<em>13.33</em>标准赔率:<span class="pl_bzpltd">13.33</span></p>
+
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s14">
+                                                        <span class="hama">
+                                                            14
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n14" type="text">
+                                                        <p class="pltddff">当前赔率:<em>13.33</em>标准赔率:<span class="pl_bzpltd">13.33</span></p>
+
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s15">
+                                                        <span class="hama">
+                                                            15
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n15" type="text">
+                                                        <p class="pltddff">当前赔率:<em>13.70</em>标准赔率:<span class="pl_bzpltd">13.70</span></p>
+
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s16">
+                                                        <span class="hama">
+                                                            16
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n16" type="text">
+                                                        <p class="pltddff">当前赔率:<em>14.49</em>标准赔率:<span class="pl_bzpltd">14.49</span></p>
+
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s17">
+                                                        <span class="hama">
+                                                            17
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n17" type="text">
+                                                        <p class="pltddff">当前赔率:<em>15.87</em>标准赔率:<span class="pl_bzpltd">15.87</span></p>
+
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="fzform">
+                                                        <p>
+                                                            我的总投注金币<br><span class="jbspan" id="ztzspan">0</span>
+                                                        </p>
+                                                        <span class="btn_qd"></span>
+                                                    </div>
+
+                                                </td>
+
+                                                <td>
+
+
+                                                    <div class="items" id="s18">
+                                                        <span class="hama">
+                                                            18
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n18" type="text">
+                                                        <p class="pltddff">当前赔率:<em>18.18</em>标准赔率:<span class="pl_bzpltd">18.18</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s19">
+                                                        <span class="hama">
+                                                            19
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n19" type="text">
+                                                        <p class="pltddff">当前赔率:<em>22.22</em>标准赔率:<span class="pl_bzpltd">22.22</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s20">
+                                                        <span class="hama">
+                                                            20
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n20" type="text">
+                                                        <p class="pltddff">当前赔率:<em>27.78</em>标准赔率:<span class="pl_bzpltd">27.78</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s21">
+                                                        <span class="hama">
+                                                            21
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n21" type="text">
+                                                        <p class="pltddff">当前赔率:<em>35.71</em>标准赔率:<span class="pl_bzpltd">35.71</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s22">
+                                                        <span class="hama">
+                                                            22
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n22" type="text">
+                                                        <p class="pltddff">当前赔率:<em>47.62</em>标准赔率:<span class="pl_bzpltd">47.62</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s23">
+                                                        <span class="hama">
+                                                            23
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n23" type="text">
+                                                        <p class="pltddff">当前赔率:<em>66.67</em>标准赔率:<span class="pl_bzpltd">66.67</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s24">
+                                                        <span class="hama">
+                                                            24
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n24" type="text">
+                                                        <p class="pltddff">当前赔率:<em>100.00</em>标准赔率:<span class="pl_bzpltd">100.00</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s25">
+                                                        <span class="hama">
+                                                            25
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n25" type="text">
+                                                        <p class="pltddff">当前赔率:<em>166.67</em>标准赔率:<span class="pl_bzpltd">166.67</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s26">
+                                                        <span class="hama">
+                                                            26
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n26" type="text">
+                                                        <p class="pltddff">当前赔率:<em>333.33</em>标准赔率:<span class="pl_bzpltd">333.33</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="items" id="s27">
+                                                        <span class="hama">
+                                                            27
+                                                            <input class="xzinputt" type="checkbox">
+                                                        </span>
+                                                        <input style="width: 74px" class="srinput" id="n27" type="text">
+                                                        <p class="pltddff">当前赔率:<em>1000</em>标准赔率:<span class="pl_bzpltd">1000.00</span></p>
+                                                        <div class="qmxx">
+                                                            <input value="0.1" onclick="qmxx(this, 0.1)" type="button">
+                                                            <input value="0.5" onclick="qmxx(this, 0.5)" type="button">
+                                                            <input value="2" onclick="qmxx(this, 2)" type="button">
+                                                            <input value="10" onclick="qmxx(this, 10)" type="button">
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <style>
+                    #msg {
+                        position: fixed;
+                        left: 50%;
+                        top: 50%;
+                        display: block;
+                        margin: -160px 0 0 -181px;
+                        z-index: 10;
+                        display: none;
+                    }
+
+                    .base_box_03 {
+                        width: 362px;
+                        height: auto;
+                        padding: 0 15px;
+                        background: #fff;
+                        -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.27), 0 0 10px rgba(0, 0, 0, 0.06);
+                        -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.27), 0 0 5px rgba(0, 0, 0, 0.06);
+                        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.27), 0 0 5px rgba(0, 0, 0, 0.06);
+                        position: relative;
+                        padding-bottom: 20px;
+                    }
+
+                    .base_box_tit {
+                        height: 45px;
+                        line-height: 45px;
+                        border-bottom: 1px solid #f1f1f1;
+                        text-align: center;
+                    }
+
+                        .base_box_tit a {
+                            float: right;
+                            font-size: 28px;
+                            color: #e64047;
+                            display: block;
+                            width: 25px;
+                            line-height: 21px;
+                            text-align: center;
+                            margin-top: 10px;
+                            height: 25px;
+                            -webkit-border-radius: 20px;
+                            -moz-border-radius: 20px;
+                            border-radius: 20px;
+                            border: 1px solid #9E9E9E;
+                            margin-right: -5px;
+                        }
+
+                            .base_box_tit a:hover {
+                                color: #ba333a;
+                            }
+
+                    .base_box_nr {
+                        height: auto;
+                        font-size: 18px;
+                    }
+
+                        .base_box_nr p a.a1 {
+                            width: 100px;
+                            height: 35px;
+                            background: #e64047;
+                            color: #fff;
+                            text-align: center;
+                            line-height: 35px;
+                            display: inline-block;
+                            font-size: 15px;
+                            -moz-border-radius: 7px; /* Gecko browsers */
+                            -webkit-border-radius: 7px; /* Webkit browsers */
+                            border-radius: 7px; /* W3C syntax */
+                        }
+
+                            .base_box_nr p a.a1:hover {
+                                background: #d83535;
+                                color: #fff;
+                                text-decoration: none;
+                            }
+
+                            .base_box_nr p a.a1:active {
+                                background: #d83535;
+                                color: #fff;
+                                -moz-box-shadow: 5px 5px 5px #be1c1c inset;
+                                -webkit-box-shadow: 5px 5px 5px #be1c1c inset;
+                                box-shadow: 5px 5px 5px #be1c1c inset;
+                            }
+
+                        .base_box_nr p a.a2 {
+                            width: 100px;
+                            height: 35px;
+                            background: #8c97cb;
+                            color: #fff;
+                            text-align: center;
+                            line-height: 35px;
+                            display: inline-block;
+                            font-size: 15px;
+                            margin-left: 15px;
+                            -moz-border-radius: 7px; /* Gecko browsers */
+                            -webkit-border-radius: 7px; /* Webkit browsers */
+                            border-radius: 7px; /* W3C syntax */
+                        }
+
+                            .base_box_nr p a.a2:hover {
+                                background: #7c87b5;
+                                color: #fff;
+                                text-decoration: none;
+                            }
+
+                            .base_box_nr p a.a2:active {
+                                background: #817e7e;
+                                color: #fff;
+                                -moz-box-shadow: 5px 5px 5px #7b7a7a inset;
+                                -webkit-box-shadow: 5px 5px 5px #7b7a7a inset;
+                                box-shadow: 5px 5px 5px #7b7a7a inset;
+                            }
+
+                    .pop_close a {
+                        color: #E64047;
+                    }
+
+                        .pop_close a:hover {
+                            color: #cc0001;
+                            text-decoration: none;
+                        }
+
+
+                    .base_box_sh_list {
+                        width: 65%;
+                        height: 30px;
+                        line-height: 30px;
+                        display: inline-block;
+                        border: 1px solid #dbdbdb;
+                        -webkit-border-radius: 4px;
+                        -moz-border-radius: 4px;
+                        border-radius: 4px;
+                        padding-left: 5px;
+                        font-family: Arial, Helvetica, sans-serif;
+                        font-size: 15px;
+                        color: #5e5e5e;
+                    }
+
+                    .base_box_sh_txt {
+                        width: 62%;
+                        height: 30px;
+                        line-height: 30px;
+                        display: inline-block;
+                        -webkit-border-radius: 4px;
+                        -moz-border-radius: 4px;
+                        border-radius: 4px;
+                        border: 1px solid #dbdbdb;
+                        margin-top: 15px;
+                        padding-left: 8px;
+                        font-family: Arial, Helvetica, sans-serif;
+                        font-size: 15px;
+                        color: #5e5e5e;
+                    }
+
+                    .base_box_cap {
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: #5e5e5e;
+                    }
+
+                    #modes_replay {
+                        padding-top: 15px;
+                        display: none;
+                    }
+
+                    #msg_suc p {
+                        padding-top: 15px;
+                        text-align: center;
+                        color: #5e5e5e;
+                    }
+
+                        #msg_suc p span {
+                            display: inline-block;
+                        }
+                </style>
+                <div class="pop">
+                    <div class="mask"></div>
+                    <div id="msg" class="base_box_03">
+                        <div class="base_box_tit"><span class="base_box_cap">投注模式设置</span><span class="gbys1"></span></div>
+                        <div id="msg_suc" class="base_box_nr base_clear_top" style="display: block;">
+                            <p>
+                                <span>新的模式：</span>
+                                <input type="text" class="base_box_sh_txt" name="TemName" id="TemName" value="新模板名称" onfocus="if (this.value == '新模板名称') this.value = ''" onblur="    if (this.value == '') this.value = '新模板名称'" />
+                            </p>
+                            <p id="modes_replay">
+                                <span>覆盖现有：</span>
+                                <select id="mymsselect" class="base_box_sh_list">
+                                    <option value="新模板名称" z="0">新模板名称</option>
+                                </select>
+                            </p>
+                            <p class="btnboxinsermode clearfix">
+
+                                <input name="SaveTem" id="SaveTem" onclick="config(2)" class="submit" src="/img/inserSure.png" style="border-width:0px;" type="image">
+                                <a class="a2 close" style="cursor:pointer;">取消</a>
+                            </p><div style="display:none">
+                                <input class="lsbutt" value="复位" onclick="jz()" type="button">
+                                <input name="chosezindex" id="chosezindex" value="0" type="text">
+                            </div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

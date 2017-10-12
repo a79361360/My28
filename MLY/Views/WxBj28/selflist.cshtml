@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>自定义列表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="~/Content/WeiXin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/WeiXin/css/style.css" rel="stylesheet" />
+    <script src="~/Content/WeiXin/js/zepto.min.js"></script>
+    <script src="~/Content/WeiXin/js/index.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class=" head1 clearfix">
+            <a href="index"><img src="~/Content/WeiXin/images/left.png" /></a>
+            <span class="title">自定义模式列表</span>
+            <a href=""><img src="~/Content/WeiXin/images/freshen.png" /></a>
+        </div>
+        <div class="dh"></div>
+    </div>
+    <div class="container bbbbb">
+        <div class="list-right ">
+            <ul class="list-unstyled">
+                @Html.Raw(ViewBag.Html)
+            </ul>
+        </div>
+    </div>
+    <div class="container text-center">
+        <button type="button" class="btn btn-danger btnn" onclick="javascript: window.location.href = 'insertmod?id=0'">添加模式</button>
+    </div>
+    <div class="footmenu">
+        <div class="item1">
+            <span class="black">今日活动</span>
+            <div class="item-pop">
+                <a href="/WxJs28/RankList">日排名赛</a>
+                <a href="/WxJs28/Superlist">周排名赛</a>
+                <span></span>
+            </div>
+        </div>
+        <div class="item1" id="footer_trend">
+            <span class="black"><a href="/WxBj28/index">益智竞猜</a></span>
+        </div>
+        <div class="item1">
+            <span class="black">我的信息</span>
+            <div class="item-pop">
+                <a href="/WxJs28/selfinfo">我的信息</a>
+                <a href="/WxJs28/exchange">兑换金币</a>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

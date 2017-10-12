@@ -1,0 +1,154 @@
+﻿
+<style type="text/css">
+    .tableli td {
+        text-align: left;
+        color: #989898;
+    }
+
+        .tableli td a {
+            color: #989898;
+        }
+
+            .tableli td a:hover {
+                color: red;
+            }
+
+            .tableli td a span {
+                font-family: Arial;
+                font-style: italic;
+            }
+</style>
+<div class="gamedh clearfix">
+    <a class="hovv" id="gmenu_id2" href="/Bj28/Index/1">PC28</a>
+    <a id="gmenu_id1" href="/Js28/Index/1">极速28</a>
+</div>
+<div class="dhys1">
+    <div class="fr1">
+        <a href="/Bj28/Index/1">竞猜首页</a>
+        <a href="/Bj28/Trend/1">号码走势</a>
+        <a href="/Bj28/Gamehelp">游戏帮助</a>
+        @*<a href="/Tz/ActivityRanklist/2">日榜乐豆奖励<img class="tdys" src="~/img/Mask_1.gif" /></a>*@
+        <a class="menuribang" href="/Tz/ActivityRanklist/2">双榜奖励<em>6800万+6.38亿</em></a>
+        </div>
+        @*<a class="menuribang" href="/Shared/Superlist/2">超级榜<em>巨奖59亿</em></a>*@
+        <div class="fr">
+            <a href="/Bj28/insertmod/0">投注模式编辑</a>|
+            <a href="/Bj28/selfset/">自动投注</a>|
+            <a href="/Shty28/mytz/2/1">我的投注</a>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                setmenushow();
+            })
+            //设置导航选中高亮
+            setmenushow = function () {
+                var zilist = $(".dhys1 a");
+                var url = window.location.href;
+                if (url.indexOf('Index') > -1) $(zilist[0]).addClass("home-page");
+                if (url.indexOf('Trend') > -1) $(zilist[1]).addClass("home-page");
+                if (url.indexOf('Gamehelp') > -1) $(zilist[2]).addClass("home-page");
+                if (url.indexOf('ActivityRanklist') > -1) $(zilist[3]).addClass("home-page");
+                //if (url.indexOf('Superlist') > -1) $(zilist[4]).addClass("home-page");
+                if (url.indexOf('insertmod') > -1) $(zilist[4]).addClass("home-page");
+                if (url.indexOf('selfset') > -1) $(zilist[5]).addClass("home-page");
+                if (url.indexOf('mytz') > -1) $(zilist[6]).addClass("home-page");
+            }
+        </script>
+    </div>
+
+
+
+
+<script type="text/javascript">
+    var kjms = 6;
+    var tztzms = 1;
+    var iskj = 0;
+    var dqqs = @ViewBag.Iss;
+
+    //var mid = 46156;
+    //    var gamesetid = 1;
+    //    var messid = 48468;
+    //    var issond = true;
+    //    var issx = true;
+    //    var issy = true;
+
+</script>
+
+
+<div class="diqi" id="diqi">
+
+
+</div>
+<script type="text/javascript">
+    document.getElementById("diqi").innerHTML="";
+    $.ajax({
+        type: "POST",
+        url: "/Shared/top1s",
+        data: { "gameid": 2 },
+        dataType: 'json',
+        success: function (data) {
+            document.getElementById("diqi").innerHTML=data.msg;
+            tztzms=data.jizhis;
+            kjms=data.seconds;
+            iCount=setInterval(setsc, 1000);
+            //兑换部分Init
+            TopInit();
+        }
+    });
+    TopInit = function(){
+        //点击兑换金币
+        $('.dhjb').click(function () {
+            $('.popdh').css('display', "block")
+            $(".qd").attr("dhtype", "2")
+
+            $(".yhld").attr("class", "yhld");
+            $("#txt_money").val("");
+            CreateYzm();
+            //初始化兑换方法调用
+            initduhuan();
+        });
+        //点击兑换乐豆
+        $('.cljb').click(function () {
+            $('.popdh').css('display', "block");
+            $(".qd").attr("dhtype", "1");
+            $(".yhld").attr("class", "yhld r");
+            $("#txt_money").val("");
+            CreateYzm();
+            //初始化兑换方法调用
+            initduhuan();
+        });
+    }
+    CreateYzm = function(){
+        $("#yzm").val("");
+        changeImg("yzmimg","/Shared/VerifyCode","dh");
+    }
+</script>
+<div class="pop popdh" style="display:none">
+    <div class="mask"></div>
+    <div class="popcontent">
+        <div class="poptitle"><span class="close"></span></div>
+        <div class="yhld">
+            <span class="ilft">
+                <m>银行乐豆</m><br>
+                <em></em>
+            </span>
+            <span class="iright">
+                <m>金币</m><br>
+                <em></em>
+            </span>
+        </div>
+        <p class="popp">乐豆与金币兑换比率为1:1</p>
+        <div class="br">
+            <input id="txt_money" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" type="text"><button>&nbsp;</button>
+        </div>
+
+        <div class="yzm">
+            <div class="input1">验证码&nbsp<img id="yzmimg" /><a style="cursor:pointer" onclick="CreateYzm()">看不清，换一张！</a></div>
+            <div class="input2">输入验证码<input id="yzm" name="yzm" maxlength="4" /></div>
+        </div>
+
+        <div class="br btnbox">
+            <span uid="17096637" class="qd">&nbsp;</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,178 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>走势图</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="~/Content/WeiXin/css/css.css" rel="stylesheet" /> 
+</head>
+<body>
+
+    <div class=" head1 " style=" height: 2.5rem;line-height: 3rem;">
+        <a class="fl" href="javascript:history.go(-1)"><img src="~/Content/WeiXin/images/left.png" style="margin-top: 10px;" /></a>
+        <span class="title" style="font-size: 1.3rem;font-weight: 400; margin-left: 40%;">走势图</span>
+        <a class="fr" href=""><img src="~/Content/WeiXin/images/freshen.png" style="margin-top: 10px;" /></a>
+        <div style="clear:both;"></div>
+    </div>
+    <div class="likebody mainbody">
+        <div class="likebody">
+            <div class="gamemain_fx">
+                <div class="gamecontent">
+                    <table cellspacing="1" cellpadding="0" align="center" class="gamefenxiable">
+                        <thead>
+                            <tr style=" height:40px; background-color:#fafafa" class="fenxhstr">
+                                <th style="width:101px">统计次数</th>
+                                <th class="abba" colspan="38"><span class="abba">期数:100</span></th>
+                            </tr>
+                            <tr class="fenxhstr">
+                                <th style="width: 53px">标准间隔</th>
+                                <th>1000</th>
+                                <th>333</th>
+                                <th>166</th>
+                                <th>100</th>
+                                <th>66</th>
+                                <th>48</th>
+                                <th>36</th>
+                                <th>28</th>
+                                <th>22</th>
+                                <th>18</th>
+                                <th>16</th>
+                                <th>15</th>
+                                <th>14</th>
+                                <th>13</th>
+                                <th>13</th>
+                                <th>14</th>
+                                <th>15</th>
+                                <th>16</th>
+                                <th>18</th>
+                                <th>22</th>
+                                <th>28</th>
+                                <th>36</th>
+                                <th>48</th>
+                                <th>66</th>
+                                <th>100</th>
+                                <th>166</th>
+                                <th>333</th>
+                                <th>1000</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                            </tr>
+                            <tr class="fenxhstr">
+                                <th style="width: 53px">标准次数</th>
+                                <th>0</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>6</th>
+                                <th>7</th>
+                                <th>9</th>
+                                <th>11</th>
+                                <th>13</th>
+                                <th>13</th>
+                                <th>14</th>
+                                <th>15</th>
+                                <th>15</th>
+                                <th>14</th>
+                                <th>13</th>
+                                <th>13</th>
+                                <th>11</th>
+                                <th>9</th>
+                                <th>7</th>
+                                <th>6</th>
+                                <th>4</th>
+                                <th>3</th>
+                                <th>2</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>0</th>
+                                <th>100</th>
+                                <th>100</th>
+                                <th>112</th>
+                                <th>88</th>
+                                <th>100</th>
+                                <th>100</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr class="fenxhstr">
+                                <th style="width: 53px">实际次数</th>
+                                @Html.Raw(ViewBag.sjcs)
+                                <th colspan="2">尾数</th>
+                                <th colspan="2">余数</th>
+                            </tr>
+                            <tr>
+                                <th colspan="40" class="lineme"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <table cellspacing="1" cellpadding="0" align="center" class="gamefenxiable">
+                        <thead >
+                            <tr class="line2" >
+                                <th style="width:84px; height:30px;">游戏期号</th>
+                                <th><span>0</span></th>
+                                <th><span>1</span></th>
+                                <th><span>2</span></th>
+                                <th><span>3</span></th>
+                                <th><span>4</span></th>
+                                <th><span>5</span></th>
+                                <th><span>6</span></th>
+                                <th><span>7</span></th>
+                                <th><span>8</span></th>
+                                <th><span>9</span></th>
+                                <th><span>10</span></th>
+                                <th><span>11</span></th>
+                                <th><span>12</span></th>
+                                <th><span>13</span></th>
+                                <th><span>14</span></th>
+                                <th><span>15</span></th>
+                                <th><span>16</span></th>
+                                <th><span>17</span></th>
+                                <th><span>18</span></th>
+                                <th><span>19</span></th>
+                                <th><span>20</span></th>
+                                <th><span>21</span></th>
+                                <th><span>22</span></th>
+                                <th><span>23</span></th>
+                                <th><span>24</span></th>
+                                <th><span>25</span></th>
+                                <th><span>26</span></th>
+                                <th><span>27</span></th>
+                                <th>单</th>
+                                <th>双</th>
+                                <th>中</th>
+                                <th>边</th>
+                                <th>大</th>
+                                <th>小</th>
+                                <th>大</th>
+                                <th>小</th>
+                                <th>/3</th>
+                                <th>/5</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr></tr>
+                            @Html.Raw(ViewBag.html)
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

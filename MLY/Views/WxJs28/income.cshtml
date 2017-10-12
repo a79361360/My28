@@ -1,0 +1,72 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>金币收支明细</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="~/Content/WeiXin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/WeiXin/css/style.css" rel="stylesheet" />
+    <script src="~/Content/WeiXin/js/zepto.min.js"></script>
+    <script src="~/Content/WeiXin/js/index.js"></script>
+    <script type="text/javascript" src="~/Content/WeiXin/js/iscroll.js"></script>
+    <script type="text/javascript" src="~/Content/WeiXin/js/my.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class=" head1 clearfix">
+            <a href="javascript:history.go(-1)"><img src="~/Content/WeiXin/images/left.png" /></a>
+            <span class="title">金币收支明细</span>
+            <a href=""><img src="~/Content/WeiXin/images/freshen.png" /></a>
+        </div>
+        <div class="dh"></div>
+    </div>
+    <div id="wrapper" style="top:50px;">
+        <div class="divx" id="scroller" >
+            <div id="pullDown" style="">
+                <span class="pullDownLabel">下拉刷新...</span>
+            </div>
+            <table class="table1 " id="news-lists">
+                <thead>
+                    <tr>
+                        <th>金币明细</th>
+                        <th>时间</th>
+                    </tr>
+                </thead>
+                <tbody class="tb2">
+                    @Html.Raw(ViewBag.List)
+                </tbody>
+            </table>
+            <div id="pullUp" style="display:none;">
+                <span class="pullUpLabel">上拉加载更多...</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footmenu">
+        <div class="item1">
+            <span class="black">今日活动</span>
+            <div class="item-pop">
+                <a href="RankList">日排名赛</a>
+                <a href="Superlist">周排名赛</a>
+                <span></span>
+            </div>
+        </div>
+        <div class="item1" id="footer_trend">
+            <span class="black"><a href="index">益智竞猜</a></span>
+        </div>
+        <div class="item1">
+            <span class="black">我的信息</span>
+            <div class="item-pop">
+                <a href="selfinfo">我的信息</a>
+                <a href="exchange">兑换金币</a>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

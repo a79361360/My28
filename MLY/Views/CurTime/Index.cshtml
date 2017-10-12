@@ -1,0 +1,354 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style type="text/css">
+        .tablelist td, .tablelistu td {
+            text-align: center;
+            border: 1px solid #d5d5d5;
+            height: 24px;
+        }
+
+        .tableli th {
+            text-align: center;
+            border: 1px solid #d5d5d5;
+        }
+
+        .tablelistu tbody {
+            display: block;
+            height: 800px;
+            overflow: auto;
+        }
+
+        button {
+            height: 26px;
+            width: 50px;
+        }
+
+        .tdzx {
+            background-color: Red;
+        }
+
+        #userdiv {
+            float: right;
+            width: 495px;
+            display: none;
+        }
+
+        #cont {
+            float: left;
+        }
+
+        .rightbtn {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+    </style>
+    <link href="~/Content/dialog.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @*<link href="css/mricode.pagination.css" rel="stylesheet" type="text/css" />
+    <script src="js/mricode.pagination.js" type="text/javascript"></script>*@
+    <script src="~/Content/WeiXin/js/dsdialog.js"></script>
+    <script type="text/javascript">
+        var stopbet, stopplay, playnum = 0; //定时查询变量,定时播放变量,是否播放变量
+        var str = [1000, 333.33, 166.67, 100, 66.67, 47.62, 35.71, 27.78, 22.22, 18.18, 15.87, 14.49, 13.70, 13.33, 13.33, 13.70, 14.49, 15.87, 18.18, 22.22, 27.78, 35.71, 47.62, 66.67, 100, 166.67, 333.33, 1000];
+        $(function () {
+            //添加监控用户
+            $("#addbtn").click(function () {
+                var userid = $("#userid").val();
+                pitchbtn(1, 1, userid);
+            })
+            //查询监控用户列表
+            $("#searchlist").click(function () {
+                pitchbtn(1, 5, 0, this);
+            })
+            $("#search").click(function () {
+                SearchList();
+            })
+            //读取当前期秒数
+            CurIssueSeconds();
+            $(".rightbtn").click(function () {
+                $("#userdiv").toggle();
+            })
+        })
+        //监控查询
+        SearchList = function () {
+            $.getJSON("/CurTime/CurTimeBetqb", {  }, function (ret) {
+                if (ret.code == 1000) {
+                    var sz = new Array(30); var data = ret.data[0]; var content = "";
+                    //初始化数组并且附前两列的值
+                    for (var k = 0; k < 30; k++) {
+                        if (k == 0) {
+                            sz[k] = "<table class=\"tablelist\"><tr><th style=\"width:120px;\">投注期号</th><th style=\"width:65px;\">投注的球</th>";
+                        }
+                        else if (k == 1) {
+                            sz[k] = "<tr><td>" + data.BIssue + "</td><td>投注总金额</td>";
+                        }
+                        else {
+                            var index = k - 2;
+                            sz[k] = "<tr><td>" + data.BIssue + "</td><td style=\"cursor: pointer;\" onclick=\"GetRad(" + data.BIssue + "," + index + ")\">" + index + "</td>";
+                        }
+                    }
+                    //根据用户投注改变标准赔率
+                    RSetStr(data);
+                    //后续数据附值
+                    $.each(ret.data, function (i, o) {
+                        if (i == 0) { return true; }
+                        var nick = "玩家总投注"; if (o.NickName != "") nick = o.NickName;
+                        sz[0] = sz[0] + "<th style=\"width:120px;\" onclick=\"pitchbtn(1,4," + o.Userid + ",this)\">" + nick + "</th>";
+                        sz[1] = sz[1] + "<td style=\"width:120px;\">" + o.BTotalMoney + "</td>";
+                        sz[2] = sz[2] + "<td style=\"width:118px;\">" + toDecimal2(o.O0 * str[0]) + "</td>";
+                        sz[3] = sz[3] + "<td style=\"width:118px;\">" + toDecimal2(o.O1 * str[1]) + "</td>";
+                        sz[4] = sz[4] + "<td style=\"width:118px;\">" + toDecimal2(o.O2 * str[2]) + "</td>";
+                        sz[5] = sz[5] + "<td style=\"width:118px;\">" + toDecimal2(o.O3 * str[3]) + "</td>";
+                        sz[6] = sz[6] + "<td style=\"width:118px;\">" + toDecimal2(o.O4 * str[4]) + "</td>";
+                        sz[7] = sz[7] + "<td style=\"width:118px;\">" + toDecimal2(o.O5 * str[5]) + "</td>";
+                        sz[8] = sz[8] + "<td style=\"width:118px;\">" + toDecimal2(o.O6 * str[6]) + "</td>";
+                        sz[9] = sz[9] + "<td style=\"width:118px;\">" + toDecimal2(o.O7 * str[7]) + "</td>";
+                        sz[10] = sz[10] + "<td style=\"width:118px;\">" + toDecimal2(o.O8 * str[8]) + "</td>";
+                        sz[11] = sz[11] + "<td style=\"width:118px;\">" + toDecimal2(o.O9 * str[9]) + "</td>";
+                        sz[12] = sz[12] + "<td style=\"width:118px;\">" + toDecimal2(o.O10 * str[10]) + "</td>";
+                        sz[13] = sz[13] + "<td style=\"width:118px;\">" + toDecimal2(o.O11 * str[11]) + "</td>";
+                        sz[14] = sz[14] + "<td style=\"width:118px;\">" + toDecimal2(o.O12 * str[12]) + "</td>";
+                        sz[15] = sz[15] + "<td style=\"width:118px;\">" + toDecimal2(o.O13 * str[13]) + "</td>";
+                        sz[16] = sz[16] + "<td style=\"width:118px;\">" + toDecimal2(o.O14 * str[14]) + "</td>";
+                        sz[17] = sz[17] + "<td style=\"width:118px;\">" + toDecimal2(o.O15 * str[15]) + "</td>";
+                        sz[18] = sz[18] + "<td style=\"width:118px;\">" + toDecimal2(o.O16 * str[16]) + "</td>";
+                        sz[19] = sz[19] + "<td style=\"width:118px;\">" + toDecimal2(o.O17 * str[17]) + "</td>";
+                        sz[20] = sz[20] + "<td style=\"width:118px;\">" + toDecimal2(o.O18 * str[18]) + "</td>";
+                        sz[21] = sz[21] + "<td style=\"width:118px;\">" + toDecimal2(o.O19 * str[19]) + "</td>";
+                        sz[22] = sz[22] + "<td style=\"width:118px;\">" + toDecimal2(o.O20 * str[20]) + "</td>";
+                        sz[23] = sz[23] + "<td style=\"width:118px;\">" + toDecimal2(o.O21 * str[21]) + "</td>";
+                        sz[24] = sz[24] + "<td style=\"width:118px;\">" + toDecimal2(o.O22 * str[22]) + "</td>";
+                        sz[25] = sz[25] + "<td style=\"width:118px;\">" + toDecimal2(o.O23 * str[23]) + "</td>";
+                        sz[26] = sz[26] + "<td style=\"width:118px;\">" + toDecimal2(o.O24 * str[24]) + "</td>";
+                        sz[27] = sz[27] + "<td style=\"width:118px;\">" + toDecimal2(o.O25 * str[25]) + "</td>";
+                        sz[28] = sz[28] + "<td style=\"width:118px;\">" + toDecimal2(o.O26 * str[26]) + "</td>";
+                        sz[29] = sz[29] + "<td style=\"width:118px;\">" + toDecimal2(o.O27 * str[27]) + "</td>";
+
+                    })
+                    for (var k = 0; k < 30; k++) {
+                        content += sz[k] + "</tr>";
+                    }
+                    content += "</table>";
+                    $("#cont").html(content);
+                    trchcolor(".tablelist tr");
+                    SetBastLow();   //设置最小金额的5个
+                    outlimit();
+                }
+                else {
+                    $("#cont").html("还没有投注");
+                }
+            })
+        }
+        //计算值最低的5个数
+        SetBastLow = function () {
+            var bznum = 5;
+            $(".tablelist tr").each(function (i, obj) {
+                var tdobj = $(obj).children("td:eq(2)");    //td对象
+                if (tdobj.length < 1) { return true; }      //如果第二列td对象不存在
+                var text = tdobj.text();                    //值
+                var lownum = 0;                             //最小值数量
+                $(".tablelist tr").each(function (k, nobj) {
+                    var ntdobj = $(nobj).children("td:eq(2)");  //td对象
+                    if (ntdobj.length < 1) { return true; }     //如果第二列td对象不存在
+                    if (parseFloat(text) > parseFloat(ntdobj.text())) {
+                        lownum++;
+                    }
+                    if (lownum > bznum) return false;   //超过5个就不需要再遍历了
+                })
+                if (lownum < bznum) tdobj.attr("style", "background-color:red;color:white;");  //最小的5个上背景颜色
+            })
+        }
+        //重新设置str的赔率值
+        RSetStr = function (data) {
+            str[0] = toDecimal2(data.BTotalMoney / data.O0); str[1] = toDecimal2(data.BTotalMoney / data.O1);
+            str[2] = toDecimal2(data.BTotalMoney / data.O2); str[3] = toDecimal2(data.BTotalMoney / data.O3);
+            str[4] = toDecimal2(data.BTotalMoney / data.O4); str[5] = toDecimal2(data.BTotalMoney / data.O5);
+            str[6] = toDecimal2(data.BTotalMoney / data.O6); str[7] = toDecimal2(data.BTotalMoney / data.O7);
+            str[8] = toDecimal2(data.BTotalMoney / data.O8); str[9] = toDecimal2(data.BTotalMoney / data.O9);
+            str[10] = toDecimal2(data.BTotalMoney / data.O10); str[11] = toDecimal2(data.BTotalMoney / data.O11);
+            str[12] = toDecimal2(data.BTotalMoney / data.O12); str[13] = toDecimal2(data.BTotalMoney / data.O13);
+            str[14] = toDecimal2(data.BTotalMoney / data.O14); str[15] = toDecimal2(data.BTotalMoney / data.O15);
+            str[16] = toDecimal2(data.BTotalMoney / data.O16); str[17] = toDecimal2(data.BTotalMoney / data.O17);
+            str[18] = toDecimal2(data.BTotalMoney / data.O18); str[19] = toDecimal2(data.BTotalMoney / data.O19);
+            str[20] = toDecimal2(data.BTotalMoney / data.O20); str[21] = toDecimal2(data.BTotalMoney / data.O21);
+            str[22] = toDecimal2(data.BTotalMoney / data.O22); str[23] = toDecimal2(data.BTotalMoney / data.O23);
+            str[24] = toDecimal2(data.BTotalMoney / data.O24); str[25] = toDecimal2(data.BTotalMoney / data.O25);
+            str[26] = toDecimal2(data.BTotalMoney / data.O26); str[27] = toDecimal2(data.BTotalMoney / data.O27);
+        }
+        //状态转成文本
+        OLzt = function (state) {
+            if (state == "1") return "监控";
+            if (state == "2") return "不监控";
+        }
+        //操作
+        pitchbtn = function (type, utype, userid, e) {
+            if (utype == "2") {
+                $(e).removeAttr("onclick"); $(e).unbind("click"); $(e).text("开启"); $(e).parent().prev().text("不监控");
+                $(e).bind("click", function () { pitchbtn(1, 3, userid, e) })
+            }
+            if (utype == "3") {
+                $(e).removeAttr("onclick"); $(e).unbind("click"); $(e).text("暂停"); $(e).parent().prev().text("监控");
+                $(e).bind("click", function () { pitchbtn(1, 2, userid, e) })
+            }
+            $.ajax({
+                type: "POST",
+                url: "/CurTime/PicthUser",
+                data: { type: type, utype: utype, userid: userid },
+                dataType: 'json',
+                success: function (ret) {
+                    if (ret.code == 1000) {
+                        if (utype == "4") {
+                            var txt = $(e).text();
+                            if (txt != "移除") {
+                                SearchList();   //如果是快捷删除就直接查询一次
+                            } else {
+                                $(e).parent().parent().remove();    //直接UI移除元素
+                            }
+                        }
+                        if (utype == "5") {
+                            var str = "<table class=\"tablelistu\"><tr><th style=\"width:119px;\">用户ID</th><th style=\"width:118px;\">用户昵称</th><th style=\"width:118px;\">用户状态</th><th style=\"width:118px;\">操作</th></tr>";
+                            $.each(ret.data, function (i, o) {
+                                var btnstr = "暂停"; var utype = 2; var zx = ""
+                                if (o.State == "2") { btnstr = "开启"; utype = 3; }
+                                if (o.zx == "1") { zx = "tdzx" }
+                                str += "<tr><td>" + o.Userid + "</td><td>" + o.NickName + "</td><td class=\"" + zx + "\">" + OLzt(o.State) + "</td><td><button onclick=\"pitchbtn(1," + utype + "," + o.Userid + ",this)\">" + btnstr + "</button><button onclick=\"pitchbtn(1,4," + o.Userid + ",this)\">移除</button></td></tr>";
+                            })
+                            str += "</table>";
+                            $("#ulist").html(str);
+                        }
+                    }
+                }
+            });
+        }
+        //保留两位小数
+        function toDecimal2(x) {
+            var f = parseFloat(x);
+            if (isNaN(f)) {
+                return false;
+            }
+            var f = Math.round(x * 100) / 100;
+            var s = f.toString();
+            var rs = s.indexOf('.');
+            if (rs < 0) {
+                rs = s.length;
+                s += '.';
+            }
+            while (s.length <= rs + 2) {
+                s += '0';
+            }
+            return s;
+        }
+        //取得当前期的秒数进行倒计时
+        var second = 1000, issue, tempseo;   //倒计时秒数量变量
+        CurIssueSeconds = function () {
+            $.getJSON("/CurTime/CurIssueSeconds", { }, function (ret) {
+                if (ret.code == 1000) {
+                    var data = ret.data;
+                    second = ret.data[0].GameSendTime;
+                    issue = ret.data[0].GameIssue;
+                    tempseo = setInterval(setsecond, 1000);
+                }
+            })
+        }
+        //脚本计算秒数(递减)
+        setsecond = function () {
+            second = second - 1;
+            //重新读取秒数
+            if (second < 0) {
+                clearInterval(tempseo);     //倒数秒数对象
+                stopmusic();
+                CurIssueSeconds();
+            }
+            //开始自动查询
+            if (second == 15 || second == 12 || second == 9 || second == 7 || second == 4 || second == 2) {
+                SearchList();
+            }
+            $("#search").html("<span style=\"color:red;font-size:14px\">" + second + "</span>");
+            //$("#divseo").html("距离第" + issue + "期开奖还有<span style=\"color:red\">" + second + "</span>秒");
+        }
+        //设置tr行的变色
+        trchcolor = function (strobj) {
+            $(strobj).mouseover(function () {
+                $(this).css("background-color", "yellow");
+            });
+            $(strobj).mouseout(function () {
+                $(this).css("background-color", "");
+            });
+        }
+        //通过固定值取得数据库里面的随机值
+        GetRad = function (Issue,Num) {
+            var A = 0; var B = 0; var C = 0;
+            $.getJSON("/CurTime/GetBallNum", { num: Num }, function (ret) {
+                if (ret.code == 1000) {
+                    var data = ret.data;
+                    var str = "<span>" + data[0].A + "</span>+<span>" + data[0].B + "</span>+<span>" + data[0].C + "</span>=<span>" + Num + "</span>";
+                    ds.dialog.confirm(str, function () {
+                        $.post("/CurTime/BettingManual", { gameid: 1, issue: Issue, o1: data[0].A, o2: data[0].B, o3: data[0].C }, function (ret) {
+                            if (ret.code == 1000) {
+                                ds.dialog.tips("开奖成功.", 1, true, false);
+                            } else {
+                                ds.dialog.tips("开奖失败.", 1, true, false);
+                            }
+                        })
+                    }, function () { });
+                } else {
+                    ds.dialog.tips("数字获取失败.", 1, true, false);
+                }
+            })
+        }
+        //播放音乐
+        playmusic = function () {
+            window.open('http://file.mlyou.net/video/guizi.mp3', 'id_iframe');
+        }
+        //查询是否超限的方法
+        var stopplay = null;    //音乐倒计时对象(主要是80秒之前就已经超限以后,唱完48秒,音乐就不唱了)
+        outlimit = function () {
+            var limitmoney = 5000000;
+            var tdobj = $("#cont tr").eq(1).children("td");
+            for (var i = 3; i < tdobj.length; i++) {
+                var text = $(tdobj[i]).text();
+                if (parseFloat(text) > limitmoney && stopplay==null) {
+                    playmusic();
+                    stopplay = setInterval(playmusic, 48000);
+                    return;
+                }
+            }
+        }
+        //报警音乐的停止方法
+        stopmusic = function () {
+            clearInterval(stopplay);    //清除报警音乐对象
+            stopplay = null;            //将对象也清空
+            $("#id_iframe").attr("src", "");    //移除音乐播放地址
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <div><button id="search" style="height: 60px; width: 100px; position: absolute;">查询</button><span id="divseo" style="padding-left: 100px;"></span></div>
+        <div id="cont"></div>
+    </div>
+    <div id="userdiv">
+        <table>
+            <tr>
+                <td>用户ID</td>
+                <td><input type="text" id="userid" /></td>
+                <td><button id="searchlist">查询</button><button id="addbtn">添加</button></td>
+            </tr>
+        </table>
+        <div id="ulist"></div>
+        <div id="ulistpage" class="m-pagination"></div>
+    </div>
+    <div class="rightbtn"><img src="/Content/WeiXin/images/photo.png" /></div>
+    <iframe id="id_iframe" name="id_iframe" style=" display:none"></iframe>
+</body>
+</html>

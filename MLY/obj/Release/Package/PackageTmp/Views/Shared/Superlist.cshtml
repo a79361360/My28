@@ -1,0 +1,581 @@
+﻿@{
+    ViewBag.Title = "急速28";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <link rel="Shortcut Icon" href="http://play28.mly.com/game/luck28/logo.ico">
+    <link rel="Bookmark" href="http://play28.mly.com/game/luck28/logo.ico">
+    <link href="/Content/css.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/js/jquery-1.js"></script>
+    <script src="~/JS/jquery.js" type="text/javascript"></script>
+
+    <title>超级榜</title>
+
+    <meta name="Keywords" content="游戏体验 免费 网赚 幸运28">
+    <meta name="description" content="玩游戏赚金币，做任务换奖品，就在乐游网">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+   
+
+
+    <script type="text/javascript">
+        $(function () {
+
+            GetMySoure(2);
+
+      
+            
+            //--------------------日榜翻页-----------------------------//
+            $('.wjphb .n-page .btn').eq(0).on('click', function () {
+                setprvpage();
+            })
+            $('.wjphb .n-page .btn').eq(1).on('click', function () {
+                setnextpage();
+            })
+            //--------------------排行榜翻页-----------------------------//
+
+            $("#qs5").click(function () {
+                $(this).parent().siblings().children().removeClass("img1");
+                $(this).parent().siblings().children().addClass("img2");
+                $(this).removeClass("img2");
+                $(this).addClass("img1");
+                getphb1();
+
+            });
+            //----------第二期---------------//
+            $("#qs6").click(function () {
+                $(this).parent().siblings().children().removeClass("img1");
+                $(this).parent().siblings().children().addClass("img2");
+                $(this).removeClass("img2");
+                $(this).addClass("img1");
+                getphb2();
+
+            });
+            //----------第三期---------------//
+            $("#qs7").click(function () {
+                $(this).parent().siblings().children().removeClass("img1");
+                $(this).parent().siblings().children().addClass("img2");
+                $(this).removeClass("img2");
+                $(this).addClass("img1");
+                getphb3();
+
+            });
+            //----------第四期---------------//
+            $("#qs8").click(function () {
+                $(this).parent().siblings().children().removeClass("img1");
+                $(this).parent().siblings().children().addClass("img2");
+                $(this).removeClass("img2");
+                $(this).addClass("img1");
+                getphb4();
+
+            });
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------期数翻页-----------------------------//
+
+            //----------第一期---------------//
+            $("#qs1").click(function () {
+                $(this).parent().siblings().children().removeClass("img1");
+                $(this).parent().siblings().children().addClass("img2");
+                $(this).removeClass("img2");
+                $(this).addClass("img1");
+                getqi1();
+                
+            });
+            //----------第二期---------------//
+            $("#qs2").click(function () {
+                $(this).parent().siblings().children().removeClass("img1");
+                $(this).parent().siblings().children().addClass("img2");
+                $(this).removeClass("img2");
+                $(this).addClass("img1");
+                getqi2();
+
+            });
+            //----------第三期---------------//
+            $("#qs3").click(function () {
+                $(this).parent().siblings().children().removeClass("img1");
+                $(this).parent().siblings().children().addClass("img2");
+                $(this).removeClass("img2");
+                $(this).addClass("img1");
+                getqi3();
+
+            });
+            //----------第四期---------------//
+            $("#qs4").click(function () {
+                $(this).parent().siblings().children().removeClass("img1");
+                $(this).parent().siblings().children().addClass("img2");
+                $(this).removeClass("img2");
+                $(this).addClass("img1");
+                getqi4();
+
+            });
+        });
+            var i = 0;
+            var strqs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, '11-20', '21-30', '31-50', '51-100', '101-200'];
+            var jianl1 = ['1亿', '5000万', '3000万', '2500万', '2000万', '1800万', '1600万', '1400万', '1200万', '1000万', '500万', '300万', '200万', '150万', '100万'];
+            var jianl2 = ['2亿', '1亿', '6000万', '5000万', '4000万', '3600万', '3200万', '2800万', '2400万', '2000万', '1000万', '600万', '400万', '300万', '200万'];
+            var jianl3 = ['3亿', '1.5亿', '9000万', '7500万', '6000万', '5400万', '4800万', '4200万', '3600万', '3000万', '1500万', '900万', '600万', '450万', '300万'];
+            var jianl4 = ['4亿', '2亿', '1.2亿', '1亿', '8000万', '7200万', '6400万', '5600万', '4800万', '4000万', '2000万', '1200万', '800万', '600万', '400万'];
+            getqi1 = function () {
+                var num = "";
+                for (i = 0; i < 15; i++) {
+                    if (i < 3) {
+                        num += "<tr><td></td><td style=\"width:100px;\">第" + strqs[i] + "名奖励</td ><td style=\"width:60px;text-align:right\"><span>" + jianl1[i] + "</span>乐豆</td><td></td></tr>";
+                    }else{
+                        num += "<tr><td></td><td style=\"width:100px;\">第" + strqs[i] + "名奖励</td ><td style=\"width:60px;text-align:right\">" + jianl1[i] + "乐豆</td><td></td></tr>";
+                    }
+                }
+                num += "<tr><td></td><td colspan=\"2\" style=\"text-align:center;\"><span>(总计 5.9亿乐豆)</span></td><td></td></tr>"
+                $(".phbmc #gg").html(num);
+
+            }
+
+            getqi2 = function () {
+                var num = "";
+                for (i = 0; i < 15; i++) {
+                    if (i < 3) {
+                        num += "<tr><td></td><td style=\"width:100px;\">第" + strqs[i] + "名奖励</td ><td style=\"width:60px;text-align:right\"><span>" + jianl2[i] + "</span>乐豆</td><td></td></tr>";
+                    } else {
+                        num += "<tr><td></td><td style=\"width:100px;\">第" + strqs[i] + "名奖励</td ><td style=\"width:60px;text-align:right\">" + jianl2[i] + "乐豆</td><td></td></tr>";
+                    }
+                }
+                num += "<tr><td></td><td colspan=\"2\" style=\"text-align:center;\"><span>(总计 11.8亿乐豆)</span></td><td></td></tr>"
+                $(".phbmc #gg").html(num);
+
+            }
+
+            getqi3 = function () {
+                var num = "";
+                for (i = 0; i < 15; i++) {
+                    if (i < 3) {
+                        num += "<tr><td></td><td style=\"width:100px;\">第" + strqs[i] + "名奖励</td ><td style=\"width:60px;text-align:right\"><span>" + jianl3[i] + "</span>乐豆</td><td></td></tr>";
+                    } else {
+                        num += "<tr><td></td><td style=\"width:100px;\">第" + strqs[i] + "名奖励</td ><td style=\"width:60px;text-align:right\">" + jianl3[i] + "乐豆</td><td></td></tr>";
+                    }
+                }
+                num += "<tr><td></td><td colspan=\"2\" style=\"text-align:center;\"><span>(总计17.7亿乐豆)</span></td><td></td></tr>"
+                $(".phbmc #gg").html(num);
+
+            }
+
+            getqi4 = function () {
+                var num = "";
+                for (i = 0; i < 15; i++) {
+                    if (i < 3) {
+                        num += "<tr><td></td><td style=\"width:100px;\">第" + strqs[i] + "名奖励</td ><td style=\"width:60px;text-align:right\"><span>" + jianl4[i] + "</span>乐豆</td><td></td></tr>";
+                    } else {
+                        num += "<tr><td></td><td style=\"width:100px;\">第" + strqs[i] + "名奖励</td ><td style=\"width:60px;text-align:right\">" + jianl4[i] + "乐豆</td><td></td></tr>";
+                    }
+                }
+                num += "<tr><td></td><td colspan=\"2\" style=\"text-align:center;\"><span>(总计 23.6亿乐豆)</span></td><td></td></tr>"
+                $(".phbmc #gg").html(num);
+
+            }
+
+
+            //-----------------------------判断是否是当前期数-------------//
+
+            var d = new Date();
+            var time4 = '2016年6月16日 ';
+            var strb = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
+
+
+            //用字符串分割, 精确到日
+            function Days(day1, day2) {
+                var y1, y2, m1, m2, d1, d2;//year, month, day;
+                y1 = parseInt(day1);
+                y2 = parseInt(day2.split('/')[0]);
+
+                m1 = parseInt(day1.split('年')[1].split('月')[0]);
+                m2 = parseInt(day2.split('/')[1]);
+
+                d1 = parseInt(day1.split('年')[1].split('月')[1].split('日')[0]);
+                d2 = parseInt(day2.split('/')[2]);
+
+                var date1 = new Date(y1, m1, d1);
+                var date2 = new Date(y2, m2, d2);
+
+                //用距标准时间差来获取相距时间
+                var minsec = Date.parse(date1) - Date.parse(date2);
+                var days = minsec / 1000 / 60 / 60 / 24; //factor: second / minute / hour / day
+
+                return days;
+            }
+            function SetVal() {
+                var cd = (Days(time4, strb));
+
+                if (30 <= cd && cd < 40) {
+                    $("#qs5").removeClass("img2");
+                    $("#qs5").addClass("img1");
+                    $("#qs1").removeClass("img2");
+                    $("#qs1").addClass("img1");
+                    getqi1();
+                    $('.wjphb tbody').html(str);
+                    $("#qs5").html("进行中");
+                    $("#qs1").html("进行中");
+                }
+                if (20 <= cd && cd < 30) {
+                    $("#qs6").removeClass("img2");
+                    $("#qs6").addClass("img1");
+                    $("#qs2").removeClass("img2");
+                    $("#qs2").addClass("img1");
+                    getqi2();
+                    $('.wjphb tbody').html(str1);
+
+                    $("#qs6").html("进行中");
+                    $("#qs2").html("进行中");
+                    $("#qs5").html("已结束");
+                    $("#qs1").html("已结束");
+                }
+                if (10 <= cd && cd < 20) {
+                    $("#qs7").removeClass("img2");
+                    $("#qs7").addClass("img1");
+                    $("#qs3").removeClass("img2");
+                    $("#qs3").addClass("img1");
+                    getqi3();
+                    $('.wjphb tbody').html(strs);
+                    $("#qs7").html("进行中");
+                    $("#qs3").html("进行中");
+                    $("#qs6").html("已结束");
+                    $("#qs2").html("已结束");
+                    $("#qs5").html("已结束");
+                    $("#qs1").html("已结束");
+                }
+                if (0 <= cd && cd < 10) {
+                    $("#qs8").removeClass("img2");
+                    $("#qs8").addClass("img1");
+                    $("#qs4").removeClass("img2");
+                    $("#qs4").addClass("img1");
+                    getqi4();
+                    $('.wjphb tbody').html(strd);
+                    $("#qs8").html("进行中");
+                    $("#qs4").html("进行中");
+                    $("#qs7").html("已结束");
+                    $("#qs3").html("已结束");
+                    $("#qs6").html("已结束");
+                    $("#qs2").html("已结束");
+                    $("#qs5").html("已结束");
+                    $("#qs1").html("已结束");
+                }
+            }
+
+            var str = "", str1 = "", strs = "", strd = ""; //第一期,第二期,第三期,第四期
+            GetMySoure = function (type) {
+                //type为1表示取得个人信息,type为2表示取得排行榜信息
+                var url = "/Shared/GetSuperList";
+                $.getJSON(url, { type: type }, function (ret) {
+                    if (ret.code == 1000) {
+                        if (type == 2) {
+                            var znum = 0, jnum = 0, snum = 0; //定义一个昨天的条数,今天的条数,上月的条数
+                            var data = eval(ret.data)
+                            $.each(data, function (key, val) {
+                                var row = key + 1;
+                                if (val.ntype == 1) {
+                                    znum++;
+                                    if (row < 4) site = "img3"; else site = "img4";
+                                    str += "<tr><td><div class='" + site + "'>" + row + "</div></td><td>" + val.nickname + "</td><td><span>" + val.ylcount + "</span></td></tr>";
+                                } else if (val.ntype == 2) {
+                                    row = row - znum; jnum++;
+                                    if (row < 4) site = "img3"; else site = "img4";
+                                    str1 += "<tr><td><div class='" + site + "'>" + row + "</div></td><td>" + val.nickname + "</td><td><span>" + val.ylcount + "</span></td></tr>";
+                                } else if (val.ntype == 3) {
+                                    row = row - jnum - znum; snum++;
+                                    if (row < 4) site = "img3"; else site = "img4";
+                                    strs += "<tr><td><div class='" + site + "'>" + row + "</div></td><td>" + val.nickname + "</td><td><span>" + val.ylcount + "</span></td></tr>";
+                                } else if (val.ntype == 4) {
+                                    row = row - snum - jnum - znum;
+                                    if (row < 4) site = "img3"; else site = "img4";
+                                    strd += "<tr><td><div class='" + site + "'>" + row + "</div></td><td>" + val.nickname + "</td><td><span>" + val.ylcount + "</span></td></tr>";
+                                }
+                            });
+                            SetVal();
+                        }
+                    }
+                })
+            }
+
+            //根据当前页page设置内容
+            var page = 1, pagesize = 20;
+            settableshow = function () {
+                var tbody = $('.wjphb tbody tr');
+                $('.wjphb tbody tr').hide();
+                for (var i = page * 10 - 10; i < page * 10; i++) {
+                    tbody.eq(i).show();
+                }
+                $('.wjphb .n-page em').html(page);
+            }
+
+            //下一页
+            setnextpage = function () {
+                page = page + 1;
+                if (page > 20) page = 1;
+                settableshow();
+            }
+            //上一页
+            setprvpage = function () {
+                page = page - 1;
+                if (page < 1) page = 20;
+                settableshow();
+            }
+
+
+            getphb1 = function () {
+
+                $('.wjphb tbody').html(str);
+                settableshow();
+            }
+
+
+            getphb2 = function () {
+
+                $('.wjphb tbody').html(str1);
+                settableshow();
+            }
+            getphb3 = function () {
+
+                $('.wjphb tbody').html(strs);
+                settableshow();
+            }
+
+            getphb4 = function () {
+
+                $('.wjphb tbody').html(strd);
+                settableshow();
+            }
+
+
+    </script>
+</head>
+<body>
+   
+    <div class="dh">
+    </div>
+    <div class="likebody mainbody">
+
+        <div class="likebody">
+            @RenderPage("~/Views/Shared/RankRightList.cshtml")
+            <div class="gamemain">
+
+                <input value="50000000" id="maxzhi" type="hidden">
+
+                @RenderPage("~/Views/Shared/top1.cshtml")
+                <link href="/Content/help.css" rel="stylesheet">
+                <script type="text/javascript">
+                    $(function(){
+                        var gid =@ViewBag.Gameid
+                        var lista = $(".gamezidh a");
+                        if (gid == 1) {
+                            $(lista[0]).attr("href","/Js28/Index/1");
+                            $(lista[1]).attr("href","/Shty28/Trend/1");
+                            $(lista[2]).attr("href","/Js28/Gamehelp/");
+                            $(lista[3]).attr("href","/Tz/ActivityRanklist/1");
+                            $(lista[4]).attr("href","/Shared/Superlist/1");
+                            $(lista[5]).attr("href","/Js28/insertmod/0");
+                            $(lista[6]).attr("href","/Shty28/selfset/");
+                            $(lista[7]).attr("href", "/Shty28/mytz/1/1");
+                            $("#gmenu_id1").addClass("hovv");
+                        } else if (gid == 2) {
+                            $(lista[0]).attr("href", "/Bj28/Index/1");
+                            $(lista[1]).attr("href", "/Bj28/Trend/1");
+                            $(lista[2]).attr("href", "/Bj28/Gamehelp/");
+                            $(lista[3]).attr("href", "/Tz/ActivityRanklist/2");
+                            $(lista[4]).attr("href", "/Shared/Superlist/2");
+                            $(lista[5]).attr("href", "/Bj28/insertmod/0");
+                            $(lista[6]).attr("href", "/Bj28/selfset/");
+                            $(lista[7]).attr("href", "/Shty28/mytz/2/1");
+                            $("#gmenu_id2").addClass("hovv");
+                        }
+                    })
+                </script>
+                <div class="cjbys">
+                    <div class="hdguiz">
+                        <p>活动从5月12日至6月21日，每10天为一期！</p><div class="qishu">
+                                                          第一期：2016年5月12日0点至5月21日24点<br />
+                                                          第二期：2016年5月22日0点至5月31日24点<br />
+                                                          第三期：2016年6月1日0点至6月10日24点<br />
+                                                          第四期：2016年6月11日0点至6月20日24点
+                        </div>
+                        <div class="hdgzsh">
+                            &nbsp 每期活动时间内，<span>参加欢乐28竞猜所有游戏（PC28、极速28），日盈利（不计负数，只计盈利）累计相加，总和最高的前100名，即可获得奖励。</span><br />
+                            <p>  如游客8888今日投注：PC28第748697期净盈利2800万乐豆，第748698期亏损100万乐豆，极速28第4485期净盈利3000万乐豆，则<span>游客8888的今日总成绩：2800+3000=5800万</span>	</p>
+                        </div>
+
+                    </div>
+<div class="paimb">
+                    <div class="wjpm">
+                        <ul>
+                            <li><div id="qs5" class="img2">第一期</div></li>
+                            <li><div id="qs6" class="img2">第二期</div></li>
+                            <li><div id="qs7" class="img2">第三期</div></li>
+                            <li><div id="qs8" class="img2">第四期</div></li>
+                        </ul>
+                        
+                        <div class="wjphb">
+                          
+                                <table border="0" cellspacing="0" cellpadding="0" width="100%" id="gg">
+                                    <thead>
+                                        <tr>
+                                            <td style="width:70px">排名</td>
+                                            <td style="width:120px">游戏用户名</td>
+                                            <td style="width:100px">盈利金币</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       
+                                    </tbody>
+                                </table>
+
+                            <div class="n-page">
+                                <span class="btn">上一页</span>
+                                <span><em>1</em>/20</span>
+                                <span class="btn">下一页</span>
+                            </div>
+
+                        </div>
+                        </div>
+
+
+                    <div class="hdjl">
+                        <ul>
+                            <li><div id="qs1" class="img2">第一期</div></li>
+                            <li><div id="qs2" class="img2">第二期</div></li>
+                            <li><div id="qs3" class="img2">第三期</div></li>
+                            <li><div id="qs4" class="img2">第四期</div></li>
+                        </ul>
+                        <div class="phbmc">
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%" id="gg">
+                                <tr>
+                                    <td></td>
+                                    <td>第1名奖励</td>
+                                    <td style="text-align:right"><span>1亿</span>乐豆</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>第2名奖励</td>
+                                    <td style="text-align:right"><span>5000万</span>乐豆</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>第3名奖励</td>
+                                    <td style="text-align:right"><span>3000万</span>乐豆</td>
+                                    <td></td>
+
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>第4名奖励</td>
+                                    <td style="text-align:right">2500万乐豆</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>第5名奖励</td>
+                                    <td style="text-align:right">2000万乐豆</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>第6名奖励</td>
+                                    <td style="text-align:right">1800万乐豆</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>第7名奖励</td>
+                                    <td style="text-align:right">1600万乐豆</td>
+                                    <td></td>
+                                </tr>
+
+                                <tr>
+                                    <td></td>
+                                    <td>第8名奖励</td>
+                                    <td style="text-align:right">1400万乐豆</td>
+                                    <td></td>
+                                </tr>
+
+                                <tr>
+                                    <td></td>
+                                    <td style=" width:100px;">第9名奖励 </td>
+                                    <td style=" width:60px;text-align:right">1200万乐豆</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>第10名奖励 </td>
+                                    <td style="text-align:right">1000万乐豆</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td style="text-align:left;">第11-20名奖励 </td>
+                                    <td style="text-align:right">500万乐豆</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td style="text-align:left;">第20-30名奖励 </td>
+                                    <td style="text-align:right">300万乐豆</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td style="text-align:left;">第31-50名奖励</td>
+                                    <td style="text-align:right">200万乐豆</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td style="text-align:left;">第51-100名奖励</td>
+                                    <td style="text-align:right">150万乐豆</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td style="text-align:left;">第101-200名奖励</td>
+                                    <td style="text-align:right">100万乐豆</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td colspan="2" style="text-align:center;"><span>(总计 5.9亿乐豆)</span></td>
+                                    <td></td>
+                                </tr>
+
+                              
+                            </table>
+
+
+                        </div>
+
+
+                    </div>
+
+</div>
+                    <div class="phbsm">
+                        凡参加的玩家在活动期间前200名者，都将获赠相应大奖！<br />
+
+                        <span>注：奖励将在每期活动结束系统自动发放</span><br />
+                        活动说明：参加活动的玩家不允许同IP对刷盈利收入来制造虚假成绩，否则将取消资格。<br/>
+                        获奖名单每日更新，比赛进行期间名单仅为暂时领先的玩家，非最终获奖名单。
+                    </div>
+
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

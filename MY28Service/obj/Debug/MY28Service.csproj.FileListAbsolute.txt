@@ -1,0 +1,11 @@
+E:\ProJect\yd28\trunk\MY28Service\obj\Debug\MY28Service.ProjectInstaller.resources
+E:\ProJect\yd28\trunk\MY28Service\obj\Debug\MY28Service.Service1.resources
+E:\ProJect\yd28\trunk\MY28Service\obj\Debug\MY28Service.csproj.GenerateResource.Cache
+E:\ProJect\yd28\trunk\MY28Service\bin\Debug\MY28Service.exe.config
+E:\ProJect\yd28\trunk\MY28Service\bin\Debug\MY28Service.exe
+E:\ProJect\yd28\trunk\MY28Service\bin\Debug\MY28Service.pdb
+E:\ProJect\yd28\trunk\MY28Service\bin\Debug\Common.Logging.dll
+E:\ProJect\yd28\trunk\MY28Service\bin\Debug\Quartz.dll
+E:\ProJect\yd28\trunk\MY28Service\obj\Debug\MY28Service.exe
+E:\ProJect\yd28\trunk\MY28Service\obj\Debug\MY28Service.pdb
+E:\ProJect\yd28\trunk\MY28Service\obj\Debug\MY28Service.csprojResolveAssemblyReference.cache

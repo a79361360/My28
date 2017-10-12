@@ -1,0 +1,203 @@
+﻿@{
+    ViewBag.Title = "微信急速28模板编辑";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>模板编辑</title>
+    <link href="/Content/swiper.min.css" rel="stylesheet">
+    <link href="/Content/index.css" rel="stylesheet">
+    <script src="/JS/swiper.min.js"></script>
+    <script src="/JS/zepto.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        var g28 = getQueryString('g28');//js used
+        g28 = g28 ? g28 : 'luck';
+    </script>
+    <script>
+
+        var staPath = 'http://modoupi.b0.upaiyun.com/';
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        var g28 = getQueryString('g28');//js used
+        g28 = g28 ? g28 : 'btc';
+
+        var config_mdp_total = '500000000' ? '500000000' : 100000000;
+        var config_btc_total = '200000000' ? '200000000' : 100000000;
+        var config_try_total = '500000000' ? '500000000' : 100000000;
+
+        //var isgain     = "1";
+        var autoopen = "0"; //是否自动投注
+        var userid = "373054";
+        var my_gain_coins = "105262";//我的比特币数
+
+        var last_odds = "998.97,327.64,166.14,99.29,66.6,47.39,35.49,27.58,22.14,18.06,15.85,14.43,13.68,13.27,13.33,13.65,14.5,15.82,18.15,22.1,27.73,35.56,47.39,66.39,99.54,165.96,333.26,995.74";//上期赔率
+        var last_odds_ary = last_odds.split(",");
+        var this_odds = "997.83,329.89,166.29,99.59,66.53,47.56,35.42,27.64,22.14,18.12,15.81,14.44,13.65,13.29,13.3,13.66,14.46,15.82,18.14,22.17,27.71,35.63,47.4,66.64,99.49,166.48,333.11,999.05";//本期赔率
+        var this_odds_ary = this_odds.split(",");
+
+        var lottery_id = "411143"//本期ID
+        var all_lottery_num = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0".split(",");//投注比特币
+        var issue = "411143";//当期期号
+
+
+        var is_clear_mdp = my_gain_coins < 5000 ? 1 : 0;//是否可以清理获取
+        var left_time_out = "0" //是否已截止投注
+        var last_issue_id = "";
+
+
+        //已有的模式
+        var hasyed = ['111', '90'];
+    </script>
+    <input type="hidden" id="Issue" name="Issue" value="0" />
+    <div class="wrap">
+        <div class="nav">
+            <a class="arrow"></a>
+            <span>编辑模式</span>
+        </div>
+
+        <div class="formbox">
+            <div class="br">
+                模式名称: <input id="newmodelname" placeholder="输入模式名称" type="text" value="" />
+            </div>
+
+            <div class="br">
+                投注总额: <input class="orange" value="" type="text" /> 黄豆
+            </div>
+            <div class="br btn-box">
+                <input type="hidden" id="model_id" value="" />
+                <a class="savemode">保存</a>
+                <a class="save-other">另存为</a>
+            </div>
+        </div>
+
+        <div class="rule">
+            <span class="double_insert" val="0.1">×0.1</span>
+            <span class="double_insert" val="0.5">×0.5</span>
+            <span class="double_insert" val="1.2">×1.2</span>
+            <span class="double_insert" val="1.5">×1.5</span>
+            <span class="double_insert" val="2">2倍</span>
+            <span class="double_insert" val="10">10倍</span>
+            <span class="double_insert" val="100">100倍</span>
+            <span class="double_insert">梭哈</span>
+            <span class="qingchu">清空</span>
+            <span class="refreshpeiv">刷新</span>
+            <span class="b-b mode_lottery" attr="0">全包</span>
+            <span class="b-b fanxian">反选</span>
+            <span class="b-b mode_lottery" attr="5">中</span>
+            <span class="b-b  mode_lottery" attr="6">边</span>
+            <span class="b-b-b">更多</span>
+        </div>
+        <div class="select-box">
+            <table class="table-select">
+               
+            </table>
+        </div>
+    </div>
+    <div class="more-pop">
+        <div class="more-pop-box">
+            <span class="mode_lottery" attr="0">全包</span>
+            <span class="mode_lottery" attr="1">单</span>
+            <span class="mode_lottery" attr="2">双</span>
+            <span class="mode_lottery" attr="3">大</span>
+            <span class="mode_lottery" attr="4">小</span>
+            <span class="mode_lottery" attr="5">中</span>
+            <span class="mode_lottery" attr="6">边</span>
+            <span class="mode_lottery" attr="7">大单</span>
+            <span class="mode_lottery" attr="8">小单</span>
+            <span class="mode_lottery" attr="9">大双</span>
+            <span class="mode_lottery" attr="10">小双</span>
+            <span class="mode_lottery" attr="11">大边</span>
+            <span class="mode_lottery" attr="12">小边</span>
+            <span class="mode_lottery" attr="13">单边</span>
+            <span class="mode_lottery" attr="14">双边</span>
+            <span class="mode_lottery">清零</span>
+        </div>
+        <span class="closemode">
+            ×
+        </span>
+    </div>
+
+    <div class="tz-pop model-pop">
+        <div class="mask"></div>
+        <div class="content">
+            <h3>投注模式设置</h3>
+
+            <div class="br">
+                <label for="rad_0"><input value="add" id="rad_0" checked name="radio" type="radio" />新的模式：</label>
+                <input id="modes_name" placeholder="输入模式名称" name="modes_name" type="text" />
+            </div>
+            <div class="br">
+                <label for="rad_1"><input value="update" id="rad_1" name="radio" type="radio" />覆盖现有：  </label>
+                <select name="" id="drop_modes">
+                    @Html.Raw(ViewBag.Option)
+                </select>
+
+            </div>
+            <div class="br btn-box">
+                <a class="sure">确定</a>
+                <a class="cancel close">取消</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/JS/tz.js"></script>
+    <script src="/JS/savemodel.js"></script>
+    <script>
+        $('.save-other').tap(function () {
+            $('.model-pop').css('display', 'block')
+        })
+        $('.tz-pop .close').tap(function () {
+            $('.model-pop').css('display', 'none')
+        })
+    </script>
+
+    <script src="/JS/common.js"></script>
+    <div class="tz-pop showmsg">
+        <div class="mask"></div>
+        <div class="content">
+            <h3 class="showmsg-title"></h3>
+            <p class="showmsg-content"></p>
+            <div class="br btn-box" id="box">
+                <a class="sure showmsg-sure">确定</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="tz-pop login">
+        <div class="mask"></div>
+        <div class="content">
+            <h3>用户登录</h3>
+
+            <div class="br">
+                <label>用户名：</label>
+                <input placeholder="账号/ID/手机/邮箱" type="text" />
+            </div>
+            <div class="br">
+                <label>密　码：</label>
+                <input type="password" />
+            </div>
+            <div class="br btn-box">
+                <a class="sure">确定</a>
+                <a class="cancel close">取消</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

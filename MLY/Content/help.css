@@ -1,0 +1,390 @@
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "微软雅黑";
+}
+
+.help{
+    width: 715px;
+}
+
+.help img{
+    display: block;
+    margin: 0 auto;
+}
+.help .box{
+    border:1px solid #d7d7d7;
+    margin-bottom: 10px;
+}
+.help h2{
+    font-size: 14px;
+    height: 42px;
+    line-height: 42px;
+    padding-left: 15px;
+    color: #ff5a5d;
+    border-bottom: 1px solid #d7d7d7;
+}
+.help p {
+    padding: 15px;
+    line-height: 24px;
+    color: #676767;
+}
+.help p em{
+    color: #ff5a5d;
+    font-weight: bold;
+}
+.help .lz{
+    margin:0 15px;
+    padding: 15px 0;
+    border-top: 1px solid #d7d7d7 ;
+    color: #999999;
+}
+.last{
+    color: #a8a8a8;
+    text-align: center;
+    padding-bottom: 30px;
+}
+.last em{
+    color: #ff5d62;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+}
+
+ .hr {
+    width:90%;
+    margin-top:45px;
+    margin-bottom:30px;
+    margin-left:30px;
+    height:30px;
+    border-bottom:1px solid #d7d7d7;
+     }
+
+.hr1 {
+    width:80%;
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-left:70px;
+    height:10px;
+    border-bottom:1px solid #d7d7d7;
+     }
+     
+     
+     /**新手指引样式**/
+
+.helpzixun{
+    width: 715px;
+}
+
+
+.helpzixun .timu{
+    border:0px;
+    margin-top: 50px;
+    margin-left:250px;
+    width:200px;
+    font-size:16px;
+    
+}
+
+ .zxhr {
+    width:80%;
+    margin-top:20px;
+    margin-bottom:30px;
+    margin-left:70px;
+    height:30px;
+    border-bottom:1px dashed  #d7d7d7;
+     }
+     
+ .helpzixun .content{
+      padding:0px 20px 20px 50px;
+      min-height:655px;
+      height:auto;
+      color:red;
+    
+            }
+ /*------------------------超级榜--------------------------------*/
+  .cjbys {
+     width:715px;
+     height:844px;
+     border:1px solid #d7d7d7;
+     background:url(../img/ditu.png);
+}
+
+   .cjbys  .hdguiz{
+     width:676px;
+     height:216px;
+     background:url(../img/huodongguizhe.png);
+     margin-left:30px;
+     margin-top:10px;
+     font-size:13px;
+     padding-top:50px;
+     color:#919190;
+}
+
+
+      .cjbys  .hdguiz .qishu{
+     width:400px;
+     height:85px;
+     text-align:left;
+     margin-left:175px;
+     font-size:13px;
+     color:#919190;
+     font-weight:500;
+}
+   .cjbys  .hdguiz p{
+      text-align:center;
+      font-size:18px;
+      font-weight:bold;
+      color:#757575;
+}
+    .cjbys  .hdguiz .hdgzsh  {
+     width:582px;
+     height:100px;
+     font-family: "微软雅黑";
+     margin-left:40px;
+
+}
+
+    .cjbys  .hdguiz .hdgzsh p {
+     width:582px;
+     height:45px;
+     font-size:13px;
+     color:#919191;
+     word-spacing:9px;
+     margin-top:5px;
+     text-align:left;
+     font-weight:500
+}
+
+
+    .cjbys  .hdguiz .hdgzsh  span{
+       color:#ff7278;
+     }
+
+     .cjbys  .paimb{
+     width:715px;
+     height:400px;
+     margin-top:10px;
+     margin-left:30px;
+}
+
+  /*---------------玩家排名---------------------*/
+    .cjbys  .paimb .wjpm{
+     width:327px;
+     height:392px;
+     background:url(../img/huodongshijian.png);
+     margin-top:10px;
+     float:left;
+}
+
+
+  .cjbys  .wjpm ul{
+     width:300px;
+     height:26px;
+     margin-top:35px;
+     margin-left:30px;
+} 
+
+  .cjbys  .wjpm ul li{
+     width:57px;
+     height:26px;
+     float:left;
+     margin-left:10px;
+} 
+
+
+
+.cjbys   .wjphb{
+     width:295px;
+     height:307px;
+     background:url(../img/siqi.png);
+     margin-left:18px;
+     margin-top: -1px;
+}
+
+ .wjphb table{
+     width:290px;
+     height:auto;
+     text-align:center;
+
+}
+
+.wjphb table tr{
+     width:295px;
+     height:auto;
+     line-height:23px;
+}
+
+.wjphb table thead  tr td{
+     height:40px;
+     line-height:40px;
+     font-size:14px;
+     font-weight:600;
+}
+
+.wjphb table tr td{
+     width:40px;
+     height:auto;
+     color:#878787;
+     font-size:12px;
+     font-weight:500;
+}
+
+.wjphb table tr td span{
+    color:#ff7278;
+    font-weight:500;
+    font-size:12px;
+}
+
+ .img3{
+     width:20px;
+     height:20px;
+     background:url(../img/h.png);
+     color:white;
+     text-align:center;
+     line-height:20px;
+     font-size:12px;
+     margin-left:30px;
+} 
+
+  .img4{
+     width:20px;
+     height:20px;
+     background:url(../img/f.png);
+     text-align:center;
+     line-height:20px;
+     font-size:12px;
+     color:#000000;
+     margin-left:30px;
+
+} 
+
+
+ .wjphb  .n-page{
+    text-align: center;
+    position:absolute;
+    top:680px;
+    left:130px;
+}
+ .wjphb .n-page span{
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 2px;
+    margin: 0 2px;
+}
+.wjphb  .n-page span em{
+    color: #ff5a5d;
+}
+.wjphb  .n-page .btn{
+    cursor: pointer;
+
+}
+.wjphb  .n-page .btn:hover{
+    color: #ff6600;
+}
+
+
+
+
+/*---------------活动奖励---------------------*/
+.cjbys .paimb .hdjl{
+     width:354px;
+     height:434px;
+     background:url(../img/huodongjiangli.png);
+     margin-top:10px;
+     float:left;
+     margin-left:3px;
+}
+
+.cjbys  .hdjl ul{
+     width:300px;
+     height:26px;
+     margin-top:35px;
+     margin-left:30px;
+} 
+
+ .cjbys  .hdjl ul li{
+     width:57px;
+     height:26px;
+     float:left;
+     margin-left:10px;
+} 
+
+  .img1{
+     width:57px;
+     height:26px;
+     background:url(../img/xuanz.png);
+     color:red;
+     text-align:center;
+     line-height:26px;
+     font-size:13px;
+     font-weight:bold;
+} 
+
+  .img2{
+     width:57px;
+     height:26px;
+     background:url(../img/weixuanz.png);
+     text-align:center;
+     line-height:26px;
+     font-size:13px;
+     color:#969595;
+     font-weight:bold;
+} 
+
+
+
+.phbmc {
+     width:295px;
+     height:304px;
+     background:url(../img/siqi.png);
+     margin-left:18px;
+     padding-top:3px;
+     margin-top: -1px;
+}
+
+.phbmc table{
+     width:295px;
+     height:300px;
+
+
+}
+
+.phbmc table tr{
+     width:295px;
+     height:auto;
+
+}
+
+.phbmc table tr td{
+     width:40px;
+     height:auto;
+     color:#878787;
+     font-size:12px;
+     font-weight:500;
+}
+
+.phbmc table tr td span{
+    color:#ff7278;
+    font-weight:600;
+    font-size:13px;
+}
+
+
+
+
+  .cjbys  .phbsm {
+     width:581px;
+     height:160px;
+     color:#878787;
+     font-size:13px;
+     position:absolute;
+     top:760px;
+     left:50px;
+}
+  .phbsm span{
+    color:#ff7278;
+}
+

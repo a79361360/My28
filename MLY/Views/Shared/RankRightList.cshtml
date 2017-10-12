@@ -1,0 +1,76 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RankRightList</title>
+    <script src="~/JS/jquery-1.js"></script>
+    <script src="~/JS/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/game_topact.js"></script>
+    <script src="/js/dsdialog.js" type="text/javascript"></script>
+    <link href="/Content/dialog.css" rel="stylesheet" type="text/css">
+    <link href="/Content/css.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/nuirenbang.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(function () {
+            zixun();
+        })
+        zixun = function () {
+            var url = "/Shared/RankListRight_Top";
+            var gameid = @ViewBag.Gameid
+            $.getJSON(url, { gameid: gameid }, function (ret) {
+                $(".tableli tbody").html(ret);
+            })
+            var url = "/Shared/RankListRight_Bottom";
+            $.getJSON(url, function (ret) {
+                $(".ph1-left tbody").html(ret);
+            })
+        }
+        //---------------------------28资讯信息查看--------------------------
+        function findsinglezixun(id, gamesetid) {
+            var href = window.location.href;
+            if (href.indexOf("Explain") >= 0) {
+                FindZixun(id, gamesetid);
+            } else {
+                window.location.href = "/shared/Explain?id=" + id + "&gid=" + gamesetid;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="top-right">
+        <div class="ph-left">
+            <div class="ph-title">28资讯</div>
+            <div id="cont">
+                <table class="tableli">
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="ph1-content"><div class="tup"></div> <div class="tupright">竞猜交流群：<a href="http://shang.qq.com/wpa/qunwpa?idkey=acd10a343d751682b677bb6c76a3f491d3ac6ed81210bfc262e674272e4bce65" target="_blank">2970101</a></div></div>
+        <div class="ph1-left">
+            
+            <div class="ph1-title">牛人榜 </div>
+            <table cellspacing="0">
+                <thead>
+                    <tr>
+                        <td>NO</td>
+                        <td><b class="duli">昵称</b></td>
+                        <td><b>乐豆</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+        <div id="display"> </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "微信急速28详细投注";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>详细投注结果</title>
+    <link href="/Content/swiper.min.css" rel="stylesheet">
+    <link href="/Content/index.css" rel="stylesheet">
+    <script src="/JS/swiper.min.js"></script>
+    <script src="/JS/zepto.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        var g28 = getQueryString('g28');//js used
+        g28 = g28 ? g28 : 'luck';
+    </script>
+    <div class="wrap">
+        <div class="nav">
+            <a class="arrow" href="/"></a>
+            <span>投注结果</span>
+        </div>
+
+        <div class="result-info">
+            <table>
+                <tr>
+                    <td class="tl"><span>期号：</span> <span class="red">@Html.Raw(ViewBag.Issue)</span></td>
+                    <td class="tr">
+                        盈亏：
+                        <em class="red">
+                          @Html.Raw(ViewBag.Betting)
+                        </em>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tl"><span>我的投注：</span> <span class="red">@Html.Raw(ViewBag.Probability)</span></td>
+                    <td class="tr">开奖时间：@Html.Raw(ViewBag.Time)</td>
+                </tr>
+                <tr>
+                    <td class="tl" colspan="2"><span>开奖结果：</span> <span class="circle"> @Html.Raw(ViewBag.GameWinning)</span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="table-result">
+            <table>
+                <thead>
+                    <tr>
+                        <td>中奖号码</td>
+                        <td>赔率</td>
+                        <td>投注黄豆</td>
+                        <td>获得黄豆</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.Raw(ViewBag.html)
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <script src="/JS/common.js"></script>
+    <div class="tz-pop showmsg">
+        <div class="mask"></div>
+        <div class="content">
+            <h3 class="showmsg-title"></h3>
+            <p class="showmsg-content"></p>
+            <div class="br btn-box">
+                <a class="sure showmsg-sure">确定</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="tz-pop login">
+        <div class="mask"></div>
+        <div class="content">
+            <h3>用户登录</h3>
+
+            <div class="br">
+                <label>用户名：</label>
+                <input placeholder="账号/ID/手机/邮箱" type="text" />
+            </div>
+            <div class="br">
+                <label>密　码：</label>
+                <input type="password" />
+            </div>
+            <div class="br btn-box">
+                <a class="sure">确定</a>
+                <a class="cancel close">取消</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

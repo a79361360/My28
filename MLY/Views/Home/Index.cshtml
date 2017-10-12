@@ -1,0 +1,122 @@
+﻿@{
+    ViewBag.Title = "微信急速28";
+}
+<link href="/Content/swiper.min.css" rel="stylesheet">
+<link href="/Content/index.css" rel="stylesheet">
+<script src="/JS/swiper.min.js"></script>
+<script src="/JS/zepto.min.js"></script>
+
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>微信急速28</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        var g28 = getQueryString('g28');//js used
+        g28 = g28 ? g28 : 'luck';
+    </script>
+    <div class="wrap">
+        <div class="top">
+            <a class="active" href="/">极速28</a>
+            <a href="#">北京</a>
+        </div>
+
+        <div class="box-menu-dis">
+            <div class="djs">
+                <p class="djshtml" id="left_title">
+                   @Html.Raw(ViewBag.IssTop1)
+                   @Html.Raw(ViewBag.IssTop)
+                </p>
+            </div>
+            <div class="menu">
+                <span></span>
+
+                <div class="popmenu">
+                    <em></em>
+                    <a href="/Tz/modelDo/">自定义投注模式</a>
+                    <a href="/Tz/Trend/200">走势图</a>
+                    <a href="/Home/mylist/">我的投注</a>
+                    <a href="/Tz/Autoplay/">自动投注</a>
+                    <a href="/Home/Help/">游戏规则</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="table">
+            <div class="swiper-container">
+                <div class="pull">下接刷新</div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td width="15%">期号</td>
+                                    <td width="15%">时间</td>
+                                    <td width="15%">号码</td>
+                                    <td>盈利</td>
+                                    <td width="15%">参与</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @Html.Raw(ViewBag.IssTop3)
+                            </tbody>
+                        </table>
+                        <table class="btop">
+                            @Html.Raw(ViewBag.IssTop7)
+                        </table>
+                    </div>
+                </div>
+                <div class="push">加载中</div>
+                <!-- Add Scroll Bar -->
+                <div class="swiper-scrollbar"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/JS/index.js"></script>
+
+    <script src="/JS/common.js"></script>
+    <div class="tz-pop showmsg">
+        <div class="mask"></div>
+        <div class="content">
+            <h3 class="showmsg-title"></h3>
+            <p class="showmsg-content"></p>
+            <div class="br btn-box">
+                <a class="sure showmsg-sure">确定</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="tz-pop login">
+        <div class="mask"></div>
+        <div class="content">
+            <h3>用户登录</h3>
+
+            <div class="br">
+                <label>用户名：</label>
+                <input placeholder="账号/ID/手机/邮箱" type="text" />
+            </div>
+            <div class="br">
+                <label>密　码：</label>
+                <input type="password" />
+            </div>
+            <div class="br btn-box">
+                <a class="sure">确定</a>
+                <a class="cancel close">取消</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

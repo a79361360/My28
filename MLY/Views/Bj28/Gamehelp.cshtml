@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "PC28";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <link href="/Content/css.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/js/jquery-1.js"></script>
+
+
+    <title>玩游戏赚金币，做任务换奖品，就在乐游网-PC28</title>
+
+    <meta name="Keywords" content="游戏体验 免费 网赚 幸运28">
+    <meta name="description" content="玩游戏赚金币，做任务换奖品，就在乐游网">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+</head>
+<body>
+    <div class="clear"></div>
+    <div class="likebody mainbody">
+
+        <div class="likebody">
+            @Html.Action("RankRightList", "Shared", new { id = 2 })
+            <div class="gamemain">
+                @Html.Action("Top", "Bj28", null)<div>
+                    @Html.Raw(ViewBag.Html)
+                </div>
+
+                <link href="/Content/help.css" rel="stylesheet">
+                <div class="main help">
+                    <div class="box">
+                        <h2>PC28是个什么样的游戏</h2>
+
+                        <p>
+                            PC28是闽乐游推出的经典竞猜游戏。28个号码，押中即可获得奖励。每天从早上9:05～次日23:55；每5分钟一
+                            期。虽然游戏本身规则很简单，但由于每期都有多人一起投注，而且投注的号码和金币各不相同.所以每个号码
+                            会有不同赔率。游戏会有很多变化， 其乐无穷，慢慢体会吧！
+                        </p>
+                    </div>
+                    <div class="box">
+                        <h2>什么是第三方开奖</h2>
+
+                        <p>
+                            PC28开奖结果来源于国家福利彩票<em>北京快乐8</em>(官网)开奖号码，从早上<em>9:05</em>至<em>23:55</em>，每<em>5</em>分钟一期不停开奖。
+                            北京快乐8每期开奖共开出<em>20</em>个数字，PC28将这20个开奖号码按照<em>由小到大的顺序依次排列</em>；
+                            取其排序<em>1-6</em>位的开奖号码相加，和值的末位数作为PC28开奖第一个数值；
+                            取其<em>7-12</em>位的开奖号码相加，和值的末位数作为PC28开奖第二个数值，取其<em>13-18</em>位的开奖号码相加，和值的末位数作为PC28开奖第三个数值；
+                            三个数值相加即为PC28最终的开奖结果。
+                        </p>
+                        <div class="lz">以北京福彩快乐8第607473期开奖为例： <span>同步时间：2013-12-27 11:00</span></div>
+
+                        <img src="/img/help1.png" alt="" />
+                        <p><em>注：</em>快乐8开奖数字从小到大依次排列，相加后作为最后的取值结果！</p>
+                    </div>
+                    <div class="box">
+                        <h2>28游戏怎么玩</h2>
+                        <p style="border-bottom:1px solid #e0e0e0;margin-bottom: 15px; padding-bottom: 15px;margin: 15px; padding: 0 0 15px 0">
+                            28游戏是三个0～9的随机数之和，因此竞猜的范围：<em>０～２７</em>。为了方便理解，我们对０～２７进行归类，整理出很多
+                            常用投注模式如下图，您还可按自己的习惯创建自己的投注模式。
+
+                            <img src="/img/help2.png" alt="" />
+                        </p>
+                        <img src="/img/help3.png" alt="" />
+                        <div class="last">
+                            注意：目前PC28,极速28最大投注额为<em>5千万</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>自动投注</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="~/Content/WeiXin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/WeiXin/css/style.css" rel="stylesheet" />
+    <script src="~/Content/WeiXin/js/zepto.min.js"></script>
+    <script src="~/Content/WeiXin/js/index.js"></script>
+    <script src="~/JS/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/WeiXin/js/dsdialog.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "/Shared/Get_UserJbMoneyOnly",
+                dataType: 'json',
+                success: function (data) {
+                    $(".jb").html(data.jb)
+                }
+            });
+            if ( @ViewBag.Auto == "1") {
+                $(".auto-pre").hide();
+                $(".auto-suc").show();
+            } else {
+                $(".auto-pre").show();
+                $(".auto-suc").hide();
+            }
+
+        })
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class=" head1 clearfix">
+            <a href="index"><img src="~/Content/WeiXin/images/left.png" /></a>
+            <span class="title">自动投注</span>
+            <a href=""><img src="~/Content/WeiXin/images/freshen.png" /></a>
+        </div>
+        <div class="dh"></div>
+    </div>
+    <div class="container auto-head auto-pre">
+        <p class="auto-p large text-center ">金币余额：<span class="positive ld jb">1500</span><span class="positive">金币</span></p>
+    </div>
+    <div class="container auto-head auto-suc" style="display:none;">
+        <p class="auto-p large wl ">金币余额：<span class="positive ld jb">1500</span><span class="positive">金币</span></p>
+    </div>
+    <div class="container invitecon">
+        <form class="form-horizontal wl auto-pre" role="form">
+            <div class="form-group form1">
+                <label for="firstname" class=" control-label fl ">投注模式:</label>
+                <div class="col-xs-8 col-md-8 fr">
+                    @Html.Raw(ViewBag.Open)
+                </div>
+            </div>
+            <div class="form-group ">
+                <label for="firstname" class=" control-label fl ">开始期数:</label>
+                <div class="col-xs-8 col-md-8 fr">
+                    <input type="text" class="form-control form-bgc" id="start" name="start" value="@ViewBag.Top" onkeyup='this.value=this.value.replace(/\D/gi,"")'>
+                </div>
+            </div>
+        </form>
+        <div class="auto-suc" style="color: #000; line-height: 1.5rem; display: none;">
+            @Html.Raw(ViewBag.start)
+            <p class="dl" style="padding-bottom:10px;">开始期号：<span class="positive">@ViewBag.Top</span>结束期号：<span class="positive">@ViewBag.End</span></p>
+            <p>投注期数达到：金币小于<span class="positive">@ViewBag.MinJb</span>或者金币大于<span class="positive">@ViewBag.MaxJb</span>或金币不够投注</p>
+        </div>
+    </div>
+    <div class="container">
+        <p class="rank-qq positive wl auto-pre">
+            达到以下条件时，自动停止投注
+
+        </p>
+        <p class="rank-qq black wl auto-suc" style="display:none;">
+            *以上几项达到任意一项即马上停止自动投注
+
+        </p>
+    </div>
+    <div class="container invitecon auto-pre">
+        <form class="form-horizontal wl" role="form">
+            <div class="form-group form1">
+                <label for="firstname" class=" control-label fl ">结束期数:</label>
+                <div class="col-xs-8 col-md-8 fr">
+                    <input type="text" class="form-control form-bgc" id="end" name="end" value="@ViewBag.End" onkeyup='this.value=this.value.replace(/\D/gi,"")'>
+                </div>
+            </div>
+            <div class="form-group form1">
+                <label for="firstname" class=" control-label fl ">最小值:</label>
+                <div class="col-xs-8 col-md-8 fr">
+                    <input type="text" class="form-control form-bgc" id="MinJb" name="MinJb" value="@ViewBag.MinJb" onkeyup='this.value=this.value.replace(/\D/gi,"")'>
+                </div>
+            </div>
+            <div class="form-group form1">
+                <label for="firstname" class=" control-label fl ">最大值:</label>
+                <div class="col-xs-8 col-md-8 fr">
+                    <input type="text" class="form-control form-bgc" id="MaxJb" name="MaxJb" value="@ViewBag.MaxJb" onkeyup='this.value=this.value.replace(/\D/gi,"")'>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container text-center auto-btnbg ">
+        <button type="button" class="btn btn-danger auto-btn auto-pre" onclick="SaveAutomatic(2)">开始自动投注</button>
+        @Html.Raw(ViewBag.stopbtn)
+    </div>
+    <div class="container" style="margin-bottom:60px;">
+        <div class="table-responsive">
+            <table class="table1">
+                <thead>
+                    <tr style="color:#524141;">
+                        <th>投注模式</th>
+                        <th>赢后使用模式</th>
+                        <th>输后使用模式</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.Raw(ViewBag.Temp)
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="footmenu">
+        <div class="item1">
+            <span class="black">今日活动</span>
+            <div class="item-pop">
+                <a href="/WxJs28/RankList">日排名赛</a>
+                <a href="/WxJs28/Superlist">周排名赛</a>
+                <span></span>
+            </div>
+        </div>
+        <div class="item1" id="footer_trend">
+            <span class="black"><a href="/WxBj28/index">益智竞猜</a></span>
+        </div>
+        <div class="item1">
+            <span class="black">我的信息</span>
+            <div class="item-pop">
+                <a href="/WxJs28/selfinfo">我的信息</a>
+                <a href="/WxJs28/exchange">兑换金币</a>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

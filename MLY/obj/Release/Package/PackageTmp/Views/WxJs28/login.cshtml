@@ -1,0 +1,147 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>会员登录</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="~/Content/WeiXin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/WeiXin/css/style.css" rel="stylesheet" />
+    <script src="~/Content/WeiXin/js/zepto.min.js"></script>
+    <script src="~/JS/jquery.min.js"></script>
+    <script src="~/Content/WeiXin/js/index.js"></script>
+    <script type="text/javascript" src="~/Content/WeiXin/js/dsdialog.js"></script>
+    <script src="~/Content/WeiXin/js/analy.js"></script>
+    <style>
+        .eye {
+            background: url(../Content/Weixin/images/eye_closed.png);
+            background-position: 0 center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            height: 100%;
+            overflow: hidden;
+            text-indent: -9999em;
+            width: 30px;
+            background-size: 30px!important;
+        }
+
+        .pw_input {
+            color: inherit;
+            display: block;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            margin: 0;
+            padding: 0.5em;
+            position: relative;
+            vertical-align: middle;
+            -webkit-appearance: none;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+    </style>
+    <script type="text/javascript">
+
+        $(function () {
+            $("#yzm").focus(function () {
+                CreateYzm();
+            });
+        })
+
+        function chgUrl(url) {
+            var timestamp = (new Date()).valueOf();
+            if ((url.indexOf("?") >= 0)) {
+                url = url + "&tamp=" + timestamp;
+            } else {
+                url = url + "?timestamp=" + timestamp;
+            }
+            return url;
+        }
+
+        //验证码img
+        function changeImg(id, url, type) {
+            var imgSrc = $("#" + id);
+            var src = url + "?type=" + type;
+            imgSrc.attr("src", chgUrl(src));
+        }
+
+
+        CreateYzm = function () {
+            $("#yzm").val("");
+            changeImg("yzmimg", "../Shared/VerifyCode", "dh");
+        }
+
+        function changeState() {
+            var state = $(".pw_input").attr("type");
+            console.log(state)
+            if (state == "password") {
+                $(".pw_input").attr("type", "text");
+                $(".eye").css("background", "url(../Content/Weixin/images/eye_open.png)");
+
+                return;
+            }
+            if (state == "text") {
+                $(".pw_input").attr("type", "password");
+                $(".eye").css("background", "url(../Content/Weixin/images/eye_closed.png)");
+
+            }
+
+        }
+    </script>
+</head>
+<body style="background-color:#f2f2f2;">
+    <div class="container" style="background-color:#fff;">
+        <div class=" head1 clearfix">
+            <a href=""><img src="~/Content/WeiXin/images/left.png" /></a>
+            <span class="title">会员登录</span>
+            <a href=""><img src="~/Content/WeiXin/images/freshen.png" /></a>
+        </div>
+        <div class="dh"></div>
+    </div>
+    <div class="container invitecon">
+        <form class="form-horizontal" role="form">
+            <div class="form-group form1">
+                <label for="firstname" class=" control-label fl " style=" letter-spacing: 3px;">用户名:</label>
+                <div class="col-xs-8 col-md-8 fr">
+                    <input type="text" class="form-control form-bgc" id="username" value="10011247"
+                           placeholder="账号/手机号">
+                </div>
+            </div>
+            <div class="form-group form1">
+                <label for="inputPassword" class="control-label fl" style=" letter-spacing:2px;">密&nbsp;&nbsp;&nbsp;码:</label>
+                <div class="col-xs-8 col-md-8 fr" style="position:relative;">
+                    <input type="password" class="form-control form-bgc pw_input" id="inputPassword"
+                           placeholder="请输入密码">
+                    <div class="eye" onclick="changeState()" style="position: absolute;top: 65%;right: 18px; margin-top: -21px;"></div>
+                </div>
+            </div>
+
+
+            <div class="form-group form1  yzm">
+                <label for="" class="control-label fl" style=" letter-spacing: 3px;">验证码:</label>
+                <div class="col-xs-8 col-md-8 fr input2">
+                    <a style="cursor: pointer; a: focus, a:hover;color: #000;" onclick="CreateYzm()">
+                        <img id="yzmimg" /></a>
+                        <input type="tel" class="form-control form-bgc" id="yzm" name="yzm" maxlength="4" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="点击获取验证码" style="width: 60%; float: left;margin-right:10px;" />
+                        <div style="clear:both;"></div>
+                        <div class="input1">
+                            <a style="color: #a4a4a4;cursor: pointer; a: focus, a:hover; color: #a4a4a4; " onclick="CreateYzm()">看不清，换一张！</a>
+                        </div>
+</div>
+                
+               
+            </div>
+        </form>
+    </div>
+    <div class="container text-center">
+
+        <button id="btn_login" type="button" class="btn btn-danger btnn  btnl" onclick="check_login()">登录</button>
+        <button type="button" class="btn btn-default btnl btnex positive" onclick="javascript:window.location.href='register'">免费注册</button>
+    </div>
+</body>
+</html>

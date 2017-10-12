@@ -1,0 +1,9 @@
+E:\ProJect\yd28\trunk\Bj28Service\obj\Debug\Bj28Service.ProjectInstaller.resources
+E:\ProJect\yd28\trunk\Bj28Service\obj\Debug\Bj28Service.csproj.GenerateResource.Cache
+E:\ProJect\yd28\trunk\Bj28Service\bin\Debug\Bj28Service.exe.config
+E:\ProJect\yd28\trunk\Bj28Service\bin\Debug\Bj28Service.exe
+E:\ProJect\yd28\trunk\Bj28Service\bin\Debug\Bj28Service.pdb
+E:\ProJect\yd28\trunk\Bj28Service\bin\Debug\NSoup.dll
+E:\ProJect\yd28\trunk\Bj28Service\obj\Debug\Bj28Service.exe
+E:\ProJect\yd28\trunk\Bj28Service\obj\Debug\Bj28Service.pdb
+E:\ProJect\yd28\trunk\Bj28Service\obj\Debug\Bj28Service.csprojResolveAssemblyReference.cache

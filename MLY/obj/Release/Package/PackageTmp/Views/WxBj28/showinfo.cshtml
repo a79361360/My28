@@ -1,0 +1,68 @@
+﻿﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>投注结果</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="~/Content/WeiXin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/WeiXin/css/style.css" rel="stylesheet" />
+    <script src="~/Content/WeiXin/js/zepto.min.js"></script>
+    <script src="~/Content/WeiXin/js/index.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class=" head1 clearfix">
+            <a href="javascript:history.go(-1)"><img src="~/Content/WeiXin/images/left.png" /></a>
+            <span class="title">投注结果</span>
+            <a href=""><img src="~/Content/WeiXin/images/freshen.png" /></a>
+        </div>
+        <div class="dh"></div>
+    </div>
+    <div class="container " style="margin-bottom:60px;">
+        <div class="rule-info  black clearfix" style="margin:0px;line-height:1.5rem;">
+            @Html.Raw(ViewBag.TzKjTop)
+        </div>
+        <div class="dh"></div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>中奖号码</th>
+                    <th>赔率</th>
+                    <th>投注金币</th>
+                    <th>获得金币</th>
+                </tr>
+            </thead>
+            <tbody>
+                @Html.Raw(ViewBag.TzKjList)
+            </tbody>
+        </table>
+    </div>
+    <div class="footmenu">
+        <div class="item1">
+            <span class="black">今日活动</span>
+            <div class="item-pop">
+                <a href="/WxJs28/RankList">日排名赛</a>
+                <a href="/WxJs28/Superlist">周排名赛</a>
+                <span></span>
+            </div>
+        </div>
+        <div class="item1" id="footer_trend">
+            <span class="black"><a href="/WxBj28/index">益智竞猜</a></span>
+        </div>
+        <div class="item1">
+            <span class="black">我的信息</span>
+            <div class="item-pop">
+                <a href="/WxJs28/selfinfo">我的信息</a>
+                <a href="/WxJs28/exchange">兑换金币</a>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

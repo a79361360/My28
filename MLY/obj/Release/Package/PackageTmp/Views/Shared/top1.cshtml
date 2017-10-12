@@ -1,0 +1,74 @@
+﻿
+<style type="text/css">
+    .tableli td {
+        text-align: left;
+        color: #989898;
+    }
+
+        .tableli td a {
+            color: #989898;
+        }
+
+            .tableli td a:hover {
+                color: red;
+            }
+
+            .tableli td a span {
+                font-family: Arial;
+                font-style: italic;
+            }
+</style>
+<div class="gamedh clearfix">
+    
+   
+    <a id="gmenu_id2" href="/Bj28/index/1">PC28</a>
+    <a id="gmenu_id1" href="/Js28/Index/1">极速28</a>
+</div>
+<div class="dhys1">
+    <div class="fr1">
+        <a href="/Js28/Index/1">竞猜首页</a>
+        <a href="/Shty28/Trend/1">号码走势</a>
+        <a href="/Js28/Gamehelp/">游戏帮助</a>
+        @*<a href="/Tz/ActivityRanklist/1">日榜乐豆奖励<img class="tdys" src="~/img/Mask_1.gif" /></a>*@
+        <a class="menuribang" href="/Tz/ActivityRanklist/1">双榜奖励<em>6800万+6.38亿</em></a>
+    </div>
+    @*<a class="menuribang" href="/Shared/Superlist/1">超级榜<em>巨奖59亿</em></a>*@
+    <div class="fr">
+        <a href="/Js28/insertmod/1">投注模式编辑</a>|
+        <a href="/Shty28/selfset/1">自动投注</a>|
+        <a href="/Shty28/mytz/1/1">我的投注</a>
+
+
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            setmenushow();
+        })
+        //设置导航选中高亮
+        setmenushow = function () {
+            var zilist = $(".dhys1 a");
+            var url = window.location.href;
+            //zilist.removeClass("home-page");
+            //var ziname = url.substring(url.lastIndexOf('/') + 1, url.length);
+            if (url.indexOf('Index') > -1) $(zilist[0]).addClass("home-page");
+            if (url.indexOf('Trend') > -1) $(zilist[1]).addClass("home-page");
+            if (url.indexOf('Gamehelp') > -1) $(zilist[2]).addClass("home-page");
+            if (url.indexOf('ActivityRanklist') > -1) $(zilist[3]).addClass("home-page");
+            //if (url.indexOf('Superlist') > -1) $(zilist[4]).addClass("home-page");
+            if (url.indexOf('insertmod') > -1) $(zilist[4]).addClass("home-page");
+            if (url.indexOf('selfset') > -1) $(zilist[5]).addClass("home-page");
+            if (url.indexOf('mytz') > -1) $(zilist[6]).addClass("home-page");
+        }
+    </script>
+</div>
+
+
+
+
+
+
+
+
+
+
+

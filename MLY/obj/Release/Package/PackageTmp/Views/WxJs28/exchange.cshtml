@@ -1,0 +1,137 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>兑换金币</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="~/Content/WeiXin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/WeiXin/css/style.css" rel="stylesheet" />
+    <script src="~/Content/WeiXin/js/zepto.min.js"></script>
+    <script src="~/JS/jquery.min.js"></script>
+    <script src="~/Content/WeiXin/js/index.js"></script>
+    <script type="text/javascript" src="~/Content/WeiXin/js/dsdialog.js"></script>
+   
+    <script>
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "/Shared/Get_UserJbMoney",
+                dataType: 'json',
+                success: function (data) {
+                    $(".name").html(data.nickname)
+                    $(".jb").html( parseFloat(data.jb).toLocaleString())
+                    $(".led").html(parseFloat(data.money).toLocaleString())
+                    jb = data.jb;//当前金币
+                    ld = data.money;//当前乐豆
+                    console.log(data)
+                }
+            });
+
+            $("#txt_money").blur(function () {
+                var monry = $("#txt_money").val();
+                var ld = $("#txt_ld").val();
+                if (monry == "") {
+                    if (ld == "") { $("#xxxs").html("") }
+                    else { $("#xxxs").html(parseFloat(ld).toLocaleString() + "金币"); } 
+                }
+                else {
+                    $("#xxxs").html(parseFloat(monry).toLocaleString() + "乐豆");
+                }
+            })
+
+            $("#txt_ld").blur(function () {
+                var ld = $("#txt_ld").val();
+                var monry = $("#txt_money").val();
+                if (ld == "") {
+                    if (monry == "") {
+                        $("#xxxs").html("")
+                    }
+                    else { $("#xxxs").html(parseFloat(monry).toLocaleString() + "乐豆"); }
+                }
+                else {
+                    $("#xxxs").html(parseFloat(ld).toLocaleString() + "金币");
+                }
+            })
+
+        })
+    </script>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class=" head1 clearfix">
+            <a href="javascript:history.go(-1)"><img src="~/Content/WeiXin/images/left.png" /></a>
+            <span class="title">兑换金币</span>
+            <a href=""><img src="~/Content/WeiXin/images/freshen.png" /></a>
+        </div>
+        <div class="dh"></div>
+    </div>
+    <div class="container">
+        <p class="list-info clearfix" style="border-bottom:none;">
+            <span class="info2">
+                <span class="black">昵称：</span><span class="wl name">游客551345131</span><br>
+                <span class="black">当前金币：</span><span class="positive ld wl jb">121,150</span><br>
+                <span class="black">银行乐豆：</span><span class="positive ld wl led">121,150</span>
+            </span>
+            <button type="button" class="btn btn-default btnex fr" onclick="javascript: window.location.href = '/WxJs28/SafeQuit'"><span class="positive">安全退出</span></button>
+        </p>
+    </div>
+    <div class="dh"></div>
+    <div class="container invitecon">
+        <form class="form-horizontal" role="form">
+            <div class="form-group form1 clearfix" style="border:none;">
+                <label for="firstname" class=" control-label   fl ">金币换乐豆:</label>
+                <div class="col-xs-8 col-md-8 labelr">
+                    <input type="text" class="form-control form-bgc" id="txt_money" name="jb" value="" onkeyup='this.value=this.value.replace(/\D/gi,"")'>
+                </div>
+            </div>
+            <div class="form-group form1 clearfix">
+                <label for="firstname" class=" control-label fl ">乐豆换金币:</label>
+                <div class="col-xs-8 col-md-8 labelr">
+                    <input type="text" class="form-control form-bgc" id="txt_ld" name="led" value="" onkeyup='this.value=this.value.replace(/\D/gi,"")'>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+                    <p>您将获得：<span class="positive" id="xxxs"></span></p>
+                </div>
+            </div>
+            <div class="form-group form1">
+                <label for="inputPassword" class="control-label fl">银行密码:</label>
+                <div class="col-xs-8 col-md-8">
+                    <input type="password" class="form-control form-bgc" id="yzm" value="">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container text-center">
+        <button type="button" class="btn btn-danger btnnn" onclick="subduihuan()">确定兑换</button>
+    </div>
+
+    <div class="footmenu">
+        <div class="item1">
+            <span class="black">今日活动</span>
+            <div class="item-pop">
+                <a href="RankList">日排名赛</a>
+                <a href="Superlist">周排名赛</a>
+                <span></span>
+            </div>
+        </div>
+        <div class="item1" id="footer_trend">
+            <span class="black"><a href="index">益智竞猜</a></span>
+        </div>
+        <div class="item1">
+            <span class="black">我的信息</span>
+            <div class="item-pop">
+                <a href="selfinfo">我的信息</a>
+                <a href="exchange">兑换金币</a>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

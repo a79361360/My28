@@ -1,0 +1,258 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>每日排行榜</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="~/Content/WeiXin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/WeiXin/css/style.css" rel="stylesheet" />
+    <script src="~/Content/WeiXin/js/zepto.min.js"></script>
+    <script src="~/Content/WeiXin/js/index.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            GetMySoure(1);
+            GetMySoure(2);
+            $('.jcphb-info .tap').on('click', 'span', function () {
+                ontab(this);
+            });
+        })
+    </script>
+        </head>
+        <body>
+            <div class="container">
+                <div class=" head1 clearfix">
+                    <a href="javascript:history.go(-1)"><img src="~/Content/WeiXin/images/left.png" /></a>
+                    <span class="title">竞猜排行榜</span>
+                    <a href=""><img src="~/Content/WeiXin/images/freshen.png" /></a>
+                </div>
+                <div class="dh"></div>
+            </div>
+            <div class="container jcphb-info jlyldbp" style="margin-bottom:60px;">
+                <p class="list-rank clearfix">
+                    <span class="positive ld fl" id="rbyl"><span class="black">日榜总赢利：</span>66</span><img src="~/Content/WeiXin/images/gold.png" class="wls" /><br>
+                    <span class="positive fl" id="rbpm"> <span class="black">您当前排名：</span>暂未入榜</span>
+               </p>
+        <div class="switchb bgr clearfix tap fr">
+            <span class="fl active" tt="1">今日</span>
+            <span class="fr" tt="2">昨日</span> 
+        </div>
+        <p class="rank-qq  text-center">
+            <span class="large ">
+                <img src="~/Content/WeiXin/images/qq.png" />
+                <span class="positive"> <span class="black">竞猜交流群：</span>2970101(有红包)</span>
+            </span>
+        </p>
+        <div class="jcphb-table jcphb-panel active">
+            <table class="table1" id="rank_43">
+
+                <tbody>
+                    @*<tr>
+                        <td>
+                            <img src="~/Content/WeiXin/images/rr.png" class="fl" />
+                            <p class="list-rank2 clearfix">
+                                <span class="positive ld fl"><span class="black">游戏成绩：</span>769,065,220</span><br>
+                                <span class=" fl">神*男人</span>
+                            </p>
+                        </td>
+                        <td>奖励<span class="positive wl">¥66666666</span></td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="~/Content/WeiXin/images/rb.png" class="fl" />
+                            <p class="list-rank2 clearfix">
+                                <span class="positive ld fl"><span class="black">游戏成绩：</span>769,065,220</span><br>
+                                <span class=" fl">神*男人</span>
+                            </p>
+                        </td>
+                        <td>奖励<span class="positive wl">¥66666666</span></td>
+
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <img src="~/Content/WeiXin/images/ro.png" class="fl" />
+                            <p class="list-rank2 clearfix">
+                                <span class="positive ld fl"><span class="black">游戏成绩：</span>769,065,220</span><br>
+                                <span class=" fl">神*男人</span>
+                            </p>
+                        </td>
+                        <td>奖励<span class="positive wl">¥66666666</span></td>
+
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span class="rank-num fl" style="margin-left:5px;">4</span>
+                            <p class="list-rank2 clearfix">
+                                <span class="positive ld fl"><span class="black">游戏成绩：</span>769,065,220</span><br>
+                                <span class=" fl">神*男人</span>
+                            </p>
+                        </td>
+                        <td>奖励<span class="positive wl">¥66666666</span></td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="rank-num fl" style="margin-left:5px;">5</span>
+                            <p class="list-rank2 clearfix">
+                                <span class="positive ld fl"><span class="black">游戏成绩：</span>769,065,220</span><br>
+                                <span class=" fl">神*男人</span>
+                            </p>
+                        </td>
+                        <td>奖励<span class="positive wl">¥66666666</span></td>
+
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span class="rank-num fl" style="margin-left:5px;">5</span>
+                            <p class="list-rank2 clearfix">
+                                <span class="positive ld fl"><span class="black">游戏成绩：</span>769,065,220</span><br>
+                                <span class=" fl">神*男人</span>
+                            </p>
+                        </td>
+                        <td>奖励<span class="positive wl">¥66666666</span></td>
+
+                    </tr>*@
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="footmenu">
+        <div class="item1">
+            <span class="black">今日活动</span>
+            <div class="item-pop">
+                <a href="RankList">日排名赛</a>
+                <a href="Superlist">周排名赛</a>
+                <span></span>
+            </div>
+        </div>
+        <div class="item1" id="footer_trend">
+            <span class="black"><a href="index">益智竞猜</a></span>
+        </div>
+        <div class="item1">
+            <span class="black">我的信息</span>
+            <div class="item-pop">
+                <a href="selfinfo">我的信息</a>
+                <a href="exchange">兑换金币</a>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <script>
+
+    ontab = function (e) {
+        $('.jcphb-info .tap span').removeClass('active');
+        $(e).toggleClass('active');
+        var tt = $(e).attr("tt");
+        if (tt == "1") {
+            $('#rank_43 tbody').html(str1);
+           }
+        if (tt == "2") {
+            $('#rank_43 tbody').html(str);
+           }
+         }
+
+        $('.whwh').click(function () {
+            $('.showmsg-phb').css('display', 'block');
+        })
+
+        $('.jcphb-tab').on('click', 'span', function () {
+            var index = $(this).index();
+            $(this).addClass('jcphb-active').siblings().removeClass('jcphb-active');
+            $('.jcphb-2-panel').eq(index).addClass('active').siblings().removeClass('active');
+        })
+        var str = "", str1 = ""; //昨日,今日
+        GetMySoure = function (type) {
+            //type为1表示取得个人信息,type为2表示取得排行榜信息
+            var url = "/Tz/GetRListInfo";
+            $.getJSON(url, { type: type }, function (ret) {
+                if (ret.code == 1000) {
+                    if (type == 1) {
+                        var data = eval(ret.data)[0];
+                        var dqyl = data.dqyl; var dqpm = data.dqpm;
+                       
+                        if (dqpm == -1) {
+                            dqpm = "暂未入榜";
+                        } else {
+                            dqpm = data.dqpm;
+                        }
+             
+                        $("#rbyl").html("<span class=\"black\">日榜总赢利：</span>"+dqyl+"</span>"); $("#rbpm").html("<span class=\"black\">您当前排名：</span>"+dqpm);
+                    }
+                    if (type == 2) {
+                        var znum = 0, jnum = 0, snum = 0; //定义一个昨天的条数str,今天的条数str1
+                        var data = eval(ret.data)
+                        $.each(data, function (key, val) {
+                            var row = key + 1;
+                            if (val.ntype == 1) {
+                                znum++;
+                                if (row == 1) {
+                                    str += "<tr><td><img src=\"/Content/WeiXin/images/rr.png\" class=\"fl\" /><p class=\"list-rank2 clearfix\"><span class=\"positive fl\"><span class=\"black\">游戏成绩：</span>" + parseFloat(val.ylcount).toLocaleString() + "</span><br><span class=\" fl\">" + val.nickname.substring(0, 6) + "</span></p></td><td>奖励<span class=\"positive wl\">¥" + GetSingleAward(row - 1) + "</span></td></tr>";
+                                }
+                                if (row == 2) {
+                                    str += "<tr><td><img src=\"/Content/WeiXin/images/rb.png\" class=\"fl\" /><p class=\"list-rank2 clearfix\"><span class=\"positive  fl\"><span class=\"black\">游戏成绩：</span>" + parseFloat(val.ylcount).toLocaleString() + "</span><br><span class=\" fl\">" + val.nickname.substring(0, 6) + "</span></p></td><td>奖励<span class=\"positive wl\">¥" + GetSingleAward(row - 1) + "</span></td></tr>";
+                                }
+                                if (row == 3) {
+                                    str += "<tr><td><img src=\"/Content/WeiXin/images/ro.png\" class=\"fl\" /><p class=\"list-rank2 clearfix\"><span class=\"positive  fl\"><span class=\"black\">游戏成绩：</span>" + parseFloat(val.ylcount).toLocaleString() + "</span><br><span class=\" fl\">" + val.nickname.substring(0, 6) + "</span></p></td><td>奖励<span class=\"positive wl\">¥" + GetSingleAward(row - 1) + "</span></td></tr>";
+                                } if (row >= 4) {
+                                    str += "<tr><td><span class=\"rank-num fl\" style=\"margin-left:5px;\">" + row + "</span><p class=\"list-rank2 clearfix\"><span class=\"positive  fl\"><span class=\"black\">游戏成绩：</span>" + parseFloat(val.ylcount).toLocaleString() + "</span><br><span class=\" fl\">" + val.nickname.substring(0, 6) + "</span></p></td> <td>奖励<span class=\"positive wl\">¥" + GetSingleAward(row - 1) + "</span></td></tr>";
+                                }
+                               
+                            } else if (val.ntype == 2) {
+                                row = row - znum; jnum++;
+                                if (row == 1) {
+                                    str1 += "<tr><td><img src=\"/Content/WeiXin/images/rr.png\" class=\"fl\" /><p class=\"list-rank2 clearfix\"><span class=\"positive fl\"><span class=\"black\">游戏成绩：</span>" + parseFloat(val.ylcount).toLocaleString() + "</span><br><span class=\" fl\">" + val.nickname.substring(0, 6) + "</span></p></td><td>奖励<span class=\"positive wl\">¥" + GetSingleAward(row - 1) + "</span></td></tr>";
+                                }
+                                if (row == 2) {
+                                    str1 += "<tr><td><img src=\"/Content/WeiXin/images/rb.png\" class=\"fl\" /><p class=\"list-rank2 clearfix\"><span class=\"positive  fl\"><span class=\"black\">游戏成绩：</span>" + parseFloat(val.ylcount).toLocaleString() + "</span><br><span class=\" fl\">" + val.nickname.substring(0, 6) + "</span></p></td><td>奖励<span class=\"positive wl\">¥" + GetSingleAward(row - 1) + "</span></td></tr>";
+                                }
+                                if (row == 3) {
+                                    str1 += "<tr><td><img src=\"/Content/WeiXin/images/ro.png\" class=\"fl\" /><p class=\"list-rank2 clearfix\"><span class=\"positive  fl\"><span class=\"black\">游戏成绩：</span>" + parseFloat(val.ylcount).toLocaleString() + "</span><br><span class=\" fl\">" + val.nickname.substring(0, 6) + "</span></p></td><td>奖励<span class=\"positive wl\">¥" + GetSingleAward(row - 1) + "</span></td></tr>";
+                                } if (row >= 4) {
+                                    str1 += "<tr><td><span class=\"rank-num fl\" style=\"margin-left:5px;\">" + row + "</span><p class=\"list-rank2 clearfix\"><span class=\"positive  fl\"><span class=\"black\">游戏成绩：</span>" + parseFloat(val.ylcount).toLocaleString() + "</span><br><span class=\" fl\">" + val.nickname.substring(0, 6) + "</span></p></td> <td>奖励<span class=\"positive wl\">¥" + GetSingleAward(row - 1) + "</span></td></tr>";
+                                }
+
+                            }
+
+                        });
+
+                        $('#rank_43 tbody').html(str1);  
+                    }
+                }
+            })
+        }
+        GetSingleAward = function (index) {
+            var list = Array(
+            "1500万<em class='d-icon'></em><em style='color:#ff0000'>+10%</em>",
+            "1000万<em class='d-icon'></em><em style='color:#ff0000'>+8%</em>",
+            "&nbsp500万<em class='d-icon'></em><em style='color:#ff0000'>+6%</em>",
+            "&nbsp200万<em class='d-icon'></em>",
+            "&nbsp100万<em class='d-icon'></em>",
+            "&nbsp&nbsp30万<em class='d-icon'></em>",
+            "&nbsp&nbsp10万<em class='d-icon'></em>"
+            );
+            if (index >= 4 & index <= 9) {
+                return list[3];
+            }
+            if (index >= 10 & index <= 19) {
+                return list[4];
+            }
+            if (index >= 20 & index <= 49) {
+                return list[5];
+            }
+            if (index >= 50 & index <= 99) {
+                return list[6];
+            }
+            return list[index];
+         }
+    </script>
+</body>
+</html>

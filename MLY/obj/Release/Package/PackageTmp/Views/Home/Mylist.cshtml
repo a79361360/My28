@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "微信急速28";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>hello world</title>
+    <link href="/Content/swiper.min.css" rel="stylesheet">
+    <link href="/Content/index.css" rel="stylesheet">
+    <script src="/JS/swiper.min.js"></script>
+    <script src="/JS/zepto.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        var g28 = getQueryString('g28');//js used
+        g28 = g28 ? g28 : 'luck';
+    </script>
+    <div class="wrap">
+        <div class="nav">
+            <a class="arrow" href="/"></a>
+            <span>我的投注</span>
+        </div>
+
+        <div class="wdtz-info">
+            <div class="wdtz-left">今日盈亏：@Html.Raw(ViewBag.today) 黄豆</div>
+            <div class="wdtz-right">胜率：@Html.Raw(ViewBag.sl)%</div>
+        </div>
+
+        <div class="wdtz-table">
+            <table>
+                <thead>
+                    <tr>
+                        <td>期号</td>
+                        <td>投注额</td>
+                        <td>盈利</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.Raw(ViewBag.body)
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+
+
+    <script src="https://static.ttz.com/mobile/luck28/js/common.js"></script>
+    <div class="tz-pop showmsg">
+        <div class="mask"></div>
+        <div class="content">
+            <h3 class="showmsg-title"></h3>
+            <p class="showmsg-content"></p>
+            <div class="br btn-box">
+                <a class="sure showmsg-sure">确定</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="tz-pop login">
+        <div class="mask"></div>
+        <div class="content">
+            <h3>用户登录</h3>
+
+            <div class="br">
+                <label>用户名：</label>
+                <input placeholder="账号/ID/手机/邮箱" type="text" />
+            </div>
+            <div class="br">
+                <label>密　码：</label>
+                <input type="password" />
+            </div>
+            <div class="br btn-box">
+                <a class="sure">确定</a>
+                <a class="cancel close">取消</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "微信急速28自动投注";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>自动投注</title>
+    <link href="/Content/swiper.min.css" rel="stylesheet">
+    <link href="/Content/index.css" rel="stylesheet">
+    <script src="/JS/swiper.min.js"></script>
+    <script src="/JS/zepto.min.js"></script>
+</head>
+<body>
+
+    <div class="wrap">
+        <div class="nav">
+            <a class="arrow"></a>
+            <span>自动投注</span>
+        </div>
+
+        <div class="auto-info">
+            黄豆余额：<em>@Html.Raw(ViewBag.Jb)黄豆</em>
+        </div>
+        <input type="hidden" id="Issue" name="Issue" value="0" />
+        <input type="hidden" id="AId" name="AId" value="@Html.Raw(ViewBag.Id)" />
+        <div class="auto-form">
+            <div class="br">
+                <span>投注模式：</span><select id="Open">
+                      @Html.Raw(ViewBag.Open)                
+                </select>
+            </div>
+            <div class="br">
+                <span>开始期数：</span><input value="@Html.Raw(ViewBag.Top)" id="start" name="start" type="text" />
+            </div>
+            <div class="br tjj">
+                达到以下条件时，自动停止投注
+            </div>
+            <div class="br">
+                <span>结束期数：</span><input value="@Html.Raw(ViewBag.Top10000)" id="end" name="end" type="text" />
+            </div>
+            <div class="br">
+                <span>金币小于：</span><input value="@Html.Raw(ViewBag.MinJb)" type="text" id="MinJb" name="MinJb" />
+            </div>
+            <div class="br">
+                <span>金币大于：</span><input value="@Html.Raw(ViewBag.MaxJb)" type="text" id="MaxJb" name="MaxJb" />
+            </div>
+
+        </div>
+       @Html.Raw(ViewBag.Html) 
+        <div class="auto-table">
+            <table>
+                <thead>
+                    <tr>
+                        <td>投注模式</td>
+                        <td>赢后使用模式</td>
+                        <td>输后使用模式</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.Raw(ViewBag.Temp)   
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="/JS/tz.js"></script>
+    <script src="/JS/savemodel.js"></script>
+
+    <script src="/JS/common.js"></script>
+    <div class="tz-pop showmsg">
+        <div class="mask"></div>
+        <div class="content">
+            <h3 class="showmsg-title"></h3>
+            <p class="showmsg-content"></p>
+            <div class="br btn-box" id="box">
+                <a class="sure showmsg-sure">确定</a>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

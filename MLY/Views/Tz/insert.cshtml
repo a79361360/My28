@@ -1,0 +1,174 @@
+﻿
+@{
+    ViewBag.Title = "急速28";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <link rel="Shortcut Icon" href="http://play28.mly.com/game/luck28/logo.ico">
+    <link rel="Bookmark" href="http://play28.mly.com/game/luck28/logo.ico">
+    <link href="/Content/css.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/js/jquery-1.js"></script>
+
+    <title>玩游戏赚金币，做任务换奖品，就在闽乐游-急速28</title>
+
+    <meta name="Keywords" content="游戏体验 免费 网赚 幸运28">
+    <meta name="description" content="玩游戏赚金币，做任务换奖品，就在闽乐游">
+</head>
+<body>
+    <div class="likebody mainbody">
+        <div class="likebody">
+            @Html.Action("RankRightList", "Shared", new { id = 1 })
+            <div class="gamemain">
+
+                <input value="50000000" id="maxzhi" type="hidden">
+                <input value="@Html.Raw(ViewBag.Iss)" id="Issue" name="Issue" type="hidden">
+                <input value="@Html.Raw(ViewBag.dqIss)" id="dqIssue" name="dqIssue" type="hidden">
+                <input value="" id="kq" name="kq" type="hidden">
+                @Html.Action("top", "Shared", null)
+                @Html.Raw(ViewBag.hidd)
+                @Html.Raw(ViewBag.hidds)
+                <script type="text/javascript" src="/js/gamejs_002.js"></script>
+                <script type="text/javascript" src="/js/gamejs.js"></script>
+                <script type="text/javascript">
+                    var xyqbbl = [1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 63, 69, 73, 75, 75, 73, 69, 63, 55, 45, 36, 28, 21, 15, 10, 6, 3, 1];
+                </script>
+
+                <input value="20" id="myjf" type="hidden">
+                <div class="gamecent">
+
+
+
+                    <div class="tzset">
+                        <div class="bj-row clearfix">
+                            <div class="tabwidgit clearfix">
+                                <div class="menu clearfix">
+                                    <span class="current">简易模式</span>
+                                    <span>标准模式</span>
+                                </div>
+                                <div class="panel current clearfix">
+                                    <span class="ydx" onclick="tz_da(xyqbbl)">压大 <em>(14到27)</em></span>
+                                    <span class="ydx" onclick="tz_xiao(xyqbbl)">压小 <em>(0到13)</em></span>
+                                    <span class="b-i" onclick="tz_dan(xyqbbl)">单 <em>奇数1.3.5...27</em></span>
+                                    <span class="b-i" onclick="tz_shuang(xyqbbl)">双 <em>偶数2.4.6...26</em></span>
+                                    <span class="b-i" onclick="tz_zhong(xyqbbl)">中 <em>10到17</em></span>
+                                    <span class="b-i" onclick="tz_bian(xyqbbl)">边 <em>0-9到18-27</em></span>
+                                </div>
+                                <div class="panel jyms clearfix">
+                                    <a href="javascript:qb(xyqbbl)">全包</a>
+                                    <a href="javascript:tz_dan(xyqbbl)">单</a>
+                                    <a href="javascript:tz_da_dan(xyqbbl)">大单</a>
+                                    <a href="javascript:tz_xiao_dan(xyqbbl)">小单</a>
+                                    <a href="javascript:tz_dan_bian(xyqbbl)">单边</a>
+                                    <a href="javascript:tz_shuang(xyqbbl)">双</a>
+                                    <a href="javascript:tz_da_shuang(xyqbbl)">大双</a>
+                                    <a href="javascript:tz_xiao_shuang(xyqbbl)">小双</a>
+                                    <a href="javascript:tz_shuang_bian(xyqbbl)">双边</a>
+                                    <a href="javascript:tz_da(xyqbbl)">大</a>
+                                    <a href="javascript:tz_xiao(xyqbbl)">小</a>
+                                    <a href="javascript:tz_zhong(xyqbbl)">中</a>
+                                    <a href="javascript:tz_bian(xyqbbl)">边</a>
+                                    <a href="javascript:tz_da_bian(xyqbbl)">大边</a>
+                                    <a href="javascript:tz_xiao_bian(xyqbbl)">小边</a>
+                                    <a href="javascript:tz_wei(xyqbbl,10,0)">0尾</a>
+                                    <a href="javascript:tz_wei(xyqbbl,10,1)">1尾</a>
+                                    <a href="javascript:tz_wei(xyqbbl,10,2)">2尾</a>
+                                    <a href="javascript:tz_wei(xyqbbl,10,3)">3尾</a>
+                                    <a href="javascript:tz_wei(xyqbbl,10,4)">4尾</a>
+                                    <a href="javascript:tz_wei(xyqbbl,10,5)">5尾</a>
+                                    <a href="javascript:tz_wei(xyqbbl,10,6)">6尾</a>
+                                    <a href="javascript:tz_wei(xyqbbl,10,7)">7尾</a>
+                                    <a href="javascript:tz_wei(xyqbbl,10,8)">8尾</a>
+                                    <a href="javascript:tz_wei(xyqbbl,10,9)">9尾</a>
+                                    <a href="javascript:tz_xiaowei(xyqbbl)">小尾</a>
+                                    <a href="javascript:tz_dawei(xyqbbl)">大尾</a>
+                                    <a href="javascript:tz_wei(xyqbbl,3,0)">3余0</a>
+                                    <a href="javascript:tz_wei(xyqbbl,3,1)">3余1</a>
+                                    <a href="javascript:tz_wei(xyqbbl,3,2)">3余2</a>
+                                    <a href="javascript:tz_wei(xyqbbl,4,0)">4余0</a>
+                                    <a href="javascript:tz_wei(xyqbbl,4,1)">4余1</a>
+                                    <a href="javascript:tz_wei(xyqbbl,4,2)">4余2</a>
+                                    <a href="javascript:tz_wei(xyqbbl,4,3)">4余3</a>
+                                    <a href="javascript:tz_wei(xyqbbl,5,0)">5余0</a>
+                                    <a href="javascript:tz_wei(xyqbbl,5,1)">5余1</a>
+                                    <a href="javascript:tz_wei(xyqbbl,5,2)">5余2</a>
+                                    <a href="javascript:tz_wei(xyqbbl,5,3)">5余3</a>
+                                    <a href="javascript:tz_wei(xyqbbl,5,4)">5余4</a>
+                                    <a href="javascript:qk()">清除</a>
+                                </div>
+                            </div>
+                            <div class="selfmode">
+                                <h2>
+                                    自定义模式
+                                    <div class="frr"><span onclick="window.location.href='/Js28/insertmod/0'">编缉管理</span></div>
+                                </h2>
+                                <div class="modlist">
+                                    <span class="addmode" onclick="window.location.href='/Js28/insertmod/0'">+添加投注模式</span>
+                                    @Html.Raw(ViewBag.Option)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bj-row add-tz">
+                            <em>加注</em>
+                            <a href="javascript:allxx(0.5)">0.5倍</a>
+                            <a href="javascript:allxx(0.8)">0.8倍</a>
+                            <a href="javascript:allxx(1.2)">1.2倍</a>
+                            <a href="javascript:allxx(1.5)">1.5倍</a>
+                            <a href="javascript:allxx(2)">2倍</a>
+                            <a href="javascript:allxx(5)">5倍</a>
+                            <a href="javascript:allxx(10)">10倍</a>
+                            <a href="javascript:allxx(100)">100倍</a>
+                            <a href="javascript:souha(@Html.Raw(ViewBag.UserJb))">梭哈</a>
+                            <div class="i-fr" id="ms">
+                                <a class="current-mode">当前正在编辑 | <em>新模板</em></a>
+                                <a class="" href="javascript:fx(xyqbbl)">反选</a>
+                                <a href="javascript:GetSq()">上期投注</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="gamecontent">
+
+
+                        <table class="gamecontable" align="center" cellpadding="0" cellspacing="1">
+                            <!--                                <thead>
+                                <tr>
+                                    <th width="80px">选择号码</th>
+                                    <th width="100px">当前/标准赔率</th>
+                                    <th width="60px">已投</th>
+                                    <th width="40px">选择</th>
+                                    <th width="80px">投注</th>
+                                    <th>倍数</th>
+                                </tr>
+                            </thead>-->
+                            <tbody id="Tbody2">
+
+                                <tr>
+                                    
+
+                                        @Html.Raw(ViewBag.html)
+
+                                   
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    load_bzpl();
+                </script>
+            </div>
+
+
+
+        </div>
+    </div>
+</body>
+</html>

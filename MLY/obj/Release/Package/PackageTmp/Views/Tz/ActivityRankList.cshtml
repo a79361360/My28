@@ -1,0 +1,530 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ActivityRankList</title>
+    <script src="~/JS/jquery-1.js"></script>
+</head>
+<body>
+    <div class="likebody mainbody">
+        <div class="likebody">
+            @Html.Action("RankRightList", "Shared", null)
+            <div class="gamemain">
+                <input value="50000000" id="maxzhi" type="hidden">
+                @RenderPage("~/Views/Shared/top1.cshtml")
+
+
+                <div class="gamecontent">
+
+                    <script type="text/javascript">
+                        $(function () {
+                            var abb=@ViewBag.Gameid;
+                         
+                            var lista = $(".dhys1 a");
+                            if (abb == 1) {
+                                $(lista[0]).attr("href", "/Js28/Index/1");
+                                $(lista[1]).attr("href", "/Shty28/Trend/1");
+                                $(lista[2]).attr("href", "/Js28/Gamehelp/");
+                                $(lista[3]).attr("href", "/Tz/ActivityRanklist/1");
+                                $(lista[4]).attr("href", "/Js28/insertmod/0");
+                                $(lista[5]).attr("href", "/Shty28/selfset/");
+                                $(lista[6]).attr("href", "/Shty28/mytz/1/1");
+                                $("#gmenu_id1").addClass("hovv");
+                            } else if (abb == 2) {
+                                $(lista[0]).attr("href", "/Bj28/Index/1");
+                                $(lista[1]).attr("href", "/Bj28/Trend/1");
+                                $(lista[2]).attr("href", "/Bj28/Gamehelp/");
+                                $(lista[3]).attr("href", "/Tz/ActivityRanklist/2");
+                                $(lista[4]).attr("href", "/Bj28/insertmod/0");
+                                $(lista[5]).attr("href", "/Bj28/selfset/");
+                                $(lista[6]).attr("href", "/Shty28/mytz/2/1");
+                                $("#gmenu_id2").addClass("hovv");
+                            }
+                            GetMySoure(1);
+                            GetMySoure(2);
+                            //--------------------日榜翻页-----------------------------//
+                            $('.n-left .n-page .btn').eq(0).on('click', function () {
+                                setprvpage();
+                            })
+                            $('.n-left .n-page .btn').eq(1).on('click', function () {
+                                setnextpage();
+                            })
+
+                            //--------------------月榜翻页-----------------------------//
+                            $('.nright .n-page .btn').eq(0).on('click', function () {
+                                yuesetprvpage();
+                            })
+                            $('.nright .n-page .btn').eq(1).on('click', function () {
+                                yuesetnextpage();
+                            })
+
+
+
+                            //-------日榜切换--------//
+                            $('.n-left .n-tab span').on('click', function () {
+                                ontab(this);
+                            })
+
+                            //-------月榜切换--------//
+                            $('.nright .n-tab span').on('click', function () {
+                                onyueban(this);
+                            })
+
+                            $('.phjltp2').mousemove(function () {
+                                $('.zhouban').show();
+                                $('.bb').hide();
+                                $(this).attr("src", "/img/phsh1.png");
+                            }).mouseout(function () {
+                                $('.zhouban').hide();
+                                $('.bb').show();
+                                $(this).attr("src", "/img/phsh.png");
+                            })
+
+
+                        })
+                        //取得自己的个人属性
+                        var str = "", str1 = "", strs = "", strd = ""; //昨日,今日,上月,当月
+                        GetMySoure = function (type) {
+                            //type为1表示取得个人信息,type为2表示取得排行榜信息
+                            var url = "/Tz/GetRListInfo";
+                            $.getJSON(url, { type: type }, function (ret) {
+                                if (ret.code == 1000) {
+                                    if (type == 1) {
+                                        var data = eval(ret.data)[0];
+                                        var dqyl = data.dqyl; var dqpm = data.dqpm; var zrpm = data.zrpm;
+                                        var sypm = data.sypm; var dypm = data.dypm; var syyl = data.syyl; var dyyl = data.dyyl;
+                                        if (dqpm == -1) {
+                                            dqpm = 0;
+                                        } else {
+                                            dqpm = data.dqpm;
+                                        }
+                                        if (zrpm == -1) {
+                                            zrpm = 0;
+                                        } else {
+                                            zrpm = data.zrpm;
+                                        }
+                                        if (dypm == -1) {
+                                            dypm = 0;
+                                        } else {
+                                            dypm = data.dypm;
+                                        }
+                                        $(".n-top em").eq(0).html(dqyl); $(".n-top em").eq(1).html(dqpm); $(".n-top em").eq(2).html(zrpm);
+                                        $(".n-top em").eq(3).html(dyyl); $(".n-top em").eq(4).html(dypm);
+                                    }
+                                    if (type == 2) {
+                                        var znum = 0, jnum = 0, snum = 0; //定义一个昨天的条数,今天的条数,上月的条数
+                                        var data = eval(ret.data)
+                                        $.each(data, function (key, val) {
+                                            var row = key + 1;
+                                            if (val.ntype == 1) {
+                                                znum++;
+                                                if (row < 4) site = "ncicle"; else site = "";
+                                                if (row % 2 == 0) ys1 = ""; else ys1 = "bjs1";
+                                                str += "<tr class='" + ys1 + "'><td><span class='" + site + "'>" + row + "</span></td><td>" + val.nickname.substring(0, 6) + "</td><td>" + val.ylcount + "<em class='j-icon'></em></td><td class='red1'>" + GetSingleAward(key) + "</td></tr>";
+                                            } else if (val.ntype == 2) {
+                                                row = row - znum; jnum++;
+                                                if (row < 4) site = "ncicle"; else site = "";
+                                                if (row % 2 == 0) ys1 = ""; else ys1 = "bjs1";
+                                                str1 += "<tr class='" + ys1 + "'><td><span class='" + site + "'>" + row + "</span></td><td>" + val.nickname.substring(0, 6) + "</td><td>" + val.ylcount + "<em class='j-icon'></em></td><td class='red1'>" + GetSingleAward(row - 1) + "</td></tr>";
+
+                                            }
+                                            //                                 else if (val.ntype == 3) {
+                                            //                                    row = row - jnum - znum; snum++;
+                                            //                                    if (row % 2 == 0) site = "ncicle", ys1 = "", tdtbys = "tdtbys"; else site = "", ys1 = "bjs1", tdtbys = "red1";
+                                            //                                    strs += "<tr class='" + ys1 + "'><td><span class='" + site + "'>" + row + "</span></td><td>" + val.nickname.substring(0, 6) + "</td><td>" + val.ylcount + "<em class='j-icon'></em></td><td class='" + tdtbys + "' style=\"text-align:right\">" + GetYueAward(row - 1) + "</td><td style=\"width:20px\"></td></tr>";
+                                            //                                } else if (val.ntype == 4) {
+                                            //                                    row = row - snum - jnum - znum;
+                                            //                                    if (row % 2 == 0) site = "ncicle", ys1 = "", tdtbys = "tdtbys"; else site = "", ys1 = "bjs1", tdtbys = "red1";
+                                            //                                    strd += "<tr class='" + ys1 + "'><td><span class='" + site + "'>" + row + "</span></td><td>" + val.nickname.substring(0, 6) + "</td><td>" + val.ylcount + "<em class='j-icon'></em></td><td class='" + tdtbys + "' style=\"text-align:right\">" + GetYueAward(row - 1) + "</td><td style=\"width:20px\"></td ></tr>";
+                                            //                                }
+                                        });
+
+                                        $('.n-left tbody').html(str1);
+                                        
+                                        //$('.nright tbody').html(strd);
+                                        settableshow();
+                                        GetWeekSuperList(3);
+                                    }
+                                }
+                            })
+                        }
+
+                        GetWeekSuperList = function (type) {
+                            var url = "/Shared/GetSuperList";
+                            $.getJSON(url, { type: type }, function (ret) {
+                                if (ret.code == 1000) {
+                                    if (type == 3) {
+                                        var znum1 = 0; //定义一个上周的条数,本周的条数
+                                        var data = eval(ret.data)
+                                        $.each(data, function (key, val) {
+                                            var row = key + 1;
+                                            if (val.ntype == 3) {
+                                                znum1++;
+                                                if (row % 2 == 0) site = "ncicle", ys1 = "", tdtbys = "tdtbys"; else site = "", ys1 = "bjs1", tdtbys = "red1";
+                                                strs += "<tr class='" + ys1 + "'><td><span class='" + site + "'>" + row + "</span></td><td style=\"width:80px\">" + val.nickname.substring(0, 6) + "</td><td style=\"width:100px\">" + val.ylcount + "<em class='j-icon'></em></td><td class='" + tdtbys + "' style=\"text-align:right;width:70px\"\">" + GetYueAward(row - 1) + "</td><td style=\"width:20px\"></td></tr>";
+                                            } else if (val.ntype == 4) {
+                                                row = row - znum1;
+                                                if (row % 2 == 0) site = "ncicle", ys1 = "", tdtbys = "tdtbys"; else site = "", ys1 = "bjs1", tdtbys = "red1";
+                                                strd += "<tr class='" + ys1 + "'><td><span class='" + site + "'>" + row + "</span></td><td style=\"width:80px\">" + val.nickname.substring(0, 6) + "</td><td style=\"width:100px\">" + val.ylcount + "<em class='j-icon'></em></td><td class='" + tdtbys + "' style=\"text-align:right;width:70px\"\">" + GetYueAward(row - 1) + "</td><td style=\"width:20px\"></td></tr>";
+                                            }
+
+                                            $('.nright tbody').html(strd);
+                                            yuesettableshow();
+
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                        //奖励乐豆标准
+                        GetSingleAward = function (index) {
+                            var list = Array(
+                            "1500万<em class='d-icon'></em>&nbsp<em style='color:#ff0000'>+10%</em>",
+                            "1000万<em class='d-icon'></em>&nbsp&nbsp<em style='color:#ff0000'>+8%</em>",
+                            "&nbsp500万<em class='d-icon'></em>&nbsp&nbsp&nbsp<em style='color:#ff0000'>+6%</em>",
+                            "&nbsp200万<em class='d-icon'></em>",
+                            "&nbsp100万<em class='d-icon'></em>",
+                            "&nbsp&nbsp30万<em class='d-icon'></em>",
+                            "&nbsp&nbsp10万<em class='d-icon'></em>"
+                            );
+                            if (index >= 4 & index <= 9) {
+                                return list[3];
+                            }
+                            if (index >= 10 & index <= 19) {
+                                return list[4];
+                            }
+                            if (index >= 20 & index <= 49) {
+                                return list[5];
+                            }
+                            if (index >= 50 & index <= 99) {
+                                return list[6];
+                            }
+                            return list[index];
+                        }
+                        //根据当前页page设置内容
+                        var page = 1, pagesize = 25;
+                        settableshow = function () {
+                            var tbody = $('.n-left tbody tr');
+                            $('.n-left tbody tr').hide();
+                            for (var i = page * 25 - 25; i < page * 25; i++) {
+                                tbody.eq(i).show();
+                            }
+                            $('.n-left .n-page em').html(page);
+                        }
+                        //下一页
+                        setnextpage = function () {
+                            page = page + 1;
+                            if (page > 4) page = 1;
+                            settableshow();
+                        }
+                        //上一页
+                        setprvpage = function () {
+                            page = page - 1;
+                            if (page < 1) page = 4;
+                            settableshow();
+                        }
+                        //点击今日,昨日
+                        ontab = function (e) {
+                            $('.n-left  .n-tab span').removeClass();
+                            $(e).toggleClass('current');
+                            var tt = $(e).attr("tt");
+                            if (tt == "1") {
+                                $('.n-left tbody').html(str1);
+                            }
+                            if (tt == "2") {
+                                $('.n-left tbody').html(str);
+                            }
+                            settableshow();
+                        }
+
+                        //根据当前页page1设置月榜内容
+                        var page1 = 1, pagesize1 = 30;
+                        yuesettableshow = function () {
+                            var tbody = $('.nright tbody tr');
+                            $('.nright tbody tr').hide();
+                            for (var n = page1 * 30 - 30; n < page1 * 30; n++) {
+                                tbody.eq(n).show();
+                            }
+                            $('.nright  .n-page em').html(page1);
+                        }
+
+                        //月榜下一页
+                        yuesetnextpage = function () {
+                            page1 = page1 + 1;
+                            if (page1 > 5) page1 = 1;
+                            yuesettableshow();
+                        }
+                        //月榜上一页
+                        yuesetprvpage = function () {
+                            page1 = page1 - 1;
+                            if (page1 < 1) page1 = 5;
+                            yuesettableshow();
+                        }
+
+                        //点击本月,上个月
+                        onyueban = function (e) {
+                            $('.nright .n-tab span').removeClass();
+                            $(e).toggleClass('current');
+                            var tt = $(e).attr("tt");
+                            if (tt == "3") {
+                                $('.nright tbody').html(strd);
+                            }
+                            if (tt == "4") {
+                                $('.nright tbody').html(strs);
+                            }
+                            yuesettableshow();
+                        }
+
+
+                        //月榜奖励乐豆标准
+                        GetYueAward = function (index) {
+                            var list = Array(
+                            "1.2亿<em class='d-icon'></em>",
+                            "6000万<em class='d-icon'></em>",
+                            "1.0亿<em class='d-icon'></em>",
+                            "3500万<em class='d-icon'></em>",
+                            "8000万<em class='d-icon'></em>",
+                            "2500万<em class='d-icon'></em>",
+                            "5000万<em class='d-icon'></em>",
+                            "2000万<em class='d-icon'></em>",
+                            "3000万<em class='d-icon'></em>",
+                            "1500万<em class='d-icon'></em>",
+                            "1000万<em class='d-icon'></em>",
+                            "600万<em class='d-icon'></em>",
+                            "900万<em class='d-icon'></em>",
+                            "500万<em class='d-icon'></em>",
+                            "800万<em class='d-icon'></em>",
+                            "400万<em class='d-icon'></em>",
+                            "500万<em class='d-icon'></em>",
+                            "200万<em class='d-icon'></em>"
+                            );
+                            if (index == 12 || index == 14) {
+                                return list[12];
+                            }
+                            if (index == 13 || index == 15) {
+                                return list[13];
+                            }
+                            if (index == 16 || index == 18) {
+                                return list[14];
+                            }
+                            if (index == 17 || index == 19) {
+                                return list[15];
+                            }
+                            if (index > 19 && index % 2 == 0) {
+                                return list[16];
+                            }
+                            if (index > 19 && index % 2 != 0) {
+                                return list[17];
+                            }
+                            return list[index];
+                        }
+                    </script>
+                    <div class="main nuirenbang">
+
+                        <div class="n-top1"><img class="phjltp1" src="/img/hlsb.png"><img class="phjltp2" src="/img/phsh.png" /></div>
+
+                        <div class="zhouban" style="display:none;">
+                            <img class="phjltp5" src="/img/rbgz.png" />
+
+                            <div class="rbgzys">
+
+                                北京28与急速28的累计赢利前一百名获得奖励。前三名另外得到百分十，百分八，百分六的累计赢利加成！<br />
+                                如：用户A以盈利金币3亿获得日排行第一名。当日奖励为：<br />
+                                1500万+（3亿*10%=3000万）=4500万 &nbsp<span class="hong">每日排行奖励次日0：30分自动发放至邮箱</span>
+                            </div>
+                            <img class="phjltp6" src="/img/zbgz.png" />
+                            <div class="rbgzys">
+                                参加欢乐28竞猜所有游戏（PC28、极速28），日赢取（不计负数，只计赢取）累计相加，总和最高的前30名可计入周榜，累计一周的赢取总和作为周榜排名。<br />
+                                如游客A今日投注：PC28第748697期净赢取2800万乐豆，第748698期亏损100万乐豆，极速28第4485期净赢取3000万乐豆，
+                                <span class="hong">则游客A的今日总赢取：2800+3000=5800万 <br />周榜奖励次周三天内自动发放至邮箱</span>
+                            </div>
+                            <div class="rule-explain">
+                                <div class="phjltp7"> 日榜奖项 </div>
+                                <table cellpadding="0" cellspacing="0" class="tableys1">
+                                    <tbody>
+                                        <tr>
+                                            <td>第1名奖励</td>
+                                            <td class="hong">1500万乐豆<em class="d-icon"></em>&nbsp;<em style="color:#ff0000">+10%</em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第2名奖励</td>
+                                            <td class="hong">1000万乐豆<em class="d-icon"></em>&nbsp;&nbsp;<em style="color:#ff0000">+8%</em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第3名奖励</td>
+                                            <td class="hong">&nbsp; 500万乐豆<em class="d-icon"></em>&nbsp;&nbsp;<em style="color:#ff0000">+6%</em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第4-10名奖励</td>
+                                            <td class="hong">&nbsp; 200万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第11-20名奖励</td>
+                                            <td class="hong">&nbsp; 100万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第21-50名奖励</td>
+                                            <td class="hong">&nbsp;&nbsp;&nbsp; 30万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第51-100名奖励</td>
+                                            <td class="hong">&nbsp;&nbsp;&nbsp; 10万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="rule-explain1">
+                                <div class="phjltp8"> 周榜奖励 </div>
+                                <table cellpadding="0" cellspacing="0" class="tableys2">
+                                    <tbody>
+                                        <tr>
+                                            <td>第1名奖励</td>
+                                            <td class="hong righttd1">1.2亿乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第2名奖励</td>
+                                            <td class=" righttd1">6000万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第3名奖励</td>
+                                            <td class="hong righttd1">&nbsp; 1.0亿乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第4名奖励</td>
+                                            <td class=" righttd1">&nbsp; 3500万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第5名奖励</td>
+                                            <td class="hong righttd1">&nbsp; 8000万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第6名奖励</td>
+                                            <td class=" righttd1">&nbsp;&nbsp;&nbsp; 2500万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第7名奖励</td>
+                                            <td class="hong righttd1">&nbsp;&nbsp;&nbsp; 5000万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第8名奖励</td>
+                                            <td class=" righttd1">2000万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第9名奖励</td>
+                                            <td class="hong righttd1">3000万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第10名奖励</td>
+                                            <td class=" righttd1">&nbsp; 1500万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第11名奖励</td>
+                                            <td class="hong righttd1">&nbsp; 1000万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第12名奖励</td>
+                                            <td class=" righttd1">&nbsp; 600万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第13.15名奖励</td>
+                                            <td class="hong righttd1">&nbsp;&nbsp;&nbsp; 900万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第14.16名奖励</td>
+                                            <td class=" righttd1">&nbsp;&nbsp;&nbsp; 500万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第17.19名奖励</td>
+                                            <td class="hong righttd1">&nbsp; 800万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第18.20名奖励</td>
+                                            <td class=" righttd1">&nbsp; 400万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第21.23.25.27.29名奖励</td>
+                                            <td class="hong righttd1">&nbsp;&nbsp;&nbsp; 500万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>第22.24.26.28.30名奖励</td>
+                                            <td class=" righttd1">&nbsp;&nbsp;&nbsp; 200万乐豆<em class="d-icon"></em></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="bb">
+                        <div class="n-top">我的当前赢利：<em>0</em> 排名第：<em>0</em> 位 我的昨日排名：<em>0</em> 名 <p> 我的周榜赢取：<em>0</em> 排名第：<em>0</em> 位 </p></div>
+                        <div class="n-wrap clearfix">
+                            <div class="n-left">
+                                <div class="n-title">
+                                    <img class="phjltp3" src="/img/jrph.png" />
+                                    <div class="n-tab"><span class="current" tt="1">今日</span><span tt="2">昨日</span></div>
+                                </div>
+                                <table cellspacing="0">
+                                    <thead>
+                                        <tr style="height:28px; font-size:13px; border-bottom: 1px solid #d7d7d7;">
+                                            <td style="width:50px;">排名</td>
+                                            <td>昵称</td>
+                                            <td>盈利金币</td>
+                                            <td>奖励</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr style="border-top:1px solid #d7d7d7;">
+                                            <td style="width:50px;height:112px"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <div class="n-page">
+                                    <span class="btn">上一页</span>
+                                    <span><em>1</em>/4</span>
+                                    <span class="btn">下一页</span>
+                                </div>
+                            </div>
+                            <div class="nright">
+                                <div class="n-title">
+                                    <img class="phjltp4" src="/img/bzph.png" />
+                                    <div class="n-tab"><span class="current" tt="3">本周</span><span tt="4">上周</span></div>
+                                </div>
+                                <table cellspacing="0">
+                                    <thead>
+                                        <tr style="height:28px; font-size:13px; border-bottom: 1px solid #d7d7d7;">
+                                            <td style="width:50px;">排名</td>
+                                            <td>昵称</td>
+                                            <td>赢取金币</td>
+                                            <td>奖励</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

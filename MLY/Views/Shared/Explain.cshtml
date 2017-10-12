@@ -1,0 +1,70 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <script type="text/javascript" src="/js/jquery-1.js"></script>
+    <title>资讯</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+</head>
+<body>
+
+    <div class="likebody mainbody">
+
+        <div class="likebody">
+
+            <link href="/Content/help.css" rel="stylesheet">
+            @RenderPage("~/Views/Shared/RankRightList.cshtml")
+            <div class="gamemain">
+                @RenderPage("~/Views/Shared/top1.cshtml")
+                <script src="~/JS/jquery-1.js"></script>
+                <div class="helpzixun">
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(function () {
+                    var id = $(this).getUrlParam("id");
+                    var gid = $(this).getUrlParam("gid");
+                    var lista = $(".dhys1 a");
+                    if (gid == 1) {
+                            $(lista[0]).attr("href","/Js28/Index/1");
+                            $(lista[1]).attr("href","/Shty28/Trend/1");
+                            $(lista[2]).attr("href","/Js28/Gamehelp/");
+                            $(lista[3]).attr("href","/Tz/ActivityRanklist/1");
+                            $(lista[4]).attr("href","/Js28/insertmod/0");
+                            $(lista[5]).attr("href","/Shty28/selfset/");
+                            $(lista[6]).attr("href", "/Shty28/mytz/1/1");
+                            $("#gmenu_id1").addClass("hovv");
+                    } else if (gid == 2) {
+                        $(lista[0]).attr("href", "/Bj28/Index/1");
+                        $(lista[1]).attr("href", "/Bj28/Trend/1");
+                        $(lista[2]).attr("href", "/Bj28/Gamehelp/");
+                        $(lista[3]).attr("href", "/Tz/ActivityRanklist/2");
+                        $(lista[4]).attr("href", "/Bj28/insertmod/0");
+                        $(lista[5]).attr("href", "/Bj28/selfset/");
+                        $(lista[6]).attr("href", "/Shty28/mytz/2/1");
+                        $("#gmenu_id2").addClass("hovv");
+                    }
+
+                    FindZixun(id, gid);
+                })
+                FindZixun = function (id, gid) {
+                    var url = "/Shared/RankListRight_Top1";
+                    $.getJSON(url, { id: id }, function (ret) {
+                        $(".helpzixun").html(ret);
+                    })
+                }
+            </script>
+
+
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,550 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>投注</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="~/Content/WeiXin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/WeiXin/css/style.css" rel="stylesheet" />
+    <script src="~/Content/WeiXin/js/zepto.min.js"></script>
+    <script src="~/JS/jquery.min.js"></script>
+    <script src="~/Content/WeiXin/js/index.js"></script>
+    <script src="~/Content/WeiXin/js/savemodel.js"></script>
+    <script type="text/javascript" src="~/Content/WeiXin/js/dsdialog.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                type: "POST",
+                url: "/WxJs28/tops",
+                data: { "gameid": 2 },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.jizhis < 0) { data.jizhis = 0; }
+                    tzkjs = data.seconds;
+                    jiezhis = data.jizhis;
+                    gameid = 2;
+                    iCount1 = setInterval(tzds, 1000);
+                    $(".tz-s").html(data.jizhis)
+                    $(".tzkj").html(data.seconds)
+                    $(".tz-qs").html(data.curissue)
+                    $("#qishu").html(data.curissue)
+                    $("#jbzs").html(parseFloat(data.Jb).toLocaleString())
+                  
+
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+    <input value="@Html.Raw(ViewBag.dqIss)" id="dqIssue" name="dqIssue" type="hidden">
+    <form id="form1" method="post" action="">
+        <input id="open_prize_time" name="open_prize_time" type="hidden" value="">
+        <input type="hidden" id="depend_parent" name="depend_parent" value="0">
+        <input name="str_mdp_coin" id="str_mdp_coin" type="hidden" value="0">
+        <input type="hidden" id="lastgain" name="lastgain" value="">
+        <input type="hidden" id="_issue" name="_issue" value="158281">
+        <input type="hidden" id="now_total" name="now_total" value="0">
+        <input type="hidden" id="formhash" name="formhash" value="0">
+        <input type="hidden" id="totalvalue" value="0">
+        <input type="hidden" id="totalvalue2" value="0">
+        <input type="hidden" id="check_key" name="check_key" value="">
+        <input type="hidden" id="check_address" name="check_address" value="">
+        <input type="hidden" class="base_box_sh_txt" id="use_leave_modou_num" name="use_leave_modou_num" value="" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" maxlength="11">
+        <input type="hidden" name="used_leave_modou_num" id="used_leave_modou_num" value="">
+        <input type="hidden" name="old_leave_modou_num" id="old_leave_modou_num" value="">
+    </form>
+    <div class="container">
+        <div class=" head1 clearfix">
+            <a href="javascript:history.go(-1)"><img src="~/Content/WeiXin/images/left.png" /></a>
+            <span class="title">投注</span>
+            <a href=""><img src="~/Content/WeiXin/images/freshen.png" /></a>
+        </div>
+        <div class="dh"></div>
+    </div>
+
+    <div class="container rank-qq large tz-second ">
+        <p class="wl throw-head tz-show">
+            第<span class="positive" id="qishu">120842</span>期，离投注截止时间还有<span class="positive tz-s"></span>秒<br>
+           离开奖时间还有<span class="positive tzkj"></span>秒
+        </p>
+        <p class="wl throw-head hold" style="display:none;">
+            第<span class="positive tz-qs">1785</span>期，截止投注等待开奖
+        </p>
+        <p class="wl throw-head kj" style="display:none;">
+            第<span class="positive tz-qs">1785</span>期，正在开奖中
+        </p>
+    </div>
+
+    <div class="container" style="border-bottom: 1px solid rgba(210, 199, 199, 0.7);">
+        <p class="list-rank clearfix">
+
+            <span class="positive ld fl"><span class="black">金币余额：</span><em id="jbzs">0</em></span><br>
+            <span class="black fl">投注金币：</span><span class="positive" id="total_md_lottery">0</span>
+
+        </p>
+        <div class="throw-banner clearfix fr" style="margin-right: 0px;">
+            <button type="button" class="btn btn-danger bc-o touzhu1" >上期投注</button>
+            <button type="button" class="btn btn-danger bc-o double_insert tzbtn">梭哈</button>
+            <button type="button" class="btn btn-danger btn-f tzbtn" onclick="tzsert(2)">投注</button>
+        </div>
+    </div>
+    <div class="container" style="margin-bottom:60px;">
+        <div class="sp-list">
+            <span class="throw-sp model-sp double_insert" val="0.1">0.1倍</span>
+            <span class="throw-sp model-sp double_insert" val="0.5">0.5倍</span>
+            <span class="throw-sp model-sp double_insert" val="0.8">0.8倍</span>
+            <span class="throw-sp model-sp mode_lottery" attr="0">全包</span>
+            <span class="throw-green throw-sp model-ssp mode_lottery" attr="3">
+                大
+                <em class="throw-sm">(14-27)</em>
+            </span>
+            <span class="throw-green throw-sp model-ssp mode_lottery" attr="4">
+                小
+                <em class="throw-sm">(0-13)</em>
+            </span>
+            <span class="throw-sp model-sp double_insert" val="1.2">1.2倍</span>
+            <span class="throw-sp model-sp double_insert" val="1.5">1.5倍</span>
+            <span class="throw-sp model-sp double_insert" val="2">2倍</span>
+            <span class="throw-sp model-sp mode_lottery" attr="26">大尾</span>
+            <span class="throw-green throw-sp model-ssp mode_lottery" attr="1">
+                单
+                <em class="throw-sm">(1,3,5-27)</em>
+            </span>
+            <span class="throw-green throw-sp model-ssp mode_lottery" attr="2">
+                双
+                <em class="throw-sm">(0,2,4-26)</em>
+            </span>
+            <span class="throw-sp model-sp double_insert" val="10">10倍</span>
+            <span class="throw-sp model-sp double_insert" val="50">50倍</span>
+            <span class="throw-sp model-sp fanxuan">反选</span>
+            <span class="throw-sp model-sp mode_lottery" attr="25">小尾</span>
+            <span class="throw-green throw-sp model-ssp mode_lottery" attr="5">
+                中
+                <em class="throw-sm">(10-17)</em>
+            </span>
+            <span class="throw-green throw-sp model-ssp mode_lottery" attr="6">
+                边
+                <em class="throw-sm">(0-9/18-27)</em>
+            </span>
+            <img class="clickimg" src="~/Content/WeiXin/images/more2.png" />
+        </div>
+        <div class="table-responsive">
+            <table class="table1 " style="height: 280px; overflow: auto; display: inline-block;">
+                <tbody>
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">00</span> </td>
+                        <td style="width:8rem;"> <input type="text" class="form-control" id="txt0" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"> </td>
+                        <td class="peirrv black">1000</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+
+                            <span val="2">x2</span>
+
+                            <span val="10">x10</span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">01</span> </td>
+                        <td><input type="text" class="form-control" id="txt1" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">333.33</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">02</span></td>
+                        <td><input type="text" class="form-control" id="txt2" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">166.67</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">03</span> </td>
+                        <td><input type="text" class="form-control" id="txt3" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">100</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">04</span> </td>
+                        <td><input type="text" class="form-control" id="txt4" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">66.66</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">05</span> </td>
+                        <td><input type="text" class="form-control" id="txt5" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">47.61</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">06</span> </td>
+                        <td style="width:8rem;"> <input type="text" class="form-control" id="txt6" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"> </td>
+                        <td class="peirrv black">35.71</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+
+                            <span val="2">x2</span>
+
+                            <span val="10">x10</span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">07</span> </td>
+                        <td><input type="text" class="form-control" id="txt7" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">27.77</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">08</span></td>
+                        <td><input type="text" class="form-control" id="txt8" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">22.22</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">09</span> </td>
+                        <td><input type="text" class="form-control" id="txt9" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">18.18</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">10</span> </td>
+                        <td><input type="text" class="form-control" id="txt10" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">15.87</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">11</span> </td>
+                        <td><input type="text" class="form-control" id="txt11" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">14.49</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">12</span> </td>
+                        <td style="width:8rem;"> <input type="text" class="form-control" id="txt12" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"> </td>
+                        <td class="peirrv black">13.69</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+
+                            <span val="2">x2</span>
+
+                            <span val="10">x10</span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">13</span> </td>
+                        <td><input type="text" class="form-control" id="txt13" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">13.33</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">14</span></td>
+                        <td><input type="text" class="form-control" id="txt14" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">13.33</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">15</span> </td>
+                        <td><input type="text" class="form-control" id="txt15" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">13.69</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">16</span> </td>
+                        <td><input type="text" class="form-control" id="txt16" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">14.49</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">17</span> </td>
+                        <td><input type="text" class="form-control" id="txt17" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">15.87</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">18</span> </td>
+                        <td style="width:8rem;"> <input type="text" class="form-control" id="txt18" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"> </td>
+                        <td class="peirrv black">18.18</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+
+                            <span val="2">x2</span>
+
+                            <span val="10">x10</span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">19</span> </td>
+                        <td><input type="text" class="form-control" id="txt19" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">22.22</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">20</span></td>
+                        <td><input type="text" class="form-control" id="txt20" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">27.77</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">21</span> </td>
+                        <td><input type="text" class="form-control" id="txt21" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">35.71</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">22</span> </td>
+                        <td><input type="text" class="form-control" id="txt22" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">47.61</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">23</span> </td>
+                        <td><input type="text" class="form-control" id="txt23" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">66.66</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">24</span> </td>
+                        <td style="width:8rem;"> <input type="text" class="form-control" id="txt24" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"> </td>
+                        <td class="peirrv black">100</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+
+                            <span val="2">x2</span>
+
+                            <span val="10">x10</span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">25</span> </td>
+                        <td><input type="text" class="form-control" id="txt25" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">166.66</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">26</span></td>
+                        <td><input type="text" class="form-control" id="txt26" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">333.33</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="label label-danger labels labelgrey">27</span> </td>
+                        <td><input type="text" class="form-control" id="txt27" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                        <td class="peirrv black">1000</td>
+                        <td class="bei-s pei">
+                            <span val="0.5">x0.5</span>
+                            <span val="2">x2</span>
+                            <span val="10">x10</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="more-pop">
+        <div class="self-mode clearfix">
+            <span class="active1">标准模式</span>
+            <span>自定义模式</span>
+        </div>
+        <div class="more-pop-box panel active1">
+            <span class="mode_lottery" attr="0">全包</span>
+            <span class="mode_lottery" attr="1">单</span>
+            <span class="mode_lottery" attr="2">双</span>
+            <span class="mode_lottery" attr="3">大</span>
+            <span class="mode_lottery" attr="4">小</span>
+            <span class="mode_lottery" attr="5">中</span>
+            <span class="mode_lottery" attr="6">边</span>
+            <span class="mode_lottery" attr="7">大单</span>
+            <span class="mode_lottery" attr="8">小单</span>
+            <span class="mode_lottery" attr="9">大双</span>
+            <span class="mode_lottery" attr="10">小双</span>
+            <span class="mode_lottery" attr="11">大边</span>
+            <span class="mode_lottery" attr="12">小边</span>
+            <span class="mode_lottery" attr="13">单边</span>
+            <span class="mode_lottery" attr="14">双边</span>
+            <span class="mode_lottery" attr="15">0尾</span>
+            <span class="mode_lottery" attr="16">1尾</span>
+            <span class="mode_lottery" attr="17">2尾</span>
+            <span class="mode_lottery" attr="18">3尾</span>
+            <span class="mode_lottery" attr="19">4尾</span>
+            <span class="mode_lottery" attr="20">5尾</span>
+            <span class="mode_lottery" attr="21">6尾</span>
+            <span class="mode_lottery" attr="22">7尾</span>
+            <span class="mode_lottery" attr="23">8尾</span>
+            <span class="mode_lottery" attr="24">9尾</span>
+            <span class="mode_lottery" attr="25">小尾</span>
+            <span class="mode_lottery" attr="26">大尾</span>
+            <span class="mode_lottery" attr="27">3余0</span>
+            <span class="mode_lottery" attr="28">3余1</span>
+            <span class="mode_lottery" attr="29">3余2</span>
+            <span class="mode_lottery" attr="30">4余0</span>
+            <span class="mode_lottery" attr="31">4余1</span>
+            <span class="mode_lottery" attr="32">4余2</span>
+            <span class="mode_lottery" attr="33">4余3</span>
+            <span class="mode_lottery" attr="34">5余0</span>
+            <span class="mode_lottery" attr="35">5余1</span>
+            <span class="mode_lottery" attr="36">5余2</span>
+            <span class="mode_lottery" attr="37">5余3</span>
+            <span class="mode_lottery" attr="38">5余4</span>
+            <span class="mode_lottery">清零</span>
+        </div>
+        <div class="self-set-pop panel">
+            <div class="br zdymd">
+                @Html.Raw(ViewBag.TzTemp)
+            </div>
+            <a onclick="javascript: window.location.href = '/WxBj28/insertmod?id=0'" class="self-mode tj">添加模式</a>
+        </div>
+        <span class="closemode"></span>
+    </div>
+    <script>
+        $('.self-mode').on('touchend', 'span', function (e) {
+            e.preventDefault();
+            var index = $(this).index();
+            $(this).addClass('active1').siblings().removeClass('active1');
+            $(this).parents('.more-pop').find('.panel').eq(index).addClass('active1').siblings('.panel').removeClass('active1');
+        });
+    </script>
+    <script src="~/Content/WeiXin/js/tz.js"></script>
+    <div class="footmenu">
+        <div class="item1">
+            <span class="black">今日活动</span>
+            <div class="item-pop">
+                <a href="/WxJs28/RankList">日排名赛</a>
+                <a href="/WxJs28/Superlist">周排名赛</a>
+                <span></span>
+            </div>
+        </div>
+        <div class="item1" id="footer_trend">
+            <span class="black"><a href="/WxBj28/index">益智竞猜</a></span>
+        </div>
+        <div class="item1">
+            <span class="black">我的信息</span>
+            <div class="item-pop">
+                <a href="/WxJs28/selfinfo">我的信息</a>
+                <a href="/WxJs28/exchange">兑换金币</a>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

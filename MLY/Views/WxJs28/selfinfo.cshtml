@@ -1,0 +1,132 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>我的信息</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="~/Content/WeiXin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/WeiXin/css/style.css" rel="stylesheet" />
+    <script src="~/Content/WeiXin/js/zepto.min.js"></script>
+    <script src="~/Content/WeiXin/js/index.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "/Shared/Get_UserJbMoney",
+                dataType: 'json',
+                success: function (data) {
+                    $(".name").html(data.nickname)
+                    $(".jb").html(parseFloat(data.jb).toLocaleString())
+                    $(".led").html(parseFloat(data.money).toLocaleString())
+                    console.log(data)
+                }
+            });
+        })
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <div class=" head1 clearfix">
+            <a href="javascript:history.go(-1)"><img src="~/Content/WeiXin/images/left.png" /></a>
+            <span class="title">我的信息</span>
+            <a href=""><img src="~/Content/WeiXin/images/freshen.png" /></a>
+        </div>
+        <div class="dh"></div>
+    </div>
+    <div class="container">
+        <ul class="list-unstyled">
+            <li>
+                <p class="list-info clearfix">
+                    <img class="fl" src="~/Content/WeiXin/images/photo.png" />
+                    <span class="info1">
+                        <span class="black">昵称：</span><span class="positive ld name">游客551345131</span>
+                    </span>
+                    <button type="button" class="btn btn-danger btnr fr" onclick="javascript: window.location.href = '/WxJs28/SafeQuit'">安全退出</button>
+                </p>
+            </li>
+            <li>
+                <p class="list-info clearfix">
+                    <span class="black ld ">我的金币:</span><span class="positive wl jb ">10,000</span>
+                    @*<button type="button" class="btn btn-danger btnr fr" onclick="javascript:window.location.href='exchange'">兑换金币</button>*@
+                </p>
+            </li>
+            <li>
+                <p class="list-info clearfix">
+                    <span class="black ld ">我的乐豆:</span><span class="positive wl led">10,000</span>
+                    <button type="button" class="btn btn-danger btnr fr" onclick="javascript:window.location.href='exchange'">兑换金币</button>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <div class="dh"></div>
+    <div class="container table-info" style="margin-bottom:60px;">
+        <div class="list-right ">
+            <ul class="list-unstyled clearfix">
+                <li class="col-xs-12 ">
+                    <div class="dh"></div>
+                    <p class="text-left black">
+                        金币明细
+
+                        <img id="tog3" src="~/Content/WeiXin/images/right.png" />
+                    </p>
+                    <div class="table-responsive tb3" style="display:none;">
+                        <p class="reward-info clearfix">
+                            <span class="fl blue">最新记录</span>
+
+                            <span class="fr"><a class="positive" href="income" style="padding: 5px;">更多</a></span>
+                        </p>
+                        <table class="table1">
+                            <thead>
+                                <tr>
+                                    <th>昵称</th>
+                                    <th>奖励行为</th>
+                                    <th>奖励金币</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @Html.Raw(ViewBag.List)
+                            </tbody>
+                        </table>
+                    </div>
+                </li>	
+            </ul>
+        </div>
+    </div>
+    <div class="footmenu">
+        <div class="item1">
+            <span class="black">今日活动</span>
+            <div class="item-pop">
+                <a href="RankList">日排名赛</a>
+                <a href="Superlist">周排名赛</a>
+                <span></span>
+            </div>
+        </div>
+        <div class="item1" id="footer_trend">
+            <span class="black"><a href="index">益智竞猜</a></span>
+        </div>
+        <div class="item1">
+            <span class="black">我的信息</span>
+            <div class="item-pop">
+                <a href="selfinfo">我的信息</a>
+                <a href="exchange">兑换金币</a>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!--点击隐藏显示-->
+    <script>
+        $(document).ready(function () {
+            $("#tog3").click(function () {
+                $(".tb3").toggle();
+            });
+        });
+    </script>
+
+</body>
+</html>

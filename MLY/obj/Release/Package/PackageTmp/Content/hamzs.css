@@ -1,0 +1,177 @@
+.gamezidh {
+    background: #e64047;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 8px;
+}
+
+.gamezidh a {
+    color: #fff;
+}
+
+.fr {
+    position: absolute;
+    right: 0px;
+    top: 0;
+    color: #fff;
+}
+
+.gamezidh {
+
+    padding-left: 10px;
+    position: relative;
+}
+
+.main {
+    width: 715px;
+}
+
+.wdtz img {
+    margin: 0 auto;
+    display: block;
+    border: 2px solid #fafafa;
+}
+
+.tz-row {
+    background: #fff;
+    height: 35px;
+    line-height: 35px;
+    position: relative;
+    color: #7e7e7e;
+}
+
+.tz-row em {
+    color: #ff5d61;
+    font-weight: bold;
+}
+
+.tab span {
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.tab span:hover {
+    color: #ff5d61;
+}
+
+.tab .current {
+    font-weight: bold;
+    color: #ff5d61;
+}
+.tab{
+    padding-top:0px;
+    margin-left:0;
+}
+.fr span {
+    color: #7e7e7e;
+    margin: 0 8px;
+}
+
+.tztable {
+    background: #e0e0e0;
+    width: 100%;
+    border-spacing: 1px;
+    border-collapse: inherit;
+}
+
+.tztable td, .tztable th {
+    background: #fff;
+    padding: 5px;
+    text-align: center;
+}
+
+.tztable td {
+    color: #7e7e7e;
+}
+
+.tztable .num {
+    display: block;
+    width: 25px;
+    height: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    background: #ff5d61;
+    text-align: center;
+    line-height: 25px;
+    color: #fff;
+    font-size: 12px;
+    margin: 0 auto;
+}
+
+.tztable .red {
+    color: #ff5d61;
+}
+
+.tztable .green {
+    color: #1e8b32;
+}
+
+.tztable a {
+    color: #ff5d61;
+    padding: 0 5px;
+}
+
+.tztable th {
+    font-weight: bold;
+    color: #913d44;
+    background: #fafafa;
+}
+
+.page {
+    text-align: center;
+    padding: 15px;
+}
+
+.page span {
+    display: inline-block;
+    padding: 3px 6px;
+    border: 1px solid #e0e0e0;
+    color: #939393;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.page .current {
+    background: #ff696c;
+    color: #fff;
+    border: 1px solid #ff696c;
+}
+
+.page span:hover {
+    background: #ff696c;
+    color: #fff;
+    border: 1px solid #ff696c;
+}
+
+/*==============for my28 */
+.tzbanner_z {
+    width: 715px;
+    height: 139px;
+    background: #fafafa;
+}
+
+.tzbanner_fk {
+    height: 127px;
+}
+
+.fk_tb {
+    width: 400px;
+    float: left;
+    text-align: center;
+}
+
+.fk_wz {
+    width: 308px;
+    float: right;
+    background: #fff;
+    margin: 4px 4px 0 0;
+    color: #7e7e7e;
+}
+#my_chart{
+    margin: 4px 0 0 4px;
+}
+.fk_wz td {
+    padding-left: 8px;
+    height: 30px;
+}

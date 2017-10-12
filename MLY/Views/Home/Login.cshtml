@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "微信急速28";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>益智竞猜</title>
+    <link href="/Content/swiper.min.css" rel="stylesheet">
+    <link href="/Content/index.css" rel="stylesheet">
+    <script src="/JS/swiper.min.js"></script>
+    <script src="/JS/zepto.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        var g28 = getQueryString('g28');//js used
+        g28 = g28 ? g28 : 'luck';
+    </script>
+
+    <style>
+        .error_msg {
+            color: red;
+        }
+    </style>
+    <div class="wrap">
+        <div class="nav">
+            <a class="arrow"></a>
+            <span>会员登录</span>
+        </div>
+        <div class="login">
+            <div class="br">
+                用户名：<input id="username" placeholder="账号/ID/手机/邮箱" type="text" />
+            </div>
+            <div class="br">
+                密　码：<input id="password" type="password" />
+            </div>
+            @*<div class="br yzm">
+                验证码：<input name="verify" id="verify" type="text" maxlength="4">
+                <img title='刷新验证码' src='/member/verify' id='verifyImg' />
+            </div>*@
+            <div class="br error_msg"></div>
+        </div>
+        <div class="btn-box">
+            <a class="dl-btn">登录</a>
+            <a class="zz-btn">免费注册</a>
+        </div>
+    </div>
+
+    <script src="/JS/common.js"></script>
+    <div class="tz-pop showmsg">
+        <div class="mask"></div>
+        <div class="content">
+            <h3 class="showmsg-title"></h3>
+            <p class="showmsg-content"></p>
+            <div class="br btn-box">
+                <a class="sure showmsg-sure">确定</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $(function () {
+
+        /** 切换图片验证码 **/
+        $('#verifyImg').on('click', function () {
+            $(this).attr('src', '/member/verify/' + Math.random());
+        });
+
+        /** 提交验证 **/
+        $('.dl-btn').on('click', function () {
+            $('.error_msg').html('');
+            var username = $.trim($('#username').val());
+            var password = $.trim($('#password').val());
+            var verify = $.trim($('#verify').val());
+
+            if (!username || (username.length < 5) || (username.length > 30)) {
+                $('.error_msg').html('请输入有效的登陆账户！'); return;
+            }
+
+            if (password != "123456") {
+                $('.error_msg').html('请输入有效的登陆密码！'); return;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Home/GetL_ogin/",
+                data: { "UserId": username },
+                dataType: 'json',
+                success: function (data) {
+                    try {
+                        if (data.msg != 0) {
+                            window.location.href = "/Home/Index/" + data.msg + "";
+                        }
+                        else {
+                            $('.error_msg').html('请输入有效的登陆账户！'); return;
+                        }
+                    } catch (e) {
+                        location.href = "/admin/error";
+                    }
+                }
+            });
+
+        });
+
+    });
+
+</script>

@@ -1,0 +1,69 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>我的注册</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="~/Content/WeiXin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/WeiXin/css/style.css" rel="stylesheet" />
+    <script src="~/Content/WeiXin/js/zepto.min.js"></script>
+    <script src="~/JS/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/WeiXin/js/dsdialog.js"></script>
+    <script type="text/javascript" src="~/Content/WeiXin/js/index.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class=" head1 clearfix">
+            <a href="javascript:history.go(-1)"><img src="~/Content/WeiXin/images/left.png" /></a>
+            <span class="title">我的注册</span>
+            <a href=""><img src="~/Content/WeiXin/images/freshen.png" /></a>
+        </div>
+        <div class="dh"></div>
+    </div>
+    <div class="container invitecon">
+        <form class="form-horizontal" role="form">
+            <div class="form-group form1">
+                <label for="firstname" class=" control-label fl">手机号:</label>
+                <div class="col-xs-8 col-md-8">
+                    <input type="text" class="form-control form-bgc" id="phonenum" 
+                           placeholder="请输入正确的手机号">
+                </div>
+            </div>
+            <div class="form-group form1">
+                <label for="inputPassword" class="control-label fl">登录密码:</label>
+                <div class="col-xs-8 col-md-8">
+                    <input type="password" class="form-control form-bgc" id="mima1"
+                           placeholder="">
+                </div>
+            </div>
+            <div class="form-group form1">
+                <label for="inputPassword" class="control-label fl ">确认密码:</label>
+                <div class="col-xs-8 col-md-8">
+                    <input type="password" class="form-control form-bgc" id="mima2" placeholder="">
+                </div>
+            </div>
+            <div class="form-group form1">
+                <label for="inputPassword" class="control-label fl" style="margin-left: 45px!important;">验证码:</label>
+                <div class="phone-num">
+                    <input type="text" class="form-control form-bgc" id="inputyzm" placeholder="">
+                </div>
+                <input type="button" value="获取验证码" class="getnum" onclick="get_yzm()" /> 
+            </div>
+        </form>
+    </div>
+    <div class="container text-center">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> 我已看过并同意<span class="positive">《闽乐游网络服务协议》</span>
+            </label>
+        </div>
+    </div>
+    <div class="container text-center">
+        <button type="button" class="btn btn-danger btnn btnl" id="qdzc" onclick="check_register()">立即注册</button>
+    </div> 
+</body>
+</html>

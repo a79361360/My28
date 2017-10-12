@@ -1,0 +1,4 @@
+E:\SignJect\Yd28\Model\bin\Release\Model.dll
+E:\SignJect\Yd28\Model\bin\Release\Model.pdb
+E:\SignJect\Yd28\Model\obj\Release\Model.dll
+E:\SignJect\Yd28\Model\obj\Release\Model.pdb

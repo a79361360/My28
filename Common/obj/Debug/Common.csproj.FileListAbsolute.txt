@@ -1,0 +1,10 @@
+E:\ProJect\yd28\yd28Env\$(ConfigurationName)\Common.dll
+E:\ProJect\yd28\yd28Env\$(ConfigurationName)\Common.pdb
+E:\ProJect\yd28\trunk\Common\obj\Debug\Common.dll
+E:\ProJect\yd28\trunk\Common\obj\Debug\Common.pdb
+E:\ProJect\yd28\trunk\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+E:\SignJect\yd28Env\$(ConfigurationName)\Common.dll
+E:\SignJect\yd28Env\$(ConfigurationName)\Common.pdb
+E:\SignJect\Yd28\Common\obj\Debug\Common.dll
+E:\SignJect\Yd28\Common\obj\Debug\Common.pdb
+E:\SignJect\Yd28\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

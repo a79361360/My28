@@ -1,0 +1,167 @@
+.main{
+    width: 715px;
+}
+.zd .explain{
+    text-align: center;
+    padding: 28px 20px;
+    color: #646464;
+}
+.zd table .explain{
+    padding: 0;
+}
+.zd .explain em{
+    color: #ff5d61;
+}
+.zd .explain b{
+    color: #ff9f17;
+}
+.zd .explain h3{
+    color: #ff5d61;
+}
+.zd h2{
+    padding: 10px 0 10px 10px;
+    font-size: 12px;
+    color: #6f6f6f;
+    background: url("../img/h2bgn.png") 2px center no-repeat #fafafa;
+}
+
+.zddzm{
+    background: #fea826;
+    width: 100%;
+    border-collapse: inherit;
+    border-spacing: 1px;
+}
+.zddzm td{
+    padding: 6px 4px;
+    background: #fff;
+    color: #646464;
+}
+.zddzm td input[type=text]{
+    width: 55px;
+    text-align: center;
+    color: #ff9900;
+}
+.zddzm th{
+    color: #b63d3d;
+    background: #ffeddd;
+    font-weight: bold;
+    width: 97px;
+    text-align: center;
+}
+
+
+.zddzm em{
+}
+.zddzm select{
+    color: #ff0000;
+}
+
+.zddzm p{
+    color: #b63d3d;
+    text-align: center;
+    padding-top: 8px;
+}
+
+
+.ms {
+    border: 1px solid #d7d7d7;
+    border-top: 8px solid #ff6f72;
+    border-right: 0;
+    border-bottom: 0;
+    width: 100%;
+}
+.ms td{
+    border-right: 1px solid #d7d7d7;
+    border-bottom: 1px solid #d7d7d7;
+    text-align: center;
+    padding: 5px 0;
+}
+.ms thead td{
+    background: #fafafa;
+    color: #8c4144;
+}
+.ms thead td em{
+    color: #f23941;
+    font-weight: bold;
+}
+
+.ms  .current td{
+    color: #ff0000;
+
+}
+.ms  .current .orange{
+    color: #ff9900;
+}
+.ms .current  select{
+    color: #ff0000;
+    font-weight: bold;
+}
+.ms tbody td{
+    color: #bdbdbd;
+    font-weight: bold;
+    background: #fff;
+}
+.ms tbody select{
+    color: #bdbdbd;
+    font-weight: bold;
+}
+
+.kstz{
+    display: block;
+    margin: 10px auto;
+    cursor: pointer;
+    width: 150px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: bold;
+    background: #ff696c;
+    border: 0;
+    overflow: hidden;
+
+}
+
+.kstz input{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: 0;
+    line-height: 45px;
+    color: #fff;
+
+    
+}
+
+.bz{
+    padding: 10px;
+    line-height: 22px;
+    color: #646464;
+}
+.ms tfoot td{
+    text-align: right;
+    font-weight: bold;
+    padding-right: 10px;
+    color: #b92a30;
+    font-weight: bold;
+    background: #fff;
+}
+
+.ms .radio{
+    display: inline-block;
+    width: 60px;
+    height: 27px;
+    cursor: pointer;
+    background: url("../img/on.png") no-repeat;
+}
+.ms .off{
+    background: url("../img/off.png") no-repeat;
+}
+
+.ms-box{
+    background: #fafafa;
+    padding: 10px 0;
+}

@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "急速28";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <link rel="Shortcut Icon" href="http://play28.mly.com/game/luck28/logo.ico">
+    <link rel="Bookmark" href="http://play28.mly.com/game/luck28/logo.ico">
+    <link href="/Content/css.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/js/jquery-1.js"></script>
+
+
+    <title>玩游戏赚金币，做任务换奖品，就在乐游网-极速28</title>
+
+    <meta name="Keywords" content="游戏体验 免费 网赚 幸运28">
+    <meta name="description" content="玩游戏赚金币，做任务换奖品，就在乐游网">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+</head>
+<body>
+    <div class="clear"></div>
+    <div class="dh">
+    </div>
+    <div class="likebody mainbody">
+
+        <div class="likebody">
+            @Html.Action("RankRightList", "Shared", new { id = 1 })
+            <div class="gamemain">
+                @Html.Action("top", "Shared", 1)<div>
+                    @Html.Raw(ViewBag.Html)
+                </div>
+                <link href="/Content/help.css" rel="stylesheet">
+                    <div class="main help">
+                        <div class="box">
+                            <h2>极速28是个什么样的游戏</h2>
+
+                            <p>
+                                极速28是闽乐游新推出的竞猜游戏。28个号码，押中即可获得奖励。每天24小时开奖；每90秒一期。
+                                虽然游戏本身规则很简单，但由于每期都有几万人一起投注，而且投注的号码和U豆各不相同.
+                                所以每个号码会有不同赔率。 游戏会有很多变化， 其乐无穷，慢慢体会吧！
+                            </p>
+                        </div>
+
+                        <div class="box">
+                            <h2>28游戏怎么玩</h2>
+                            <p style="border-bottom:1px solid #e0e0e0;margin-bottom: 15px; padding-bottom: 15px;margin: 15px; padding: 0 0 15px 0">
+                                28游戏是三个0～9的随机数之和，因此竞猜的范围：<em>０～２７</em>。为了方便理解，我们对０～２７进行归类，整理出很多
+                                常用投注模式如下图，您还可按自己的习惯创建自己的投注模式。
+
+                                <img src="/img/help2.png" alt="">
+                            </p>
+                            <img src="/img/help3.png" alt="">
+                            <div class="last">
+                                注意：目前北京28,极速28最大投注额为<em>5千万</em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

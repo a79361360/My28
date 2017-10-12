@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{047C60C4-7716-44E3-9580-7985B7F239E1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MLY</RootNamespace>
+    <AssemblyName>MLY</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.0.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.0.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Admin\CurTimeController.cs" />
+    <Compile Include="Controllers\Bj28Controller.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Js28Controller.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
+    <Compile Include="Controllers\Shty28Controller.cs" />
+    <Compile Include="Controllers\TzController.cs" />
+    <Compile Include="Controllers\WeiXin\ComExpendController.cs" />
+    <Compile Include="Controllers\WeiXin\WxBj28Controller.cs" />
+    <Compile Include="Controllers\WeiXin\WxJs28Controller.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LoginFilter.cs" />
+    <Compile Include="Models\RetsMsg.cs" />
+    <Compile Include="Models\WxLoginFilter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bar.js" />
+    <Content Include="Content\css.css" />
+    <Content Include="Content\dialog.css" />
+    <Content Include="Content\hamzs.css" />
+    <Content Include="Content\help.css" />
+    <Content Include="Content\index.css" />
+    <Content Include="Content\nuirenbang.css" />
+    <Content Include="Content\open-flash-chart.swf" />
+    <Content Include="Content\swiper.min.css" />
+    <Content Include="Content\WeiXin\css\bootstrap.min.css" />
+    <Content Include="Content\WeiXin\css\css.css" />
+    <Content Include="Content\WeiXin\css\style.css" />
+    <Content Include="Content\WeiXin\images\circlef.png" />
+    <Content Include="Content\WeiXin\images\cirlce.png" />
+    <Content Include="Content\WeiXin\images\cirlceRed.png" />
+    <Content Include="Content\WeiXin\images\closebtn.png" />
+    <Content Include="Content\WeiXin\images\freshen.png" />
+    <Content Include="Content\WeiXin\images\gb.png" />
+    <Content Include="Content\WeiXin\images\gold.png" />
+    <Content Include="Content\WeiXin\images\i-1.png" />
+    <Content Include="Content\WeiXin\images\i-2.png" />
+    <Content Include="Content\WeiXin\images\jxz.png" />
+    <Content Include="Content\WeiXin\images\left.png" />
+    <Content Include="Content\WeiXin\images\menuarrow.png" />
+    <Content Include="Content\WeiXin\images\more2.png" />
+    <Content Include="Content\WeiXin\images\photo.png" />
+    <Content Include="Content\WeiXin\images\poparro.png" />
+    <Content Include="Content\WeiXin\images\qq.png" />
+    <Content Include="Content\WeiXin\images\rb.png" />
+    <Content Include="Content\WeiXin\images\right.png" />
+    <Content Include="Content\WeiXin\images\ro.png" />
+    <Content Include="Content\WeiXin\images\rr.png" />
+    <Content Include="Content\WeiXin\js\analy.js" />
+    <Content Include="Content\WeiXin\js\dsdialog.js" />
+    <Content Include="Content\WeiXin\js\index.js" />
+    <Content Include="Content\WeiXin\js\iscroll.js" />
+    <Content Include="Content\WeiXin\js\my-index.js" />
+    <Content Include="Content\WeiXin\js\my-mytz.js" />
+    <Content Include="Content\WeiXin\js\my.js" />
+    <Content Include="Content\WeiXin\js\savemodel.js" />
+    <Content Include="Content\WeiXin\js\tz.js" />
+    <Content Include="Content\WeiXin\js\zepto.min.js" />
+    <Content Include="Content\zd.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="img\1.png" />
+    <Content Include="img\11.png" />
+    <Content Include="img\2.png" />
+    <Content Include="img\3.png" />
+    <Content Include="img\4.png" />
+    <Content Include="img\baocun.png" />
+    <Content Include="img\bj.png" />
+    <Content Include="img\bzph.png" />
+    <Content Include="img\caishen.png" />
+    <Content Include="img\chunru.png" />
+    <Content Include="img\circlef.png" />
+    <Content Include="img\cirlce.png" />
+    <Content Include="img\cirlceRed.png" />
+    <Content Include="img\cirlceSelected.png" />
+    <Content Include="img\d-icon.png" />
+    <Content Include="img\ditu.png" />
+    <Content Include="img\dspm.png" />
+    <Content Include="img\f.png" />
+    <Content Include="img\gold.png" />
+    <Content Include="img\gongkaigongzheng.png" />
+    <Content Include="img\guanbi.png" />
+    <Content Include="img\guanbidz.png" />
+    <Content Include="img\h.png" />
+    <Content Include="img\h2bgn.png" />
+    <Content Include="img\help1.png" />
+    <Content Include="img\help2.png" />
+    <Content Include="img\help3.png" />
+    <Content Include="img\hlsb.png" />
+    <Content Include="img\huodongguizhe.png" />
+    <Content Include="img\huodongjiangli.png" />
+    <Content Include="img\huodongshijian.png" />
+    <Content Include="img\img_noopenvip_small.png" />
+    <Content Include="img\img_vip_10_small.png" />
+    <Content Include="img\img_vip_1_small.png" />
+    <Content Include="img\img_vip_2_small.png" />
+    <Content Include="img\img_vip_3_small.png" />
+    <Content Include="img\img_vip_4_small.png" />
+    <Content Include="img\img_vip_5_small.png" />
+    <Content Include="img\img_vip_6_small.png" />
+    <Content Include="img\img_vip_7_small.png" />
+    <Content Include="img\img_vip_8_small.png" />
+    <Content Include="img\img_vip_9_small.png" />
+    <Content Include="img\inserSure.png" />
+    <Content Include="img\j-icon.png" />
+    <Content Include="img\jingcai.png" />
+    <Content Include="img\jisu28.png" />
+    <Content Include="img\jrph.png" />
+    <Content Include="img\kaishizidong.png" />
+    <Content Include="img\kuaisuanquan.png" />
+    <Content Include="img\logo.gif" />
+    <Content Include="img\luck.png" />
+    <Content Include="img\Mask_1.gif" />
+    <Content Include="img\ncicle.png" />
+    <Content Include="img\ncicleb.png" />
+    <Content Include="img\on.png" />
+    <Content Include="img\open-flash-chart.swf" />
+    <Content Include="img\phsh.png" />
+    <Content Include="img\phsh1.png" />
+    <Content Include="img\qd.png" />
+    <Content Include="img\qiu.png" />
+    <Content Include="img\qiu1.png" />
+    <Content Include="img\quanbu.png" />
+    <Content Include="img\quchu.png" />
+    <Content Include="img\queding.png" />
+    <Content Include="img\querentouzhu.png" />
+    <Content Include="img\qun.png" />
+    <Content Include="img\quxiao.png" />
+    <Content Include="img\rbgz.png" />
+    <Content Include="img\shiwantc.png" />
+    <Content Include="img\shurukuang.png" />
+    <Content Include="img\siqi.png" />
+    <Content Include="img\sspm.png" />
+    <Content Include="img\surebtn.png" />
+    <Content Include="img\tingzhizidong.png" />
+    <Content Include="img\tipsyulan.png" />
+    <Content Include="img\tz01.jpg" />
+    <Content Include="img\weixin.png" />
+    <Content Include="img\weixuanz.png" />
+    <Content Include="img\wufengzhong.png" />
+    <Content Include="img\xinyun28.png" />
+    <Content Include="img\xshb.png" />
+    <Content Include="img\xuanz.png" />
+    <Content Include="img\ydz.png" />
+    <Content Include="img\YY2.png" />
+    <Content Include="img\yzm1.png" />
+    <Content Include="img\yzm2.png" />
+    <Content Include="img\zbgz.png" />
+    <Content Include="img\zhuanru.png" />
+    <Content Include="JS\bar.js" />
+    <Content Include="JS\common.js" />
+    <Content Include="JS\dragndrop.js" />
+    <Content Include="JS\dsdialog.js" />
+    <Content Include="JS\gamejs.js" />
+    <Content Include="JS\gamejs_002.js" />
+    <Content Include="JS\game_topact.js" />
+    <Content Include="JS\index.js" />
+    <Content Include="JS\jquery-1.4.1.js" />
+    <Content Include="JS\jquery-1.js" />
+    <Content Include="JS\jquery.js" />
+    <Content Include="JS\jquery.min.js" />
+    <Content Include="JS\PostSaveTem.js" />
+    <Content Include="JS\PubPage.js" />
+    <Content Include="JS\savemodel.js" />
+    <Content Include="JS\swfobject.js" />
+    <Content Include="JS\swiper.min.js" />
+    <Content Include="JS\tz.js" />
+    <Content Include="JS\zepto.js" />
+    <Content Include="JS\zepto.min.js" />
+    <Content Include="Project_Readme.html" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="logs\dhYZM_2017090812.log" />
+    <Content Include="logs\ExtProcRe_2017090812.log" />
+    <Content Include="logs\ExtProc_2017090812.log" />
+    <Content Include="logs\ExtSqlParamter_2017090812.log" />
+    <Content Include="logs\getbysp2_2017090812.log" />
+    <Content Include="logs\Select_2017090812.log" />
+    <Content Include="logs\WxLogin_2017090812.log" />
+    <None Include="Properties\PublishProfiles\28.pubxml" />
+    <None Include="Properties\PublishProfiles\YD28config.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Tz\Index.cshtml" />
+    <Content Include="Views\Home\Mylist.cshtml" />
+    <Content Include="Views\Tz\Detail.cshtml" />
+    <Content Include="Views\Home\Help.cshtml" />
+    <Content Include="Views\Tz\modelDo.cshtml" />
+    <Content Include="Views\Tz\Autoplay.cshtml" />
+    <Content Include="Views\Tz\Trend.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Js28\Index.cshtml" />
+    <Content Include="Views\Tz\insert.cshtml" />
+    <Content Include="Views\Shared\top.cshtml" />
+    <Content Include="Views\Js28\insertmod.cshtml" />
+    <Content Include="Views\Shared\RankRightList.cshtml" />
+    <Content Include="Views\Tz\ActivityRankList.cshtml" />
+    <Content Include="Views\Tz\WinOpen.cshtml" />
+    <Content Include="Views\Shty28\winlist.cshtml" />
+    <Content Include="Views\Shty28\Trend.cshtml" />
+    <Content Include="Views\Bj28\Gamehelp.cshtml" />
+    <Content Include="Views\Bj28\Index.cshtml" />
+    <Content Include="Views\Bj28\insert.cshtml" />
+    <Content Include="Views\Bj28\insertmod.cshtml" />
+    <Content Include="Views\Js28\Gamehelp.cshtml" />
+    <Content Include="Views\Shty28\Mytz.cshtml" />
+    <Content Include="Views\Shared\Explain.cshtml" />
+    <Content Include="Views\Shared\top1.cshtml" />
+    <Content Include="Views\Shty28\Selfset.cshtml" />
+    <Content Include="Views\Js28\Js28Top10.cshtml" />
+    <Content Include="Views\Shared\VerifyCode.cshtml" />
+    <Content Include="Views\Bj28\Top.cshtml" />
+    <Content Include="Views\Bj28\Bj28Top10.cshtml" />
+    <Content Include="Views\Bj28\Trend.cshtml" />
+    <Content Include="Views\Bj28\Selfset.cshtml" />
+    <Content Include="Views\Shared\Err.cshtml" />
+    <Content Include="Views\Shared\Superlist.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\WxBj28\Index.cshtml" />
+    <Content Include="Views\WxJs28\Index.cshtml" />
+    <Content Include="Views\WxBj28\rule.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\WxJs28\exchange.cshtml" />
+    <Content Include="Views\WxJs28\friend.cshtml" />
+    <Content Include="Views\WxJs28\income.cshtml" />
+    <Content Include="Views\WxJs28\insert.cshtml" />
+    <Content Include="Views\WxJs28\insertmod.cshtml" />
+    <Content Include="Views\WxJs28\login.cshtml" />
+    <Content Include="Views\WxJs28\Mytz.cshtml" />
+    <Content Include="Views\WxJs28\RankList.cshtml" />
+    <Content Include="Views\WxJs28\Recharge.cshtml" />
+    <Content Include="Views\WxJs28\register.cshtml" />
+    <Content Include="Views\WxJs28\rule.cshtml" />
+    <Content Include="Views\WxJs28\selfinfo.cshtml" />
+    <Content Include="Views\WxJs28\selflist.cshtml" />
+    <Content Include="Views\WxJs28\Selfset.cshtml" />
+    <Content Include="Views\WxJs28\Superlist.cshtml" />
+    <Content Include="Views\WxJs28\trend.cshtml" />
+    <Content Include="Views\WxBj28\insert.cshtml" />
+    <Content Include="Views\WxBj28\insertmod.cshtml" />
+    <Content Include="Views\WxBj28\Mytz.cshtml" />
+    <Content Include="Views\WxBj28\selflist.cshtml" />
+    <Content Include="Views\WxBj28\Selfset.cshtml" />
+    <Content Include="Views\WxBj28\trend.cshtml" />
+    <Content Include="Views\WxJs28\showinfo.cshtml" />
+    <Content Include="Views\WxJs28\SafeQuit.cshtml" />
+    <Content Include="Views\WxBj28\showinfo.cshtml" />
+    <Content Include="Views\ComExpend\Index.cshtml" />
+    <Content Include="Views\CurTime\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{2c17eacc-f386-42ab-996a-daca37a657a2}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{89a8a5b2-cb33-4121-bea3-e11096340b7e}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{EF7A014B-3606-4563-BF21-8B24496A5639}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49644</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49644/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

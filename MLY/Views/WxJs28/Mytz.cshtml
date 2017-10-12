@@ -1,0 +1,93 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>我的投注</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="~/Content/WeiXin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/WeiXin/css/style.css" rel="stylesheet" />
+    <script src="~/Content/WeiXin/js/zepto.min.js"></script>
+    <script src="~/Content/WeiXin/js/index.js"></script>
+    <script type="text/javascript" src="~/Content/WeiXin/js/iscroll.js"></script>
+    <script type="text/javascript" src="~/Content/WeiXin/js/my-mytz.js"></script>
+    <script>
+        var iskj = 0;
+        $(function () {
+            $.ajax({
+                type: "POST",
+                url: "/WxJs28/tops",
+                data: { "gameid": 1 },
+                dataType: 'json',
+                success: function (data) {
+                    gameid = 1;
+             
+                }
+            });
+        })
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class=" head1 clearfix">
+            <a href="index"><img src="~/Content/WeiXin/images/left.png" /></a>
+            <span class="title">我的投注</span>
+            <a href=""><img src="~/Content/WeiXin/images/freshen.png" /></a>
+        </div>
+        <div class="dh"></div>
+    </div>
+    <div class="container tablebox">
+        @Html.Raw(ViewBag.MyBakSta)
+    </div>
+    <div class="dhw"></div>
+    <div id="wrapper" style="top:240px;">
+        <div class="divx" id="scroller" style="margin-bottom:0px;">
+            <div id="pullDown" style="">
+                <span class="pullDownLabel">下拉刷新...</span>
+            </div>
+                <table class="table1">
+                    <thead>
+                        <tr>
+                            <th>期号</th>
+                            <th>开奖结果</th>
+                            <th>投注额</th>
+                            <th>盈利</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tb2" style="height:300px;">
+                        @Html.Raw(ViewBag.MyTzList)
+                    </tbody>
+                </table>
+            <div id="pullUp" style="display:none;">
+                <span class="pullUpLabel">上拉加载更多...</span>
+            </div>
+          </div>
+    </div>
+    <div class="footmenu">
+        <div class="item1">
+            <span class="black">今日活动</span>
+            <div class="item-pop">
+                <a href="RankList">日排名赛</a>
+                <a href="Superlist">周排名赛</a>
+                <span></span>
+            </div>
+        </div>
+        <div class="item1" id="footer_trend">
+            <span class="black"><a href="index">益智竞猜</a></span>
+        </div>
+        <div class="item1">
+            <span class="black">我的信息</span>
+            <div class="item-pop">
+                <a href="selfinfo">我的信息</a>
+                <a href="exchange">兑换金币</a>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
