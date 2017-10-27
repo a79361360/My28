@@ -14,44 +14,6 @@ var iskj;
 var slee = 0;
 var stopTz = 0; //停止投注
 function setsc() {
-   
-    //if ((tztzms == 65) && (indexis == 1 || indexis == 2)) {
-
-    //    //Jb18747
-    //    var iss = $("#DqIssue").val();
-    //    var url = "/Js28/Get_TzJb";
-    //    if (indexis == 2) url = "/Bj28/Get_TzJb";
-    //    $.ajax({
-    //        type: "POST",
-    //        url: url,
-    //        data: { "iss": iss },
-    //        dataType: 'json',
-    //        success: function (data) {
-    //            if (data.msg == 0) {
-    //                gx = 0;
-    //                gx = -5;
-    //            } else {
-    //                $("#Jb" + iss + "").text(data.msg);
-    //                if (data.txt == 1) {
-    //                    if (indexis == 1) {
-    //                        $("#lasttd" + iss).children("a").html("<a href=\"/Tz/insert/" + iss + "\"><span class=\"yitouz\">已投注</span></a>");
-    //                    } else {
-
-    //                        $("#lasttd" + iss).children("a").html("<a href=\"/Bj28/insert/" + iss + "\"><span class=\"yitouz\">已投注</span></a>");
-    //                    }
-    //                    $(".jb").html("<img src=\"/img/gold.png\"/>" + data.Jb + "");
-    //                    gx = 100;
-    //                }
-    //            }
-    //        }
-    //    });
-    //}
- 
-
-
-
-
-  
     if (tztzms > 0) {
         $("#tztzms").html(tztzms);  //投注截止秒数
         $("#msspan").html(kjms);//开奖截止秒数
@@ -68,9 +30,7 @@ function setsc() {
 
                 //$("#lasttd" + dqqs).html("<span class=\"yitouz\">投注结束</span>");
                 stopTz = 1;
-        }
-          else {
-
+        }else {
             if (iskj != 1) {
                 tztzms = 3;
                 slee++;
