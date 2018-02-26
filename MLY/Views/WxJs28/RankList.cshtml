@@ -148,17 +148,17 @@
     </div>
     <script>
 
-    ontab = function (e) {
-        $('.jcphb-info .tap span').removeClass('active');
-        $(e).toggleClass('active');
-        var tt = $(e).attr("tt");
-        if (tt == "1") {
-            $('#rank_43 tbody').html(str1);
-           }
-        if (tt == "2") {
-            $('#rank_43 tbody').html(str);
-           }
-         }
+        ontab = function (e) {
+            $('.jcphb-info .tap span').removeClass('active');
+            $(e).toggleClass('active');
+            var tt = $(e).attr("tt");
+            if (tt == "1") {
+                $('#rank_43 tbody').html(str1);
+            }
+            if (tt == "2") {
+                $('#rank_43 tbody').html(str);
+            }
+        }
 
         $('.whwh').click(function () {
             $('.showmsg-phb').css('display', 'block');

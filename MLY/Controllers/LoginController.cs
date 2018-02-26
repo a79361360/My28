@@ -238,10 +238,12 @@ namespace MLY.Controllers
                     string[] plist = temp.Split('|');   //微信发送|Openid|呢称|头像URL
                     if (plist[0] != "1") return Content("配置参数异常");
                     openid = plist[1]; headurl = plist[2]; nickname = Request["n"].ToString();
+                    Common.Expend.LogTxtExpend.WriteLogs("/Logs/LoginController_" + DateTime.Now.ToString("yyyyMMddHH") + ".log", "Index     openid：" + openid+ "headurl: "+ headurl+ "nickname: " + nickname);
                     wxbll.WeiX_Execute_User(0, 0, cbll.GetIp(), nickname, openid, headurl); //这里是临时择中处理,添加用户信息,有自己的公众号以后修改
                 }
-                catch
+                catch(Exception er)
                 {
+                    Common.Expend.LogTxtExpend.WriteLogs("/Logs/LoginController_" + DateTime.Now.ToString("yyyyMMddHH") + ".log", "Index     异常：" + er.Message );
                     return Content("参数错误");
                 }
                 if (string.IsNullOrEmpty(openid))
